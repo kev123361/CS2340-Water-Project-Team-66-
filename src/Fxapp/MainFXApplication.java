@@ -25,6 +25,8 @@ public class MainFXApplication extends Application {
     //The app's main stage
     private Stage mainScreen;
 
+
+
     //The layout for the app's main window
     private AnchorPane rootLayout;
 
@@ -37,6 +39,9 @@ public class MainFXApplication extends Application {
         initRootLayout(mainScreen);
     }
 
+    public AnchorPane getRootLayout() {
+        return rootLayout;
+    }
     /**
      * get a reference to the main stage
      * @return reference to the main stage
