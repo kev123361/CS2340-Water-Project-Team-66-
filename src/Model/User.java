@@ -1,26 +1,62 @@
 package Model;
 
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
 /**
- * Created by DudeLong on 2016/09/20.
+ * User
+ *
+ * @author Shobhit
+ * @version 1.0
  */
+
 public class User {
-    private String username = "user";
-    private String password = "password";
+    /**
+     * Properties are a way of binding data under the JavaBeans specification.
+     *
+     * See the article at: http://docs.oracle.com/javafx/2/binding/jfxpub-binding.htm
+     * for more details.
+     */
+    private final StringProperty _username = new SimpleStringProperty();
+    private final StringProperty _password = new SimpleStringProperty();
 
-    public String get_username() {
-        return username;
+    /* **********************
+     * Getters and setters for properties
+     */
+    public String getUsername() { return _username.get(); }
+    public void setUsername(String name) { _username.set(name); }
+
+    public String getPassword() {return _password.get(); }
+    public void setPassword(String major) { _password.set(major); }
+
+    /**
+     * Make a new student
+     * @param username      the student's username
+     * @param password     the student's password
+     */
+    public User(String username, String password) {
+        _username.set(username);
+        _password.set(password);
+
+
     }
 
-
-    public String get_password() {
-        return password;
+    /**
+     * No param constructor -- DO NOT CALL NORMALLY
+     * This constructor only for GUI use in edit/new student dialog
+     */
+    public User() {
+        _username.set("Enter your username");
+        _password.set("Enter your password");
     }
 
-    public void setUserName(String username) {this.username = username; }
+    /**
+     *
+     * @return the display string representation
+     */
+    public String toString() {
 
-    public void setPassword(String password) {this.password = password;}
+        return _username.get() + " " + _password.get();
+    }
 
 }

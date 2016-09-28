@@ -24,8 +24,10 @@
       </VBox>
       <ButtonBar layoutY="306.0" prefHeight="40.0" prefWidth="600.0">
         <buttons>
-          <Button mnemonicParsing="false" text="Login">
-               <opaqueInsets>
+
+            <Button mnemonicParsing="false" onAction="#loginPressed" text="Login">
+
+            <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Button>
@@ -35,6 +37,6 @@
             <Insets right="220.0" />
          </padding>
       </ButtonBar>
-      <Button layoutX="248.0" layoutY="359.0" mnemonicParsing="false" onAction="#expressLoginPressed" text="Express Login" />
+
    </children>
 </AnchorPane>

@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 /**
- * Created by DudeLong on 2016/09/20.
+ * Created by Kishan on 2016/09/20.
  */
 public class MainScreenController {
 

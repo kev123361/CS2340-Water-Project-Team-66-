@@ -1,6 +1,7 @@
 package Controller;
 
 import Fxapp.MainFXApplication;
+import Model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,14 +21,16 @@ import java.util.logging.Logger;
  * The controller for the welcome screen
  *
  * @author Kyle Pelton
+ * @author Shivani Bandaru
+ * @author Kishan Chudasama
  * @version 1.0
  */
 public class WelcomeScreenController {
 
     //Reference of the main FX class
     private MainFXApplication mainApplication;
-    @FXML
-    private Button expressLogin;
+   // @FXML
+    //private Button expressLogin;
 
     @FXML
     private void initialize() {
@@ -54,8 +57,15 @@ public class WelcomeScreenController {
         alert.showAndWait();
 
     }
+    public void loginPressed() {
+        User user = new User();
+        mainApplication.showLoginScreen(user);
 
-    @FXML
+
+
+    }
+
+   /* @FXML
     public void expressLoginPressed(ActionEvent event) throws IOException{
         try {
             Stage stage = mainApplication.getMainScreen();
@@ -81,6 +91,6 @@ public class WelcomeScreenController {
             e.printStackTrace();
         }
     }
-
+*/
 
 }
