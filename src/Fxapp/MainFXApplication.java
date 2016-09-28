@@ -30,8 +30,6 @@ public class MainFXApplication extends Application {
     //The app's main stage
     private Stage mainScreen;
 
-
-
     //The layout for the app's main window
     private AnchorPane rootLayout;
 
