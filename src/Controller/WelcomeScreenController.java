@@ -23,12 +23,16 @@ import java.util.logging.Logger;
  * @author Kyle Pelton
  * @author Shivani Bandaru
  * @author Kishan Chudasama
- * @version 1.0
+ * @version 1.1
  */
 public class WelcomeScreenController {
 
     //Reference of the main FX class
     private MainFXApplication mainApplication;
+
+    private Stage welcomeStage;
+
+    private boolean isOkClicked = false;
    // @FXML
     //private Button expressLogin;
 
@@ -39,6 +43,14 @@ public class WelcomeScreenController {
 
     public void setMainApplication(MainFXApplication mainApp) {
         mainApplication = mainApp;
+    }
+
+    public void setWelcomeStage(Stage welcomeStage) {
+        welcomeStage = welcomeStage;
+    }
+
+    public boolean isOkClicked() {
+        return isOkClicked;
     }
 
     /**
@@ -64,7 +76,7 @@ public class WelcomeScreenController {
 
     }
 
-   /* @FXML
+    /* @FXML
     public void expressLoginPressed(ActionEvent event) throws IOException{
         try {
             Stage stage = mainApplication.getMainScreen();
