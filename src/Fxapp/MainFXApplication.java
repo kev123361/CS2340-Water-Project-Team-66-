@@ -7,6 +7,7 @@ import Model.User;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -28,10 +29,10 @@ import java.util.logging.Logger;
 public class MainFXApplication extends Application {
 
     //The app's main stage
-    private Stage mainScreen;
+    public static Stage mainScreen;
 
     //The layout for the app's main window
-    private AnchorPane rootLayout;
+    private Parent rootLayout;
 
     //A logger for exceptions
     private static final Logger LOGGER = Logger.getLogger("MainFXApplication");
@@ -42,7 +43,7 @@ public class MainFXApplication extends Application {
         initRootLayout(mainScreen);
     }
 
-    public AnchorPane getRootLayout() {
+    public Parent getRootLayout() {
         return rootLayout;
     }
     /**
@@ -105,34 +106,13 @@ public class MainFXApplication extends Application {
             controller.setUser(user);
 
             // Show the dialog and wait until the user closes it
-            dialogStage.showAndWait();
+            dialogStage.show();
 
             return controller.isOkClicked();
 
         } catch (IOException e) {
             e.printStackTrace();
             return false;
-        }
-    }
-
-
-    public void showMainScreen() {
-        try {
-            Stage stage = new Stage();
-            Parent root;
-            //create a new scene with root and set the stage
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../View/MainScreen.fxml"));
-            root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setTitle("Water Report Main Screen");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            // Log the error that occurred during loading
-            Logger LOGGER = Logger.getLogger("MainFXApplication");
-            LOGGER.log(Level.SEVERE, "Couldn't find the fxml file for the welcome screen");
-            e.printStackTrace();
         }
     }
 

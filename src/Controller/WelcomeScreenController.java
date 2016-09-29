@@ -57,11 +57,10 @@ public class WelcomeScreenController {
         alert.showAndWait();
 
     }
+
     public void loginPressed() {
         User user = new User();
         mainApplication.showLoginScreen(user);
-
-
 
     }
 

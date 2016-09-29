@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.SyncFailedException;
 
 /**
  * The controller for the welcome screen
@@ -65,9 +66,9 @@ public class LoginScreenController {
 
             _okClicked = true;
             this.setMainApplication(new MainFXApplication());
-            mainApplication.showMainScreen();
-
-
+            MainScreenController.showMainScreen();
+            _dialogStage.close();
+            mainApplication.mainScreen.close();
         }
 
     }
