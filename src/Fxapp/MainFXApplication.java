@@ -1,6 +1,7 @@
 package Fxapp;
 
 import Controller.LoginScreenController;
+import Controller.MainScreenController;
 import Controller.WelcomeScreenController;
 
 import Model.User;
@@ -24,12 +25,12 @@ import java.util.logging.Logger;
  * @author Kyle Pelton
  * @author <insert name anyone else who edits this>
  *
- * @version 1.0
+ * @version 1.1
  */
 public class MainFXApplication extends Application {
 
     //The app's main stage
-    public static Stage mainScreen;
+    public Stage mainScreen;
 
     //The layout for the app's main window
     private Parent rootLayout;
@@ -39,13 +40,13 @@ public class MainFXApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        mainScreen = primaryStage;
-        initRootLayout(mainScreen);
+        initRootLayout(primaryStage);
     }
 
     public Parent getRootLayout() {
         return rootLayout;
     }
+
     /**
      * get a reference to the main stage
      * @return reference to the main stage
@@ -60,9 +61,10 @@ public class MainFXApplication extends Application {
      *
      * @param mainScreen  the main stage of the application
      */
-    private void initRootLayout(Stage mainScreen) {
+    public void initRootLayout(Stage mainScreen) {
         try {
             // Load the root layout from fxml file.
+            this.mainScreen = mainScreen;
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainFXApplication.class.getResource("../View/WelcomeScreen.fxml"));
             rootLayout = loader.load();
@@ -84,6 +86,13 @@ public class MainFXApplication extends Application {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Display the app's login screen
+     *
+     * @param user  the user trying to log in
+     * @return whether or not displaying the login screen was successful
+     */
     public boolean showLoginScreen(User user) {
         try {
 
@@ -105,11 +114,48 @@ public class MainFXApplication extends Application {
             controller.setDialogStage(dialogStage);
             controller.setUser(user);
 
+            controller.setMainApplication(this);
+
             // Show the dialog and wait until the user closes it
             dialogStage.show();
 
             return controller.isOkClicked();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Display the app's main screen
+     *
+     * @return whether or not displaying the login screen was successful
+     */
+    public boolean showMainScreen() {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../View/MainScreen.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the main screen stage.
+            Stage mainScreenStage = new Stage();
+            mainScreenStage.setTitle("Water Report Main Screen");
+            Scene scene = new Scene(page);
+            mainScreenStage.setScene(scene);
+
+            // Set the controller.
+            MainScreenController controller = loader.getController();
+            controller.setMainScreenStage(mainScreenStage);
+            //controller.setUser(user);
+
+            controller.setMainApplication(this);
+
+            // Show the main screen stage
+            mainScreenStage.show();
+
+            return controller.isOkClicked();
         } catch (IOException e) {
             e.printStackTrace();
             return false;

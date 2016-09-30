@@ -14,7 +14,8 @@ import java.io.SyncFailedException;
  * The controller for the welcome screen
  *
  * @author Shivani Bandaru
- * @version 1.0
+ * @author Kyle Pelton
+ * @version 1.1
  */
 public class LoginScreenController {
     private Stage _dialogStage;
@@ -39,7 +40,7 @@ public class LoginScreenController {
         _dialogStage = dialogStage;
     }
     public void setUser(User user) {
-        //remember the current student
+        //remember the current user
         _user = user;
 
         if (_user == null) {
@@ -56,6 +57,22 @@ public class LoginScreenController {
     @FXML
     public void handleLoginPressed() throws IOException {
         if (isInputValid()) {
+            //If data reasonable, remember user data in the window
+            _user.setUsername(username.getText());
+            _user.setPassword(password.getText());
+
+            //Signal success and close the window
+            _okClicked = true;
+            mainApplication.showMainScreen();
+
+            _dialogStage.close();
+            mainApplication.mainScreen.close();
+        }
+    }
+
+    /*@FXML
+    public void handleLoginPressed() throws IOException {
+        if (isInputValid()) {
 
             //if the data is reasonable, then remember the the student data in the window
 
@@ -65,13 +82,21 @@ public class LoginScreenController {
             _user.setPassword(password.getText());
 
             _okClicked = true;
+
+            //MainFXApplication currMainFXApp = mainApplication;
+
             this.setMainApplication(new MainFXApplication());
-            MainScreenController.showMainScreen();
+            MainScreenController controller = new MainScreenController();
+
+            //controller.setMainApplication(currMainFXApp);
+
+            controller.showMainScreen();
+            //MainScreenController.showMainScreen();
             _dialogStage.close();
             mainApplication.mainScreen.close();
         }
 
-    }
+    }*/
     public boolean isOkClicked() {
         return _okClicked;
     }
