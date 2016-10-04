@@ -77,6 +77,8 @@ public class RegistrationScreenController {
             _user.setAccount(comboBoxDrop.getSelectionModel().getSelectedItem());
 
             _okClicked = true;
+            _dialogStage.close();
+            mainApplication.mainScreen.close();
             this.setMainApplication(new MainFXApplication());
             mainApplication.showMainScreen();
 
