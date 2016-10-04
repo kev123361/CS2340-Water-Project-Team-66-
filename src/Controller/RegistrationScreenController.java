@@ -3,6 +3,7 @@ package Controller;
 import Fxapp.MainFXApplication;
 import Model.Account;
 import Model.User;
+import Model.UserList;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -71,10 +72,8 @@ public class RegistrationScreenController {
 
 
             //signal success and close this dialog window.
-            _user.setUsername(username.getText());
-            _user.setPassword(password.getText());
-            _user.setId(id.getText());
-            _user.setAccount(comboBoxDrop.getSelectionModel().getSelectedItem());
+            UserList.addUser(new User(username.getText(), password.getText(), id.getText(), comboBoxDrop.getSelectionModel().getSelectedItem()));
+
 
             _okClicked = true;
             _dialogStage.close();
@@ -97,8 +96,7 @@ public class RegistrationScreenController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        //for now just check they actually typed something
-        if (!username.getText().equals(null) && !password.getText().equals(null) && !id.getText().equals(null)) {
+        if (!username.getText().equals("") && !password.getText().equals("") && !id.getText().equals("") && UserList.isUniqueUserName(username.getText()) && UserList.isUniqueID(id.getText())) {
             return true;
         }
         else {
@@ -106,7 +104,14 @@ public class RegistrationScreenController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(_dialogStage);
             alert.setTitle("Invalid Fields");
-            alert.setHeaderText("Please correct invalid fields");
+            if (!UserList.isUniqueUserName(username.getText())) {
+                alert.setHeaderText("This username is already taken.");
+            } else if (!UserList.isUniqueID(id.getText())) {
+                alert.setHeaderText("This ID is already taken.");
+            } else {
+                alert.setHeaderText("One or more fields have been left blank.");
+            }
+
             alert.setContentText(errorMessage);
 
             alert.showAndWait();

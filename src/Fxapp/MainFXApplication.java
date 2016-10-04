@@ -113,7 +113,7 @@ public class MainFXApplication extends Application {
             // Set the person into the controller.
             LoginScreenController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.setUser(user);
+            //controller.setUser(user);
 
             controller.setMainApplication(this);
 

@@ -2,6 +2,7 @@ package Controller;
 
 import Fxapp.MainFXApplication;
 import Model.User;
+import Model.UserList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -39,27 +40,24 @@ public class LoginScreenController {
     public void setDialogStage(Stage dialogStage) {
         _dialogStage = dialogStage;
     }
-    public void setUser(User user) {
-        //remember the current user
-        _user = user;
-
-        if (_user == null) {
-            System.out.println("User was null");
-        }
-
-        //make the data show up in the gui fields
-        username.setText(_user.getUsername());
-        password.setText(_user.getPassword());
-
-
-    }
+//    public void setUser(User user) {
+//        //remember the current user
+//        _user = user;
+//
+//        if (_user == null) {
+//            System.out.println("User was null");
+//        }
+//
+//        //make the data show up in the gui fields
+//        username.setText(_user.getUsername());
+//        password.setText(_user.getPassword());
+//
+//
+//    }
 
     @FXML
     public void handleLoginPressed() throws IOException {
         if (isInputValid()) {
-            //If data reasonable, remember user data in the window
-            _user.setUsername(username.getText());
-            _user.setPassword(password.getText());
 
             //Signal success and close the window
             _okClicked = true;
@@ -109,7 +107,7 @@ public class LoginScreenController {
         String errorMessage = "";
 
         //for now just check they actually typed something
-        if (username.getText().equals("user") && password.getText().equals("pass")) {
+        if (!username.getText().equals("") && !password.getText().equals("") && UserList.isValidLogin(username.getText(), password.getText())) {
             return true;
         }
         else {
@@ -117,7 +115,12 @@ public class LoginScreenController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(_dialogStage);
             alert.setTitle("Invalid Fields");
-            alert.setHeaderText("Please correct invalid fields");
+            if (username.getText().equals("") || password.getText().equals("")){
+                alert.setHeaderText("One or more fields were left blank.");
+            } else {
+                alert.setHeaderText("The username-password combination provided does not exist.");
+            }
+
             alert.setContentText(errorMessage);
 
             alert.showAndWait();

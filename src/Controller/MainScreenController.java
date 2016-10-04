@@ -2,6 +2,7 @@ package Controller;
 
 //import Controller.WelcomeScreenController;
 import Fxapp.MainFXApplication;
+import Model.UserList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -32,7 +33,6 @@ public class MainScreenController {
 
     @FXML
     private void initialize() {
-
     }
 
     public void setMainApplication(MainFXApplication mainApp) {
