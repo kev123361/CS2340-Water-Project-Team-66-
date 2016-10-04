@@ -1,12 +1,14 @@
 package Model;
 
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 /**
  * User
  *
- * @author Shobhit
+ * @author Shivani Bandaru
  * @version 1.0
  */
 
@@ -19,6 +21,8 @@ public class User {
      */
     private final StringProperty _username = new SimpleStringProperty();
     private final StringProperty _password = new SimpleStringProperty();
+    private final StringProperty _id = new SimpleStringProperty();
+    private final ObjectProperty<Account> _account = new SimpleObjectProperty<>();
 
     /* **********************
      * Getters and setters for properties
@@ -29,14 +33,23 @@ public class User {
     public String getPassword() {return _password.get(); }
     public void setPassword(String major) { _password.set(major); }
 
+    public String getId() {return _id.get(); }
+    public void setId(String major) { _id.set(major); }
+
+    public Account getAccount() {return _account.get(); }
+    public void setAccount(Account a) { _account.set(a); }
+
+
     /**
-     * Make a new student
+     * Make a new user
      * @param username      the student's username
      * @param password     the student's password
      */
-    public User(String username, String password) {
+    public User(String username, String password, String id, Account a) {
         _username.set(username);
         _password.set(password);
+        _id.set(id);
+        _account.set(a);
 
 
     }
@@ -48,6 +61,7 @@ public class User {
     public User() {
         _username.set("Enter your username");
         _password.set("Enter your password");
+        _id.set("Enter your id");
     }
 
     /**
@@ -56,7 +70,7 @@ public class User {
      */
     public String toString() {
 
-        return _username.get() + " " + _password.get();
+        return _username.get() + " " + _password.get() + " " + _id.get() + " " + _account.get();
     }
 
 }

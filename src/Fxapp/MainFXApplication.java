@@ -2,6 +2,7 @@ package Fxapp;
 
 import Controller.LoginScreenController;
 import Controller.MainScreenController;
+import Controller.RegistrationScreenController;
 import Controller.WelcomeScreenController;
 
 import Model.User;
@@ -23,7 +24,7 @@ import java.util.logging.Logger;
  * Main runner for the app
  *
  * @author Kyle Pelton
- * @author <insert name anyone else who edits this>
+ * @author Shivani Bandaru
  *
  * @version 1.1
  */
@@ -111,6 +112,39 @@ public class MainFXApplication extends Application {
 
             // Set the person into the controller.
             LoginScreenController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setUser(user);
+
+            controller.setMainApplication(this);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.show();
+
+            return controller.isOkClicked();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean showRegistrationScreen(User user) {
+        try {
+
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../View/RegistrationScreen.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Registration");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(mainScreen);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            RegistrationScreenController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setUser(user);
 

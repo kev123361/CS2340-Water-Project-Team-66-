@@ -33,7 +33,7 @@ public class WelcomeScreenController {
     private Stage welcomeStage;
 
     private boolean isOkClicked = false;
-   // @FXML
+    // @FXML
     //private Button expressLogin;
 
     @FXML
@@ -60,14 +60,8 @@ public class WelcomeScreenController {
      */
     @FXML
     public void registerPressed() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initOwner(mainApplication.getMainScreen());
-        alert.setTitle("Unimplemented");
-        alert.setHeaderText("Unimplemented Component");
-        alert.setContentText("Registration hasn't been implemented yet!");
-
-        alert.showAndWait();
-
+        User user = new User();
+        mainApplication.showRegistrationScreen(user);
     }
 
     public void loginPressed() {
