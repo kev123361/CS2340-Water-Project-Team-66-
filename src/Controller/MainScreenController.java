@@ -28,7 +28,6 @@ public class MainScreenController {
     private Stage mainScreenStage;
 
     private boolean _okClicked = false;
-    private User _user;
 
     //Reference of the main FX class
     private MainFXApplication mainApplication;
@@ -40,8 +39,6 @@ public class MainScreenController {
     public void setMainApplication(MainFXApplication mainApp) {
         mainApplication = mainApp;
     }
-
-    public void setUser(User user) {_user = user;}
 
     public void setMainScreenStage(Stage newStage) {
         mainScreenStage = newStage;
@@ -113,7 +110,7 @@ public class MainScreenController {
     @FXML
     public void handleViewProfilePressed() throws IOException {
         _okClicked = true;
-        mainApplication.showProfileScreen(_user);
+        mainApplication.showProfileScreen();
 
         mainScreenStage.close();
     }

@@ -62,7 +62,10 @@ public class ProfileScreenController {
 
     @FXML
     public void handleClosePressed() throws IOException {
+        _okClicked = true;
+        _dialogStage.close();
 
+        mainApplication.showMainScreen();
     }
 
     public boolean isOkClicked() {return _okClicked;}

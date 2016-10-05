@@ -61,7 +61,7 @@ public class LoginScreenController {
 
             //Signal success and close the window
             _okClicked = true;
-            mainApplication.showMainScreen(_user);
+            mainApplication.showMainScreen();
 
             _dialogStage.close();
             mainApplication.mainScreen.close();
