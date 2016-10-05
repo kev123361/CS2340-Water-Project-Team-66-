@@ -79,7 +79,7 @@ public class RegistrationScreenController {
             _dialogStage.close();
             mainApplication.mainScreen.close();
             this.setMainApplication(new MainFXApplication());
-            mainApplication.showMainScreen();
+            mainApplication.showMainScreen(_user);
 
 
         }
