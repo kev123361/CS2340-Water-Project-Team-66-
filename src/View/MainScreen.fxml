@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainScreenController">
    <children>
       <VBox layoutY="6.0" prefHeight="300.0" prefWidth="600.0">
          <children>
@@ -23,9 +23,10 @@
          </children>
       </VBox>
       <Label alignment="BASELINE_RIGHT" contentDisplay="CENTER" layoutX="221.0" layoutY="306.0" text="User has successfully logged in" textAlignment="CENTER" />
-      <ButtonBar layoutX="200.0" layoutY="346.0" prefHeight="40.0" prefWidth="200.0">
+      <ButtonBar layoutX="146.0" layoutY="346.0" prefHeight="40.0" prefWidth="309.0">
         <buttons>
-          <Button mnemonicParsing="false" onAction="#handleLogoutPressed" text="Logout" />
+          <Button mnemonicParsing="false" onAction="#handleViewProfilePressed" text="View Profile" />
+            <Button mnemonicParsing="false" onAction="#handleLogoutPressed" text="Logout" />
         </buttons>
          <opaqueInsets>
             <Insets />
