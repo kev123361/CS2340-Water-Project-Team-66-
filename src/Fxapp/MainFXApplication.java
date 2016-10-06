@@ -188,10 +188,6 @@ public class MainFXApplication extends Application {
 
             controller.setMainApplication(this);
 
-            if (mainScreen == null) {
-                System.out.println("BLAGH!");
-            }
-
             // Show the main screen stage
             mainScreenStage.show();
 
@@ -219,9 +215,6 @@ public class MainFXApplication extends Application {
             profileScreenStage.setTitle("Profile Screen");
             profileScreenStage.initModality(Modality.WINDOW_MODAL);
             profileScreenStage.initOwner(mainScreen);
-            if (mainScreen == null) {
-                System.out.println("AAGH!!!");
-            }
             Scene scene = new Scene(page);
             profileScreenStage.setScene(scene);
 
