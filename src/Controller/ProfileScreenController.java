@@ -57,7 +57,20 @@ public class ProfileScreenController {
 
     @FXML
     public void handleEditPressed() throws IOException {
+        _user.setUsername(username.getText());
+        _user.setPassword(password.getText());
+        _user.setId(id.getText());
+        //_user.setAccount();
 
+        _okClicked = true;
+        _dialogStage.close();
+
+        mainApplication.showMainScreen();
+        /*if (mainApplication == null) { System.out.println("THIS!!!!"); }
+        if (mainApplication.mainScreen == null) { System.out.println("THAT!!!!!"); }
+        mainApplication.mainScreen.close();
+        this.setMainApplication(new MainFXApplication());
+        mainApplication.showMainScreen();*/
     }
 
     @FXML

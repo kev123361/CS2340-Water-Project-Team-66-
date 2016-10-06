@@ -39,9 +39,9 @@
                   <Insets left="20.0" />
                </padding>
             </Label>
-            <TextField fx:id="username" editable="false" GridPane.columnIndex="1" />
-            <TextField fx:id="id" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="password" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="username" editable="true" GridPane.columnIndex="1" />
+            <TextField fx:id="id" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="password" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <ButtonBar layoutY="321.0" prefHeight="46.0" prefWidth="589.0">
