@@ -2,6 +2,7 @@ package Controller;
 
 //import Controller.WelcomeScreenController;
 import Fxapp.MainFXApplication;
+import Model.User;
 import Model.UserList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -103,6 +104,14 @@ public class MainScreenController {
         mainApplication.initRootLayout(new Stage());
 
         //Close this stage
+        mainScreenStage.close();
+    }
+
+    @FXML
+    public void handleViewProfilePressed() throws IOException {
+        _okClicked = true;
+        mainApplication.showProfileScreen();
+
         mainScreenStage.close();
     }
 

@@ -4,8 +4,10 @@ import Controller.LoginScreenController;
 import Controller.MainScreenController;
 import Controller.RegistrationScreenController;
 import Controller.WelcomeScreenController;
+import Controller.ProfileScreenController;
 
 import Model.User;
+import Model.UserList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -182,7 +184,6 @@ public class MainFXApplication extends Application {
             // Set the controller.
             MainScreenController controller = loader.getController();
             controller.setMainScreenStage(mainScreenStage);
-            //controller.setUser(user);
 
             controller.setMainApplication(this);
 
@@ -196,6 +197,41 @@ public class MainFXApplication extends Application {
         }
     }
 
+    /**
+     * Display the profile screen of user
+     *
+     * @return whether or not displaying the screen was successful
+     */
+    public boolean showProfileScreen() {
+        try {
+            // Load the fxml file and create new stage for the popup dialog
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../View/ProfileScreen.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the profile screen stage
+            Stage profileScreenStage = new Stage();
+            profileScreenStage.setTitle("Profile Screen");
+            Scene scene = new Scene(page);
+            profileScreenStage.setScene(scene);
+
+            // Set the controller
+            ProfileScreenController controller = loader.getController();
+            controller.setDialogStage(profileScreenStage);
+            // Set user into controller
+            controller.setUser(UserList.getCurrentUser());
+
+            controller.setMainApplication(this);
+
+            // Show the profile screen
+            profileScreenStage.show();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     public static void main(String[] args) {
         launch(args);
