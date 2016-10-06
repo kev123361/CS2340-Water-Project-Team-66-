@@ -51,4 +51,43 @@ public class UserList {
         return true;
     }
 
+    /**
+     * Checking if valid email address entered
+     *
+     * A valid email address should be of the form <something>@<somethingelse>.<somedomainname>
+     *
+     * @param email the email address
+     * @return true if valid, false otherwise
+     */
+    public static Boolean isValidEmailAddress(String email) {
+        if (email.contains("@") && email.indexOf("@") != 0 && email.indexOf("@") != email.length() - 1
+                && email.contains(".") && email.indexOf(".") > email.indexOf("@") && email.indexOf(".") != email
+                .length() - 1) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Checking if valid home address entered
+     *
+     * For now, a valid home address is something of the form Some Address, City, State ZIP
+     * This code checks to see if there are two commas followed by a space to define the address, city, and ZIP
+     *
+     * @param home the home address
+     * @return true if valid, false otherwise
+     */
+    public static Boolean isValidHomeAddress(String home) {
+        int commaCount = 0;
+        int spaceCount = 0;
+        for (int i = 0; i < home.length() - 1; i++) {
+            if (home.charAt(i) == ',') {
+                commaCount++;
+            } else if (commaCount == 2 && home.charAt(i) == ' ') {
+                spaceCount++;
+            }
+        }
+        return commaCount == 2 && spaceCount == 2;
+    }
+
 }

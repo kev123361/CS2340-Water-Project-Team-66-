@@ -27,6 +27,7 @@ import java.util.logging.Logger;
  *
  * @author Kyle Pelton
  * @author Shivani Bandaru
+ * @author Kevin Tang
  *
  * @version 1.1
  */
@@ -212,6 +213,8 @@ public class MainFXApplication extends Application {
             // Create the profile screen stage
             Stage profileScreenStage = new Stage();
             profileScreenStage.setTitle("Profile Screen");
+            profileScreenStage.initModality(Modality.WINDOW_MODAL);
+            profileScreenStage.initOwner(mainScreen);
             Scene scene = new Scene(page);
             profileScreenStage.setScene(scene);
 

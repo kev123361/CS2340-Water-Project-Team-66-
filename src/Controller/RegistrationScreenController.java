@@ -2,6 +2,7 @@ package Controller;
 
 import Fxapp.MainFXApplication;
 import Model.Account;
+import Model.Title;
 import Model.User;
 import Model.UserList;
 import javafx.collections.FXCollections;
@@ -9,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,6 +31,12 @@ public class RegistrationScreenController {
     private TextField id;
     @FXML
     private ComboBox<Account> comboBoxDrop;
+    @FXML
+    private TextField email;
+    @FXML
+    private TextField home;
+    @FXML
+    private ComboBox<Title> comboBoxTitle;
 
     private boolean _okClicked = false;
     private User _user;
@@ -41,9 +49,10 @@ public class RegistrationScreenController {
 
     @FXML
     private void initialize() {
-        comboBoxDrop.setItems( FXCollections.observableArrayList(Account.values()));
-
+        comboBoxDrop.setItems(FXCollections.observableArrayList(Account.values()));
+        comboBoxTitle.setItems(FXCollections.observableArrayList(Title.values()));
     }
+
     public void setDialogStage(Stage dialogStage) {
         _dialogStage = dialogStage;
     }
@@ -60,7 +69,9 @@ public class RegistrationScreenController {
         password.setText("Enter a Password");
         id.setText("Create an Id");
         comboBoxDrop.setValue(Account.USER);
-
+        email.setText("Enter an Email Address");
+        home.setText("Enter a Home Address");
+        comboBoxTitle.setValue(Title.MR); //just using the first one in the enum
 
     }
 
@@ -72,7 +83,9 @@ public class RegistrationScreenController {
 
 
             //signal success and close this dialog window.
-            UserList.addUser(new User(username.getText(), password.getText(), id.getText(), comboBoxDrop.getSelectionModel().getSelectedItem()));
+            UserList.addUser(new User(username.getText(), password.getText(), id.getText(),
+                    comboBoxDrop.getSelectionModel().getSelectedItem(), email.getText(), home.getText(),
+                    comboBoxTitle.getSelectionModel().getSelectedItem()));
 
 
             _okClicked = true;
@@ -96,7 +109,10 @@ public class RegistrationScreenController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (!username.getText().equals("") && !password.getText().equals("") && !id.getText().equals("") && UserList.isUniqueUserName(username.getText()) && UserList.isUniqueID(id.getText())) {
+        if (!username.getText().equals("") && !password.getText().equals("") && !id.getText().equals("")
+                && !email.getText().equals("") && !home.getText().equals("")
+                && UserList.isUniqueUserName(username.getText()) && UserList.isUniqueID(id.getText())
+                && UserList.isValidEmailAddress(email.getText()) && UserList.isValidHomeAddress(home.getText())) {
             return true;
         }
         else {
@@ -108,6 +124,10 @@ public class RegistrationScreenController {
                 alert.setHeaderText("This username is already taken.");
             } else if (!UserList.isUniqueID(id.getText())) {
                 alert.setHeaderText("This ID is already taken.");
+            } else if (!UserList.isValidEmailAddress(email.getText())) {
+                alert.setHeaderText("This email address isn't valid (should be of the form <>@<>.<>)");
+            } else if (!UserList.isValidHomeAddress(home.getText())) {
+                alert.setHeaderText("This home address isn't valid (should be <address>, <city>, <state> <ZIP>)");
             } else {
                 alert.setHeaderText("One or more fields have been left blank.");
             }
