@@ -43,6 +43,12 @@ public class RegistrationScreenController {
 
     //Reference of the main FX class
     private MainFXApplication mainApplication;
+
+    /**
+     * Sets the main application for this controller
+     *
+     * @param mainApp this controller's main application
+     */
     public void setMainApplication(MainFXApplication mainApp) {
         mainApplication = mainApp;
     }
@@ -53,11 +59,22 @@ public class RegistrationScreenController {
         comboBoxTitle.setItems(FXCollections.observableArrayList(Title.values()));
     }
 
+    /**
+     * Sets the registration screen's stage. Called when initializing the screen
+     *
+     * @param dialogStage the stage
+     */
     public void setDialogStage(Stage dialogStage) {
         _dialogStage = dialogStage;
     }
+
+    /**
+     * Sets the initial user for this screen. Will be modified when user is registered
+     *
+     * @param user the user being registered
+     */
     public void setUser(User user) {
-        //remember the current student
+        //remember the current user
         _user = user;
 
         if (_user == null) {
@@ -76,11 +93,14 @@ public class RegistrationScreenController {
     }
 
     @FXML
+    /**
+     * Handler for pressing register
+     * Adds user to the list of users provided input is valid
+     *
+     * @throws IOException if IO errors occur
+     */
     public void handleRegisterPressed() throws IOException {
         if (isInputValid()) {
-
-            //if the data is reasonable, then remember the the student data in the window
-
 
             //signal success and close this dialog window.
             UserList.addUser(new User(username.getText(), password.getText(), id.getText(),
@@ -98,14 +118,22 @@ public class RegistrationScreenController {
         }
 
     }
+
     public boolean isOkClicked() {
         return _okClicked;
     }
 
+    /**
+     * Handler for pressing cancel. Closes out of the registration screen
+     */
     public void handleCancelPressed1() {
         _dialogStage.close();
     }
 
+    /**
+     * Checks if valid input has been entered
+     * @return true if valid input entered, false otherwise
+     */
     private boolean isInputValid() {
         String errorMessage = "";
 

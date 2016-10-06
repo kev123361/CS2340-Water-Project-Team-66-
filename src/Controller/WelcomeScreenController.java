@@ -41,10 +41,19 @@ public class WelcomeScreenController {
 
     }
 
+    /**
+     * Sets the main application for this controller
+     *
+     * @param mainApp this controller's main application
+     */
     public void setMainApplication(MainFXApplication mainApp) {
         mainApplication = mainApp;
     }
 
+    /**
+     * Sets the stage for this controller
+     * @param welcomeStage the stage
+     */
     public void setWelcomeStage(Stage welcomeStage) {
         welcomeStage = welcomeStage;
     }
@@ -55,8 +64,6 @@ public class WelcomeScreenController {
 
     /**
      * Handles button for registering
-     *
-     * Registering currently not implemented
      */
     @FXML
     public void registerPressed() {
@@ -64,38 +71,13 @@ public class WelcomeScreenController {
         mainApplication.showRegistrationScreen(user);
     }
 
+    /**
+     * Handles button for login
+     */
     public void loginPressed() {
         User user = new User();
         mainApplication.showLoginScreen(user);
 
     }
-
-    /* @FXML
-    public void expressLoginPressed(ActionEvent event) throws IOException{
-        try {
-            Stage stage = mainApplication.getMainScreen();
-            Parent root;
-            if (event.getSource() == expressLogin) {
-                //get reference to the button's stage
-                stage = (Stage) expressLogin.getScene().getWindow();
-                //load up OTHER FXML document
-                root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
-            }
-            //create a new scene with root and set the stage
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../View/MainScreen.fxml"));
-            root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setTitle("Water Report Main Screen");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            // Log the error that occurred during loading
-            Logger LOGGER = Logger.getLogger("MainFXApplication");
-            LOGGER.log(Level.SEVERE, "Couldn't find the fxml file for the welcome screen");
-            e.printStackTrace();
-        }
-    }
-*/
 
 }

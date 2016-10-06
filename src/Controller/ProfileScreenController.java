@@ -44,6 +44,12 @@ public class ProfileScreenController {
 
     //Reference of the main FX class
     private MainFXApplication mainApplication;
+
+    /**
+     * Sets the main application for this controller
+     *
+     * @param mainApp this controller's main application
+     */
     public void setMainApplication(MainFXApplication mainApp) {
         mainApplication = mainApp;
     }
@@ -54,6 +60,11 @@ public class ProfileScreenController {
         comboBoxTitle.setItems(FXCollections.observableArrayList(Title.values()));
     }
 
+    /**
+     * Sets the initial user for this screen. Will be modified if user is updated
+     *
+     * @param user the user being registered
+     */
     public void setUser(User user) {
         //set current user
         _user = user;
@@ -72,11 +83,21 @@ public class ProfileScreenController {
         comboBoxTitle.setValue(user.getTitle());
     }
 
+    /**
+     * Sets the stage for this controller
+     *
+     * @param dialogStage the stage
+     */
     public void setDialogStage(Stage dialogStage) {
         _dialogStage = dialogStage;
     }
 
     @FXML
+    /**
+     * Handler for pressing edit profile. Updates user profile if valid input passed
+     *
+     * @throws IOException if IO error occurs
+     */
     public void handleEditPressed() throws IOException {
         if (isInputValid()) {
             _user.setUsername(username.getText());
@@ -95,6 +116,11 @@ public class ProfileScreenController {
     }
 
     @FXML
+    /**
+     * Handler for pressing close. Closes the window and does not edit anything
+     *
+     * @throws IOException if IO error occurs
+     */
     public void handleClosePressed() throws IOException {
         _okClicked = true;
         _dialogStage.close();
@@ -104,6 +130,10 @@ public class ProfileScreenController {
 
     public boolean isOkClicked() {return _okClicked;}
 
+    /**
+     * Checks if input entered is valid. Updates user profile if so.
+     * @return true if valid, false otherwise
+     */
     public boolean isInputValid() {
         String errorMessage = "";
 

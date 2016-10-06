@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.SyncFailedException;
 
 /**
- * The controller for the welcome screen
+ * The controller for the login screen
  *
  * @author Shivani Bandaru
  * @author Kyle Pelton
@@ -29,6 +29,12 @@ public class LoginScreenController {
 
     //Reference of the main FX class
     private MainFXApplication mainApplication;
+
+    /**
+     * Sets the main application for this controller
+     *
+     * @param mainApp this controller's main application
+     */
     public void setMainApplication(MainFXApplication mainApp) {
         mainApplication = mainApp;
     }
@@ -37,25 +43,22 @@ public class LoginScreenController {
     private void initialize() {
 
     }
+
+    /**
+     * Sets the login screen's stage. Called when initializing the screen
+     *
+     * @param dialogStage the stage
+     */
     public void setDialogStage(Stage dialogStage) {
         _dialogStage = dialogStage;
     }
-//    public void setUser(User user) {
-//        //remember the current user
-//        _user = user;
-//
-//        if (_user == null) {
-//            System.out.println("User was null");
-//        }
-//
-//        //make the data show up in the gui fields
-//        username.setText(_user.getUsername());
-//        password.setText(_user.getPassword());
-//
-//
-//    }
 
     @FXML
+    /**
+     * Handler for pressing login button
+     *
+     * @throws IOException if IO issue occurs
+     */
     public void handleLoginPressed() throws IOException {
         if (isInputValid()) {
 
@@ -68,46 +71,27 @@ public class LoginScreenController {
         }
     }
 
-    /*@FXML
-    public void handleLoginPressed() throws IOException {
-        if (isInputValid()) {
-
-            //if the data is reasonable, then remember the the student data in the window
-
-
-            //signal success and close this dialog window.
-            _user.setUsername(username.getText());
-            _user.setPassword(password.getText());
-
-            _okClicked = true;
-
-            //MainFXApplication currMainFXApp = mainApplication;
-
-            this.setMainApplication(new MainFXApplication());
-            MainScreenController controller = new MainScreenController();
-
-            //controller.setMainApplication(currMainFXApp);
-
-            controller.showMainScreen();
-            //MainScreenController.showMainScreen();
-            _dialogStage.close();
-            mainApplication.mainScreen.close();
-        }
-
-    }*/
     public boolean isOkClicked() {
         return _okClicked;
     }
 
+    /**
+     * Handler for pressing cancel. Closes the login screen
+     */
     public void handleCancelPressed() {
         _dialogStage.close();
     }
 
+    /**
+     * Checks if input is valid
+     *
+     * @return true if valid, false otherwise
+     */
     private boolean isInputValid() {
         String errorMessage = "";
 
-        //for now just check they actually typed something
-        if (!username.getText().equals("") && !password.getText().equals("") && UserList.isValidLogin(username.getText(), password.getText())) {
+        if (!username.getText().equals("") && !password.getText().equals("")
+                && UserList.isValidLogin(username.getText(), password.getText())) {
             return true;
         }
         else {

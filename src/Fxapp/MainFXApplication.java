@@ -130,6 +130,13 @@ public class MainFXApplication extends Application {
             return false;
         }
     }
+
+    /**
+     * Shows the registration screen
+     *
+     * @param user the user you are trying to register
+     * @return true if success, false otherwise
+     */
     public boolean showRegistrationScreen(User user) {
         try {
 
@@ -236,6 +243,10 @@ public class MainFXApplication extends Application {
         }
     }
 
+    /**
+     * Main runner for the app
+     * @param args unimportant
+     */
     public static void main(String[] args) {
         launch(args);
     }

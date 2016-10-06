@@ -3,17 +3,29 @@ import java.util.ArrayList;
 
 /**
  * UserList class holds all the users in the current instance of the application
+ *
  * @author Shobhit Srivastava
+ * @version 1.0
  */
 public class UserList {
     private static ArrayList<User> backingList = new ArrayList<User>();
     private static User currentUser;
 
+    /**
+     * Adds a user to the list of users
+     * @param user the user to be added
+     */
     public static void addUser(User user) {
         backingList.add(user);
         currentUser = user;
     }
 
+    /**
+     * Checks if login was valid. That is, does user exist in the system
+     * @param username the inputted username
+     * @param password the inputted password
+     * @return true if valid, false otherwise
+     */
     public static boolean isValidLogin(String username, String password) {
         if (backingList.size() == 0) {
             return false;
@@ -29,10 +41,19 @@ public class UserList {
         return false;
     }
 
+    /**
+     * Getter for the current user
+     * @return the current user
+     */
     public static User getCurrentUser() {
         return currentUser;
     }
 
+    /**
+     * Checks if unique username has been entered. Cannot create two users with same username
+     * @param username the username inputted during registration
+     * @return true if unique, false otherwise
+     */
     public static Boolean isUniqueUserName(String username) {
         for (int i = 0; i < backingList.size(); i++) {
             if (backingList.get(i).getUsername().equals(username)) {
@@ -42,6 +63,11 @@ public class UserList {
         return true;
     }
 
+    /**
+     * Checks if unique ID has been entered. Cannot create two users with same username
+     * @param ID the ID inputted during registration
+     * @return true if unique, false otherwise
+     */
     public static Boolean isUniqueID(String ID) {
         for (int i = 0; i < backingList.size(); i++) {
             if (backingList.get(i).getId().equals(ID)) {

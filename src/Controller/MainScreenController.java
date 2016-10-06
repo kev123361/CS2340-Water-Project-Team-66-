@@ -36,10 +36,20 @@ public class MainScreenController {
     private void initialize() {
     }
 
+    /**
+     * Sets the main application for this controller
+     *
+     * @param mainApp this controller's main application
+     */
     public void setMainApplication(MainFXApplication mainApp) {
         mainApplication = mainApp;
     }
 
+    /**
+     * Sets the main screen's stage. Called when initializing the stage
+     *
+     * @param newStage the stage
+     */
     public void setMainScreenStage(Stage newStage) {
         mainScreenStage = newStage;
     }
@@ -98,6 +108,11 @@ public class MainScreenController {
     }*/
 
     @FXML
+    /**
+     * Handler for pressing logout button
+     *
+     * @throws IOException if IO issues occur
+     */
     public void handleLogoutPressed() throws IOException {
         //Go back to the welcome screen
         _okClicked = true;
@@ -108,6 +123,11 @@ public class MainScreenController {
     }
 
     @FXML
+    /**
+     * Handler for pressing view profile
+     *
+     * @throws IOException if IO issues occur
+     */
     public void handleViewProfilePressed() throws IOException {
         _okClicked = true;
         mainApplication.showProfileScreen();
