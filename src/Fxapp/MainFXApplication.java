@@ -1,10 +1,12 @@
 package Fxapp;
 
+import Controller.ListReportsScreenController;
 import Controller.LoginScreenController;
 import Controller.MainScreenController;
-import Controller.RegistrationScreenController;
-import Controller.WelcomeScreenController;
 import Controller.ProfileScreenController;
+import Controller.RegistrationScreenController;
+import Controller.SubmitReportController;
+import Controller.WelcomeScreenController;
 
 import Model.User;
 import Model.UserList;
@@ -171,6 +173,39 @@ public class MainFXApplication extends Application {
         }
     }
 
+    public boolean showSubmitReportScreen() {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../View/SubmitReportScreen.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the dialog Stage.
+            Stage reportScreen = new Stage();
+            reportScreen.setTitle("Submit Report");
+            reportScreen.initModality(Modality.WINDOW_MODAL);
+            reportScreen.initOwner(mainScreen);
+            Scene scene = new Scene(page);
+            reportScreen.setScene(scene);
+
+            // Set the person into the controller.
+            SubmitReportController controller = loader.getController();
+            controller.setDialogStage(reportScreen);
+            //controller.setUser(user);
+
+            controller.setMainApplication(this);
+
+            // Show the dialog and wait until the user closes it
+            reportScreen.show();
+
+            return controller.isOkClicked();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     /**
      * Display the app's main screen
      *
@@ -235,6 +270,39 @@ public class MainFXApplication extends Application {
 
             // Show the profile screen
             profileScreenStage.show();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean showListReportsScreen() {
+        try {
+            // Load the fxml file and create new stage for the popup dialog
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../View/ListReportsScreen.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the profile screen stage
+            Stage listReportsScreenStage = new Stage();
+            listReportsScreenStage.setTitle("List of Reports");
+            listReportsScreenStage.initModality(Modality.WINDOW_MODAL);
+            listReportsScreenStage.initOwner(mainScreen);
+            Scene scene = new Scene(page);
+            listReportsScreenStage.setScene(scene);
+
+            // Set the controller
+            ListReportsScreenController controller = loader.getController();
+            controller.setReportsScreenStage(listReportsScreenStage);
+            // Set user into controller
+            controller.setUser(UserList.getCurrentUser());
+
+            controller.setMainApplication(this);
+
+            // Show the profile screen
+            listReportsScreenStage.show();
 
             return controller.isOkClicked();
         } catch (IOException e) {

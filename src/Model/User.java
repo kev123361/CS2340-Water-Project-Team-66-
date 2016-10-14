@@ -86,8 +86,9 @@ public class User {
      * @return the display string representation
      */
     public String toString() {
-        return _username.get() + " " + _password.get() + " " + _id.get() + " " + _account.get() + _emailAddress.get()
-                + _homeAddress.get() + _title.get();
+        /*return _username.get() + " " + _password.get() + " " + _id.get() + " " + _account.get() + _emailAddress.get()
+                + _homeAddress.get() + _title.get();*/
+        return _username.get();
     }
 
 }

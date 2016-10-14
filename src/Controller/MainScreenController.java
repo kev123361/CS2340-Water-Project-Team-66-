@@ -123,6 +123,14 @@ public class MainScreenController {
     }
 
     @FXML
+    public void submitReportPressed() {
+        _okClicked = true;
+        mainApplication.showListReportsScreen();
+        //mainApplication.showSubmitReportScreen();
+        mainScreenStage.close();
+    }
+
+    @FXML
     /**
      * Handler for pressing view profile
      *
@@ -134,47 +142,6 @@ public class MainScreenController {
 
         mainScreenStage.close();
     }
-
-    /*@FXML
-    public void handleLogoutPressed() throws IOException {
-
-        if (_dialogStage == null) {
-            System.out.println("NULL #1\n\n");
-        }
-
-        MainFXApplication currMainFXApp = mainApplication;
-
-        _okClicked = true;
-
-        if (_dialogStage == null) {
-            System.out.println("NULL #2\n\n");
-        }
-
-        this.setMainApplication(new MainFXApplication());
-        WelcomeScreenController controller = new WelcomeScreenController();
-
-        if (_dialogStage == null) {
-            System.out.println("NULL #3\n\n");
-        }
-
-        controller.showWelcomeScreen();
-
-        if (_dialogStage == null) {
-            System.out.println("NULL #4\n\n");
-        }
-
-        //Stage newStage = new Stage();
-        //MainFXApplication newMainFXApp = new MainFXApplication();
-        //newMainFXApp.initRootLayout(newStage);
-
-        //currMainFXApp.initRootLayout(newStage);
-
-        //controller.showMainScreen();
-        //MainScreenController.showMainScreen();
-
-        _dialogStage.close();
-        mainApplication.mainScreen.close();
-    }*/
 
 
 }
