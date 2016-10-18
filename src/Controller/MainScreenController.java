@@ -142,6 +142,13 @@ public class MainScreenController {
 
         mainScreenStage.close();
     }
+    public void handleAvailabilityPressed() {
+        _okClicked = true;
+        mainApplication.showAvailabilityScreen();
+        mainScreenStage.close();
+    }
+
+
 
 
 }
