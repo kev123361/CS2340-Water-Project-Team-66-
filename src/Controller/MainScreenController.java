@@ -2,6 +2,7 @@ package Controller;
 
 //import Controller.WelcomeScreenController;
 import Fxapp.MainFXApplication;
+import Model.Account;
 import Model.User;
 import Model.UserList;
 import javafx.fxml.FXML;
@@ -53,6 +54,8 @@ public class MainScreenController {
     public void setMainScreenStage(Stage newStage) {
         mainScreenStage = newStage;
     }
+
+    public Stage getMainScreenStage() { return mainScreenStage; }
 
     public boolean isOkClicked() {
         return _okClicked;
@@ -124,10 +127,17 @@ public class MainScreenController {
 
     @FXML
     public void submitReportPressed() {
-        _okClicked = true;
-        mainApplication.showListReportsScreen();
-        //mainApplication.showSubmitReportScreen();
-        mainScreenStage.close();
+        if (!UserList.getCurrentUser().getAccount().equals(Account.ADMIN)) {
+            _okClicked = true;
+            mainApplication.showListReportsScreen();
+            mainScreenStage.close();
+        }
+        /*if (mainApplication.showListReportsScreen()) {
+            mainScreenStage.close();
+        }*/
+        //boolean bool = mainApplication.showListReportsScreen();
+        //if (bool) { mainScreenStage.close(); }
+        //mainScreenStage.close();
     }
 
     @FXML

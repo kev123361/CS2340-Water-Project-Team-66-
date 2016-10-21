@@ -16,7 +16,7 @@ import java.io.IOException;
  *
  * @author Shivani Bandaru
  * @author Kyle Pelton
- * @version 1.0
+ * @version 1.1
  */
 public class SubmitReportController {
     private Stage _dialogStage;
@@ -75,8 +75,8 @@ public class SubmitReportController {
      * Set the initial report for the screen. Will be edited if submit report is pressed
      */
     public void setReport() {
-        latitudeOfWater.setText("Of the form: <Number><N/S>");
-        longitudeOfWater.setText("Of the form: <Number><W/E>");
+        latitudeOfWater.setText("Between -90.0 and 90.0");
+        longitudeOfWater.setText("Between -180.0 and 180.0");
         conditionOfWaterComboBox.setValue(ConditionOfWater.WASTE); //setting default to first one listed
         typeOfWaterComboBox.setValue(TypeOfWater.BOTTLED); //setting default to first one listed
         date.setText("Of the form: MM/DD/YYYY");
@@ -93,8 +93,8 @@ public class SubmitReportController {
     public void handleSubmitPressed() throws IOException {
 
         if (isInputValid()) {
-            ReportList.addReport(new SourceReport(date.getText(), time.getText(), _user, latitudeOfWater.getText(),
-                    longitudeOfWater.getText(), typeOfWaterComboBox.getSelectionModel().getSelectedItem(),
+            ReportList.addReport(new SourceReport(date.getText(), time.getText(), _user, Double.parseDouble(latitudeOfWater.getText()),
+                    Double.parseDouble(longitudeOfWater.getText()), typeOfWaterComboBox.getSelectionModel().getSelectedItem(),
                     conditionOfWaterComboBox.getSelectionModel().getSelectedItem()));
             _okClicked = true;
             _dialogStage.close();
@@ -137,9 +137,9 @@ public class SubmitReportController {
             } else if (!ReportList.isValidTime(time.getText())) {
                 alert.setHeaderText("This time isn't valid (should be of form HH:MM)");
             } else if (!ReportList.isValidLatitude(latitudeOfWater.getText())) {
-                alert.setHeaderText("This latitude isn't valid (should be of form <Number><N/S>)");
+                alert.setHeaderText("This latitude isn't valid (should be number between -90.0 and 90.0)");
             } else if (!ReportList.isValidLongitude(longitudeOfWater.getText())) {
-                alert.setHeaderText("This longitude isn't valid (should be of form <Number><W/E>)");
+                alert.setHeaderText("This longitude isn't valid (should be number between -180.0 and 180.0)");
             } else {
                 alert.setHeaderText("One or more fields have been left blank");
             }

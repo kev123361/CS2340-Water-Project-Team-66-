@@ -56,12 +56,32 @@ public class ReportList {
      * @param latitude the latitude to check
      * @return true if valid, false otherwise
      */
-    public static boolean isValidLatitude(String latitude) {
+    /*public static boolean isValidLatitude(String latitude) {
         if (isDouble(latitude.substring(0, latitude.length() - 1)) && ((latitude.charAt(latitude.length() - 1) == 'N')
                 || (latitude.charAt(latitude.length() - 1) == 'S'))) {
             return true;
         }
         return false;
+    }*/
+
+    public static boolean isValidLatitude(String latitude) {
+        //return latitude <= 90.0 && latitude >= -90.0;
+        try {
+            double latDouble = Double.parseDouble(latitude);
+            return latDouble <= 90.0 && latDouble >= -90.0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean isValidLongitude(String longitude) {
+        //return longitude <= 180.0 && longitude >= -180.0;
+        try {
+            double longDouble = Double.parseDouble(longitude);
+            return longDouble <= 180.0 && longDouble >= -180.0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     /**
@@ -70,13 +90,13 @@ public class ReportList {
      * @param longitude the longitude to check
      * @return true if valid, false otherwise
      */
-    public static boolean isValidLongitude(String longitude) {
+    /*public static boolean isValidLongitude(String longitude) {
         if (isDouble(longitude.substring(0, longitude.length() - 1)) && ((longitude.charAt(longitude.length() - 1) == 'W')
                 || (longitude.charAt(longitude.length() - 1) == 'E'))) {
             return true;
         }
         return false;
-    }
+    }*/
 
     /**
      * Basic check to see if date is valid. Used when adding a report

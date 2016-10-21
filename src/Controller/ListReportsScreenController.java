@@ -18,7 +18,7 @@ import java.io.IOException;
  * Controller for the ListReportsScreen
  *
  * @author Kyle Pelton
- * @version 1.0
+ * @version 1.1
  */
 public class ListReportsScreenController {
 
@@ -131,6 +131,75 @@ public class ListReportsScreenController {
             return false;
         }
     }
+
+    @FXML
+    /**
+     * Pops up a map of all the water reports when View Map button pressed
+     */
+    public void viewMapPressed() {
+        _okClicked = true;
+        Stage availabilityScreen = new Stage();
+        availabilityScreen.setTitle("Map of Water Reports");
+        availabilityScreen.initModality(Modality.WINDOW_MODAL);
+        availabilityScreen.initOwner(reportsScreenStage);
+
+        AvailabilityScreenController controller = new AvailabilityScreenController(mainApplication, availabilityScreen);
+        availabilityScreen.show();
+        //showAvailabilityScreen();
+    }
+
+    /*public boolean showAvailabilityScreen() {
+        //try {
+            // Load the fxml file and create a new stage
+            /*FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../View/SubmitReportScreen.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the report screen stage
+            Stage reportScreen = new Stage();
+            reportScreen.setTitle("Submit Report");
+            reportScreen.initModality(Modality.WINDOW_MODAL);
+            //reportScreen.initOwner(mainScreen);
+            reportScreen.initOwner(reportsScreenStage);
+            Scene scene = new Scene(page);
+            reportScreen.setScene(scene);
+
+            // Set the user into the controller.
+            SubmitReportController controller = loader.getController();
+            controller.setDialogStage(reportScreen);
+            controller.setUser(_user);
+            controller.setReport();
+
+            controller.setMainApplication(mainApplication);
+
+            // Show the dialog and wait until the user closes it
+            reportScreen.show();*/
+
+        /*System.out.println("Got to 1");
+            Stage availabilityScreen = new Stage();
+            availabilityScreen.setTitle("Map of Water Reports");
+            availabilityScreen.initModality(Modality.WINDOW_MODAL);
+            availabilityScreen.initOwner(reportsScreenStage);
+
+            AvailabilityScreenController controller = new AvailabilityScreenController(mainApplication, availabilityScreen);
+            availabilityScreen.show();
+        System.out.println("Got to 2");
+
+            /*Stage reportScreen = new Stage();
+            reportScreen.setTitle("Submit Report");
+            reportScreen.initModality(Modality.WINDOW_MODAL);
+            //reportScreen.initOwner(mainScreen);
+            reportScreen.initOwner(reportsScreenStage);
+            Scene scene = new Scene(page);
+            reportScreen.setScene(scene);*/
+
+    //return true;
+
+    //} catch (IOException e) {
+    //    e.printStackTrace();
+    //    return false;
+    //}
+    /*}*/
 
     @FXML
     /**

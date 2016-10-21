@@ -8,6 +8,8 @@ import Controller.RegistrationScreenController;
 import Controller.SubmitReportController;
 import Controller.WelcomeScreenController;
 
+import Model.Account;
+import Model.ReportList;
 import Model.User;
 import Model.UserList;
 import javafx.application.Application;
@@ -16,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -31,7 +34,7 @@ import java.util.logging.Logger;
  * @author Shivani Bandaru
  * @author Kevin Tang
  *
- * @version 1.1
+ * @version 1.2
  */
 public class MainFXApplication extends Application {
 
@@ -279,6 +282,16 @@ public class MainFXApplication extends Application {
     }
 
     public boolean showListReportsScreen() {
+        if (UserList.getCurrentUser().getAccount().equals(Account.ADMIN)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(mainScreen);
+            alert.setTitle("Can't Access the List of Reports");
+            alert.setHeaderText("Since you are signed in as an admin, you cannot access the list of reports");
+            //alert.setContentText(errorMessage);
+            alert.showAndWait();
+            return false;
+        }
+
         try {
             // Load the fxml file and create new stage for the popup dialog
             FXMLLoader loader = new FXMLLoader();

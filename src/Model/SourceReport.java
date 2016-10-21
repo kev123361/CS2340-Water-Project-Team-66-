@@ -1,11 +1,6 @@
 package Model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -14,7 +9,7 @@ import javafx.collections.ObservableList;
  * A water source report can be entered by users, workers, and managers
  *
  * @author Kyle Pelton
- * @version 1.0
+ * @version 1.1
  */
 public class SourceReport {
 
@@ -23,18 +18,31 @@ public class SourceReport {
     private final IntegerProperty _reportNum = new SimpleIntegerProperty();
     private static int reportNumCounter = 0;
     private final ObjectProperty<User> _reportingUser = new SimpleObjectProperty<>();
-    //private final IntegerProperty _latitude = new SimpleIntegerProperty();
-    //private final IntegerProperty _longitude = new SimpleIntegerProperty();
-    private final StringProperty _latitude = new SimpleStringProperty();
-    private final StringProperty _longitude = new SimpleStringProperty();
+    private final DoubleProperty _latitude = new SimpleDoubleProperty();
+    private final DoubleProperty _longitude = new SimpleDoubleProperty();
+    //private final StringProperty _latitude = new SimpleStringProperty();
+    //private final StringProperty _longitude = new SimpleStringProperty();
     private final ObjectProperty<TypeOfWater> _waterType = new SimpleObjectProperty<>();
     private final ObjectProperty<ConditionOfWater> _waterCondition = new SimpleObjectProperty<>();
 
     public SourceReport() {
-        this(null, null, null, null, null, null, null);
+        this(null, null, null, 0.0, 0.0, null, null);
     }
 
-    public SourceReport(String date, String time, User reportingUser, String latitude, String longitude, TypeOfWater waterType,
+    /*public SourceReport(String date, String time, User reportingUser, String latitude, String longitude, TypeOfWater waterType,
+                        ConditionOfWater waterCondition) {
+        _date.set(date);
+        _time.set(time);
+        _reportingUser.set(reportingUser);
+        _reportNum.set(reportNumCounter);
+        reportNumCounter++;
+        _latitude.set(latitude);
+        _longitude.set(longitude);
+        _waterType.set(waterType);
+        _waterCondition.set(waterCondition);
+    }*/
+
+    public SourceReport(String date, String time, User reportingUser, double latitude, double longitude, TypeOfWater waterType,
                         ConditionOfWater waterCondition) {
         _date.set(date);
         _time.set(time);
@@ -66,13 +74,21 @@ public class SourceReport {
     public void setReportNum(int newReportNum) { _reportNum.set(newReportNum); }
     public IntegerProperty getReportNumProperty() { return _reportNum; }
 
-    public String getLatitude() { return _latitude.get(); }
+    /*public String getLatitude() { return _latitude.get(); }
     public void setLatitude(String newLat) { _latitude.set(newLat); }
     public StringProperty getLatitudeProperty() { return _latitude; }
 
     public String getLongitude() { return _longitude.get(); }
     public void setLongitude(String newLong) { _longitude.set(newLong); }
-    public StringProperty getLongitudeProperty() { return _longitude; }
+    public StringProperty getLongitudeProperty() { return _longitude; }*/
+
+    public double getLatitude() { return _latitude.get(); }
+    public void setLatitude(double newLat) { _latitude.set(newLat); }
+    public DoubleProperty getLatitudeProperty() { return _latitude; }
+
+    public double getLongitude() { return _longitude.get(); }
+    public void setLongitude(double newLong) { _longitude.set(newLong); }
+    public DoubleProperty getLongitudeProperty() { return _longitude; }
 
     public TypeOfWater getWaterType() { return _waterType.get(); }
     public void setWaterType(TypeOfWater newWT) { _waterType.set(newWT); }
@@ -82,13 +98,25 @@ public class SourceReport {
     public void setWaterCondition(ConditionOfWater newWC) { _waterCondition.set(newWC); }
     public ObjectProperty<ConditionOfWater> getWaterConditionProperty() { return _waterCondition; }
 
+    //public ObservableList<String> getDetails() {
+    //   ObservableList<String> details = FXCollections.observableArrayList();
+    //   details.add("Date: " + getDate());
+    //   details.add("Time: " + getTime());
+    //   details.add("Reporting User: " + getReportingUser().toString());
+    //   details.add("Latitude: " + getLatitude().toString());
+    //   details.add("Longitude: " + getLongitude().toString());
+    //   details.add("Water Type: " + getWaterType().toString());
+    //   details.add("Water Condition: " + getWaterCondition().toString());
+    //   return details;
+    //}
+
     public ObservableList<String> getDetails() {
         ObservableList<String> details = FXCollections.observableArrayList();
         details.add("Date: " + getDate());
         details.add("Time: " + getTime());
         details.add("Reporting User: " + getReportingUser().toString());
-        details.add("Latitude: " + getLatitude().toString());
-        details.add("Longitude: " + getLongitude().toString());
+        details.add("Latitude: " + getLatitude());
+        details.add("Longitude: " + getLongitude());
         details.add("Water Type: " + getWaterType().toString());
         details.add("Water Condition: " + getWaterCondition().toString());
         return details;
