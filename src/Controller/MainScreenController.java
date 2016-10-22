@@ -132,12 +132,6 @@ public class MainScreenController {
             mainApplication.showListReportsScreen();
             mainScreenStage.close();
         }
-        /*if (mainApplication.showListReportsScreen()) {
-            mainScreenStage.close();
-        }*/
-        //boolean bool = mainApplication.showListReportsScreen();
-        //if (bool) { mainScreenStage.close(); }
-        //mainScreenStage.close();
     }
 
     @FXML
@@ -152,13 +146,6 @@ public class MainScreenController {
 
         mainScreenStage.close();
     }
-    public void handleAvailabilityPressed() {
-        _okClicked = true;
-        mainApplication.showAvailabilityScreen();
-        mainScreenStage.close();
-    }
-
-
 
 
 }

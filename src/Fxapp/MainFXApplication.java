@@ -325,36 +325,6 @@ public class MainFXApplication extends Application {
             return false;
         }
     }
-    public boolean showAvailabilityScreen() {
-        try {
-            // Load the fxml file and create a new stage for the popup dialog.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../View/AvailabilityScreen.fxml"));
-            AnchorPane page = loader.load();
-
-            // Create the main screen stage.
-            Stage availabilityScreenStage = new Stage();
-            availabilityScreenStage.setTitle("Water Report Availability Screen");
-            availabilityScreenStage.initModality(Modality.WINDOW_MODAL);
-            availabilityScreenStage.initOwner(mainScreen);
-            Scene scene = new Scene(page);
-            availabilityScreenStage.setScene(scene);
-
-            // Set the controller.
-            AvailabilityScreenController controller = loader.getController();
-            controller.setAvailabilityScreenStage(availabilityScreenStage);
-
-            controller.setMainApplication(this);
-
-            // Show the main screen stage
-            availabilityScreenStage.show();
-
-            return controller.isOkClicked();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 
 
     /**
