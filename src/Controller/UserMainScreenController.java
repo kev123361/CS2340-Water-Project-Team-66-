@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  *
  * @version 1.1
  */
-public class MainScreenController {
+public class UserMainScreenController {
 
     private Stage mainScreenStage;
 
