@@ -215,7 +215,7 @@ public class MainFXApplication extends Application {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../View/MainScreen.fxml"));
+            loader.setLocation(MainFXApplication.class.getResource("../View/UserMainScreen.fxml"));
             AnchorPane page = loader.load();
 
             // Create the main screen stage.

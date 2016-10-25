@@ -69,7 +69,7 @@ public class UserMainScreenController {
 
             //create a new scene with root and set the stage
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../View/MainScreen.fxml"));
+            loader.setLocation(MainFXApplication.class.getResource("../View/UserMainScreen.fxml"));
             root = loader.load();
             Scene scene = new Scene(root);
             _dialogStage.setTitle("Water Report Main Screen");
@@ -96,7 +96,7 @@ public class UserMainScreenController {
             Parent root;
             //create a new scene with root and set the stage
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../View/MainScreen.fxml"));
+            loader.setLocation(MainFXApplication.class.getResource("../View/UserMainScreen.fxml"));
             root = loader.load();
             Scene scene = new Scene(root);
             stage.setTitle("Water Report Main Screen");
