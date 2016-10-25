@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserMainScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserMainScreenController">
     <children>
         <VBox layoutY="6.0" prefHeight="300.0" prefWidth="600.0">
             <children>
@@ -23,18 +24,18 @@
             </children>
         </VBox>
         <Label alignment="BASELINE_RIGHT" contentDisplay="CENTER" layoutX="221.0" layoutY="306.0" text="User has successfully logged in" textAlignment="CENTER" />
-        <ButtonBar buttonMinWidth="100.0" layoutX="126.0" layoutY="346.0" prefHeight="40.0" prefWidth="351.0">
+        <ButtonBar buttonMinWidth="100.0" buttonOrder="U+FBIX_NCYOA_R" layoutX="10.0" layoutY="334.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="580.0">
             <buttons>
-                <Button mnemonicParsing="false" onAction="#handleViewProfilePressed" prefWidth="100.0" text="View Profile" />
-                <Button mnemonicParsing="false" onAction="#handleLogoutPressed" text="Logout" />
-                <Button mnemonicParsing="false" onAction="#submitReportPressed" text="Check Reports" />
+                <Button alignment="CENTER" contentDisplay="CENTER" minWidth="0.0" mnemonicParsing="false" onAction="#handleViewProfilePressed" prefHeight="27.0" prefWidth="434.0" text="View Profile" />
+                <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" minWidth="47.0" mnemonicParsing="false" onAction="#handleLogoutPressed" prefHeight="27.0" text="Logout" />
+                <Button alignment="CENTER" contentDisplay="CENTER" minWidth="35.0" mnemonicParsing="false" onAction="#submitReportPressed" prefHeight="27.0" text="Check Reports" />
             </buttons>
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
-            <padding>
-                <Insets right="60.0" />
-            </padding>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
         </ButtonBar>
     </children>
 </AnchorPane>
