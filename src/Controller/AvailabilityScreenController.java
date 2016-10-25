@@ -150,7 +150,7 @@ public class AvailabilityScreenController implements Initializable, MapComponent
                 .rotateControl(false)
                 .scaleControl(false)
                 .streetViewControl(false)
-                .zoomControl(false)
+                .zoomControl(true)
                 .mapType(MapTypeIdEnum.TERRAIN);
 
         map = mapView.createMap(options);
