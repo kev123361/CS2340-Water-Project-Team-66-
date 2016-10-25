@@ -134,7 +134,7 @@ public class AvailabilityScreenController implements Initializable, MapComponent
 
     @Override
     public void mapInitialized() {
-        mapView.addMapInializedListener(this);
+        //mapView.addMapInializedListener(this);
 
         //Set the initial properties of the map
 
