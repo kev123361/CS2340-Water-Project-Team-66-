@@ -3,6 +3,7 @@ package Controller;
 import Fxapp.MainFXApplication;
 import Model.ReportList;
 import Model.User;
+import Model.Account;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -89,7 +90,11 @@ public class ListReportsScreenController {
      */
     public void addReportPressed() {
         _okClicked = true;
-        showSubmitReportScreen();
+        if (_user.getAccount().equals(Account.USER)) {
+            showSubmitReportScreen();
+        } else {
+            showReportChoiceScreen();
+        }
     }
 
     /**
@@ -126,6 +131,35 @@ public class ListReportsScreenController {
 
             return true;
 
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean showReportChoiceScreen() {
+        try {
+            // Load the fxml file and create a new stage
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../View/ReportChoiceScreen.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the stage
+            Stage Screen = new Stage();
+            Screen.setTitle("Report Type");
+            Screen.initModality(Modality.WINDOW_MODAL);
+            Screen.initOwner(reportsScreenStage);
+            Scene scene = new Scene(page);
+            Screen.setScene(scene);
+
+            ReportChoiceScreenController controller = loader.getController();
+            controller.setStage(Screen);
+            controller.setMainApplication(mainApplication);
+
+            // Show the dialog and wait until the user closes it
+            Screen.show();
+
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
