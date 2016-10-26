@@ -15,8 +15,6 @@ public class ReportList {
     //Backing structure holding all the reports
     private final static ObservableList<SourceReport> backingList = FXCollections.observableArrayList();
 
-    //Reference to the current report
-    private static SourceReport currentReport;
 
     /**
      * Add a report to the list of reports
@@ -25,23 +23,9 @@ public class ReportList {
      */
     public static void addReport(SourceReport newReport) {
         backingList.add(newReport);
-        currentReport = newReport;
     }
 
-    /**
-     * @return the current report
-     */
-    public static SourceReport getCurrentReport() {
-        return currentReport;
-    }
 
-    /**
-     * Set the current report
-     * @param newReport the report to be set to current
-     */
-    public static void setCurrentReport(SourceReport newReport) {
-        currentReport = newReport;
-    }
 
     /**
      * @return the backing list
