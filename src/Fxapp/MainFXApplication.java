@@ -2,21 +2,17 @@ package Fxapp;
 
 import Controller.ListReportsScreenController;
 import Controller.LoginScreenController;
-import Controller.MainScreenController;
+import Controller.UserMainScreenController;
 import Controller.ProfileScreenController;
 import Controller.RegistrationScreenController;
 import Controller.SubmitReportController;
 import Controller.WelcomeScreenController;
-import Controller.AvailabilityScreenController;
 
 import Model.Account;
-import Model.ReportList;
 import Model.User;
 import Model.UserList;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -25,7 +21,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -220,7 +215,7 @@ public class MainFXApplication extends Application {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../View/MainScreen.fxml"));
+            loader.setLocation(MainFXApplication.class.getResource("../View/UserMainScreen.fxml"));
             AnchorPane page = loader.load();
 
             // Create the main screen stage.
@@ -230,7 +225,7 @@ public class MainFXApplication extends Application {
             mainScreenStage.setScene(scene);
 
             // Set the controller.
-            MainScreenController controller = loader.getController();
+            UserMainScreenController controller = loader.getController();
             controller.setMainScreenStage(mainScreenStage);
 
             controller.setMainApplication(this);
