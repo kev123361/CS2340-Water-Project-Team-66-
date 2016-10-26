@@ -1,6 +1,8 @@
 package Model;
 
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * Created by 2shob on 10/25/2016.
@@ -75,6 +77,21 @@ public class PurityReport {
         _contaminantPPM.set(ppm);
     }
 
+    public ObservableList<String> getDetails() {
+        ObservableList<String> details = FXCollections.observableArrayList();
+        details.add("Date: " + getDate());
+        details.add("Time: " + getTime());
+        details.add("Reporting User: " + getReportingUser().toString());
+        details.add("Latitude: " + getLatitude());
+        details.add("Longitude: " + getLongitude());
+        details.add("Virus PPM: " + getVirusPPM());
+        details.add("Contaminant PPM: " + getContaminantPPM());
+        return details;
+    }
+
+    public String toString() {
+        return "Purity Report: " + _reportNum.getValue();
+    }
 
 
 }

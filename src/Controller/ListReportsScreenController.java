@@ -78,7 +78,6 @@ public class ListReportsScreenController {
      */
     private void showDetails(SourceReport report) {
         detailsList.setItems(report.getDetails());
-        ReportList.setCurrentReport(report);
     }
 
     public boolean isOkClicked() { return _okClicked; }
