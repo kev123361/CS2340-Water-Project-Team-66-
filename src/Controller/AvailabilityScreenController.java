@@ -134,7 +134,7 @@ public class AvailabilityScreenController implements Initializable, MapComponent
 
     @Override
     public void mapInitialized() {
-        mapView.addMapInializedListener(this);
+        //mapView.addMapInializedListener(this);
 
         //Set the initial properties of the map
 
@@ -150,7 +150,7 @@ public class AvailabilityScreenController implements Initializable, MapComponent
                 .rotateControl(false)
                 .scaleControl(false)
                 .streetViewControl(false)
-                .zoomControl(false)
+                .zoomControl(true)
                 .mapType(MapTypeIdEnum.TERRAIN);
 
         map = mapView.createMap(options);
