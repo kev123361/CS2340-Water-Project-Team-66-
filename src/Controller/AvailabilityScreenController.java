@@ -1,16 +1,18 @@
 package Controller;
 
+import Fxapp.MainFXApplication;
+import Model.PurityReport;
+import Model.ReportList;
+import Model.SourceReport;
+import Model.PurityReportList;
+
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
-
-import Fxapp.MainFXApplication;
-
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -18,12 +20,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
-
 import javafx.stage.Stage;
-
-import Model.ReportList;
-import Model.SourceReport;
-
 import netscape.javascript.JSObject;
 
 import java.net.URL;
@@ -163,7 +160,7 @@ public class AvailabilityScreenController implements Initializable, MapComponent
             MarkerOptions markerOptions = new MarkerOptions();
             LatLong loc = new LatLong(sr.getLatitude(), sr.getLongitude());
 
-            markerOptions.position(loc).visible(Boolean.TRUE).title("Report " + sr.getReportNum());
+            markerOptions.position(loc).visible(Boolean.TRUE).title("Source Report " + sr.getReportNum());
 
             Marker marker = new Marker(markerOptions);
 
@@ -182,6 +179,9 @@ public class AvailabilityScreenController implements Initializable, MapComponent
 
             map.addMarker(marker);
         }
+
+
+
 
     }
 

@@ -1,12 +1,6 @@
 package Fxapp;
 
-import Controller.ListReportsScreenController;
-import Controller.LoginScreenController;
-import Controller.UserMainScreenController;
-import Controller.ProfileScreenController;
-import Controller.RegistrationScreenController;
-import Controller.SubmitReportController;
-import Controller.WelcomeScreenController;
+import Controller.*;
 
 import Model.Account;
 import Model.User;
@@ -192,6 +186,40 @@ public class MainFXApplication extends Application {
             SubmitReportController controller = loader.getController();
             controller.setDialogStage(reportScreen);
             //controller.setUser(user);
+            controller.setUser(UserList.getCurrentUser());
+
+            controller.setMainApplication(this);
+
+            // Show the dialog and wait until the user closes it
+            reportScreen.show();
+
+            return controller.isOkClicked();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean showSubmitPurityReportScreen() {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../View/SubmitPurityReportScreen.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the dialog Stage.
+            Stage reportScreen = new Stage();
+            reportScreen.setTitle("Submit Report");
+            //reportScreen.initModality(Modality.WINDOW_MODAL);
+            reportScreen.initOwner(mainScreen);
+            Scene scene = new Scene(page);
+            reportScreen.setScene(scene);
+
+            // Set the person into the controller.
+            SubmitPurityReportController controller = loader.getController();
+            controller.setDialogStage(reportScreen);
+            //controller.setUser(user);
+            controller.setUser(UserList.getCurrentUser());
 
             controller.setMainApplication(this);
 
@@ -320,6 +348,91 @@ public class MainFXApplication extends Application {
             return false;
         }
     }
+    public boolean viewQualityReportListScreen() {
+        if (!UserList.getCurrentUser().getAccount().equals(Account.MANAGER)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(mainScreen);
+            alert.setTitle("Can't Access the List of Reports");
+            alert.setHeaderText("Since you are not signed in as an manager, you cannot access the list of reports");
+            //alert.setContentText(errorMessage);
+            alert.showAndWait();
+            return false;
+        }
+
+        try {
+            // Load the fxml file and create new stage for the popup dialog
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../View/QualityReportListScreen.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the profile screen stage
+            Stage listQualityReportsScreenStage = new Stage();
+            listQualityReportsScreenStage.setTitle("List of Reports");
+            listQualityReportsScreenStage.initModality(Modality.WINDOW_MODAL);
+            listQualityReportsScreenStage.initOwner(mainScreen);
+            Scene scene = new Scene(page);
+            listQualityReportsScreenStage.setScene(scene);
+
+            // Set the controller
+            ListQualityReportsScreenController controller = loader.getController();
+            controller.setQReportsScreenStage(listQualityReportsScreenStage);
+            // Set user into controller
+            controller.setUser(UserList.getCurrentUser());
+
+            controller.setMainApplication(this);
+
+            // Show the profile screen
+            listQualityReportsScreenStage.show();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /*public boolean showQualityListReportsScreen() {
+        if (!UserList.getCurrentUser().getAccount().equals(Account.MANAGER)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(mainScreen);
+            alert.setTitle("Can't Access the List of Reports");
+            alert.setHeaderText("Since you are signed in as an admin, you cannot access the list of reports");
+            //alert.setContentText(errorMessage);
+            alert.showAndWait();
+            return false;
+        }
+
+        try {
+            // Load the fxml file and create new stage for the popup dialog
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../View/ListQualityReportsScreen.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the profile screen stage
+            Stage listReportsScreenStage = new Stage();
+            listReportsScreenStage.setTitle("List of Purity Reports");
+            listReportsScreenStage.initModality(Modality.WINDOW_MODAL);
+            listReportsScreenStage.initOwner(mainScreen);
+            Scene scene = new Scene(page);
+            listReportsScreenStage.setScene(scene);
+
+            // Set the controller
+            ListQualityReportsScreenController controller = loader.getController();
+            controller.setReportsScreenStage(listReportsScreenStage);
+            // Set user into controller
+            controller.setUser(UserList.getCurrentUser());
+
+            controller.setMainApplication(this);
+
+            // Show the profile screen
+            listReportsScreenStage.show();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }*/
 
 
     /**

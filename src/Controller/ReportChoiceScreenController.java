@@ -48,5 +48,8 @@ public class ReportChoiceScreenController {
 
     @FXML
     public void handleQualityPressed() {
+        this._okClicked = true;
+        this.choiceScreenStage.close();
+        this.mainApp.showSubmitPurityReportScreen();
     }
 }

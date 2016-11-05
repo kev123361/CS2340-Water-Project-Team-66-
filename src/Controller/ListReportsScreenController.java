@@ -1,9 +1,7 @@
 package Controller;
 
 import Fxapp.MainFXApplication;
-import Model.ReportList;
-import Model.User;
-import Model.Account;
+import Model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,7 +9,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import Model.SourceReport;
 
 import java.io.IOException;
 
@@ -31,12 +28,16 @@ public class ListReportsScreenController {
     //A reference to the main application
     private MainFXApplication mainApplication;
 
+
+
+
     //The user currently signed in
     private User _user;
 
     /** References to the widgets in the fxml file */
     @FXML
     private ListView<SourceReport> reportList;
+
     @FXML
     private ListView<String> detailsList;
 
@@ -45,6 +46,7 @@ public class ListReportsScreenController {
         //reportList.setCellValueFactory(cellData -> cellData.getValue().getReportNumProperty());
         reportList.setItems(ReportList.getBackingList());
         reportList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showDetails(newValue));
+
     }
 
     /**
@@ -95,12 +97,22 @@ public class ListReportsScreenController {
             showReportChoiceScreen();
         }
     }
+    public void viewQualityReportPressed() {
+        _okClicked = true;
+
+        if (_user.getAccount().equals(Account.MANAGER)) {
+            mainApplication.viewQualityReportListScreen();
+        }
+
+
+    }
 
     /**
      * Pops up the submit report screen when add report pressed
      *
      * @return true if load successful, false otherwise
      */
+
     public boolean showSubmitReportScreen() {
         try {
             // Load the fxml file and create a new stage
