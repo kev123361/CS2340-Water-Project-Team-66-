@@ -21,6 +21,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,6 +37,8 @@ import java.util.logging.Logger;
  */
 public class MainFXApplication extends Application {
 
+    public static Connection con;
+
     //The app's main stage
     public Stage mainScreen;
 
@@ -47,6 +51,13 @@ public class MainFXApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         initRootLayout(primaryStage);
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/4400", "root", "mshosho11");
+            System.out.println("hello");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public Parent getRootLayout() {
@@ -54,7 +65,7 @@ public class MainFXApplication extends Application {
     }
 
     /**
-     * get a reference to the main stage
+     * get a reference to the main stagjava.lang.ClassNotFoundException: com.mysql.jdbc.Drivere
      * @return reference to the main stage
      * */
     public Stage getMainScreen() {
@@ -328,6 +339,7 @@ public class MainFXApplication extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+
     }
 
 }

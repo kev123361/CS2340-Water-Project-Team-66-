@@ -90,7 +90,9 @@ public class PurityReport {
     }
 
     public String toString() {
-        return "Purity Report: " + _reportNum.getValue();
+        return "Purity" +
+                "" +
+                " Report: " + _reportNum.getValue();
     }
 
 

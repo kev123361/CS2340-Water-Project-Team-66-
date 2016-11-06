@@ -3,6 +3,7 @@
     <properties maven-id="com.lynden:GMapsFX:2.0.9" />
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/GMapsFX-2.0.9.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

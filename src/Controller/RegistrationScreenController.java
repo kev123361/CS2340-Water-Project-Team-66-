@@ -11,8 +11,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.sql.*;
 
 import java.io.IOException;
 
@@ -107,8 +108,22 @@ public class RegistrationScreenController {
             UserList.addUser(new User(username.getText(), password.getText(), id.getText(),
                     comboBoxDrop.getSelectionModel().getSelectedItem(), email.getText(), home.getText(),
                     comboBoxTitle.getSelectionModel().getSelectedItem()));
-
-
+            try {
+                PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO USER (USERNAME, PASSWORD, ID, ACCOUNT, EMAIL, ADDRESS, TITLE) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                stmt.setString(1, username.getText());
+                stmt.setString(2, password.getText());
+                stmt.setString(3, id.getText());
+                stmt.setString(4, comboBoxDrop.getSelectionModel().getSelectedItem().toString());
+                stmt.setString(5, email.getText());
+                stmt.setString(6, home.getText());
+                stmt.setString(7, comboBoxTitle.getSelectionModel().getSelectedItem().toString());
+//                stmt.execute("INSERT INTO USER " +
+//                        "(USERNAME, PASSWORD, ID, ACCOUNT, EMAIL, ADDRESS, TITLE) " +
+//                        "VALUES (" + "'" + username.getText() + "," + password.getText() + "," + id.getText() + "," + comboBoxDrop.getSelectionModel().getSelectedItem().toString() + "," + email.getText() + "," + home.getText() + "," + comboBoxTitle.getSelectionModel().getSelectedItem().toString() +")");
+                stmt.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
             _okClicked = true;
             _dialogStage.close();
             mainApplication.mainScreen.close();
