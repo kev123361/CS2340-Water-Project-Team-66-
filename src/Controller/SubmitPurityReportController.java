@@ -20,7 +20,7 @@ import java.io.IOException;
  * @author Kyle Pelton
  * @version 1.1
  */
-public class SubmitReportController {
+public class SubmitPurityReportController {
     private Stage _dialogStage;
 
     @FXML
@@ -28,14 +28,15 @@ public class SubmitReportController {
     @FXML
     private TextField longitudeOfWater;
     @FXML
-    private ComboBox<ConditionOfWater> conditionOfWaterComboBox;
-    @FXML
-    private ComboBox<TypeOfWater> typeOfWaterComboBox;
+    private ComboBox<OverallConditionOfWater> conditionOfWaterComboBox;
     @FXML
     private TextField date;
     @FXML
     private TextField time;
-
+    @FXML
+    private TextField contppm;
+    @FXML
+    private TextField virusppm;
 
     private boolean _okClicked = false;
     private User _user;
@@ -54,22 +55,14 @@ public class SubmitReportController {
 
     @FXML
     private void initialize() {
-        conditionOfWaterComboBox.setItems(FXCollections.observableArrayList(ConditionOfWater.values()));
+        conditionOfWaterComboBox.setItems(FXCollections.observableArrayList(OverallConditionOfWater.values()));
         conditionOfWaterComboBox.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
                 conditionOfWaterComboBox.requestFocus();
             }
         });
-        typeOfWaterComboBox.setItems(FXCollections.observableArrayList(TypeOfWater.values()));
-        typeOfWaterComboBox.setOnMousePressed(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                typeOfWaterComboBox.requestFocus();
-            }
-        });
     }
-
     /**
      * Sets the submit report screen's stage. Called when initializing the screen
      *
@@ -88,15 +81,16 @@ public class SubmitReportController {
     /**
      * Set the initial report for the screen. Will be edited if submit report is pressed
      */
-    public void setReport() {
+    public void setPurityReport() {
         latitudeOfWater.setText("Between -90.0 and 90.0");
         longitudeOfWater.setText("Between -180.0 and 180.0");
-        conditionOfWaterComboBox.setValue(ConditionOfWater.WASTE); //setting default to first one listed
-        typeOfWaterComboBox.setValue(TypeOfWater.BOTTLED); //setting default to first one listed
+        conditionOfWaterComboBox.setValue(OverallConditionOfWater.UNSAFE); //setting default to first one listed
         date.setText("Of the form: MM/DD/YYYY");
         time.setText("Of the form: HH:MM (24 hour clock)");
-    }
+        contppm.setText("Enter the number of contaminants per million");
+        virusppm.setText("Enter the number of viruses per million");
 
+    }
     @FXML
     /**
      * Handler for pressing submit
@@ -105,17 +99,18 @@ public class SubmitReportController {
      * @throws IOException if IO errors occur
      */
     public void handleSubmitPressed() throws IOException {
-
+        if (_user == null) {
+            System.out.println("USER IS NULL");
+        }
         if (isInputValid()) {
-            ReportList.addReport(new SourceReport(date.getText(), time.getText(), _user, Double.parseDouble(latitudeOfWater.getText()),
-                    Double.parseDouble(longitudeOfWater.getText()), typeOfWaterComboBox.getSelectionModel().getSelectedItem(),
-                    conditionOfWaterComboBox.getSelectionModel().getSelectedItem()));
+            PurityReportList.addPurityReport(new PurityReport(date.getText(), time.getText(),  _user, Double.parseDouble(latitudeOfWater.getText()),
+                    Double.parseDouble(longitudeOfWater.getText()),
+                    conditionOfWaterComboBox.getSelectionModel().getSelectedItem(),Integer.parseInt(contppm.getText()), Integer.parseInt(virusppm.getText())));
             _okClicked = true;
             _dialogStage.close();
         }
 
     }
-
     public boolean isOkClicked() {
         return _okClicked;
     }
@@ -125,11 +120,13 @@ public class SubmitReportController {
      * Handler for pressing cancel. Closes out of the registration screen
      */
     public void handleCancelPressed() {
+
         _okClicked = true;
         _dialogStage.close();
 
         //mainApplication.showMainScreen();
     }
+
 
     /**
      * Checks if valid input has been entered
@@ -162,6 +159,6 @@ public class SubmitReportController {
             return false;
         }
     }
-
-
 }
+
+

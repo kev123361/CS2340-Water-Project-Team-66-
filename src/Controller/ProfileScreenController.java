@@ -1,16 +1,17 @@
 package Controller;
 
 import Fxapp.MainFXApplication;
-import javafx.beans.property.ObjectProperty;
+import Model.User;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import Model.Account;
 import Model.Title;
-import Model.User;
 import Model.UserList;
 import sun.applet.Main;
 
@@ -59,7 +60,19 @@ public class ProfileScreenController {
     @FXML
     public void initialize() {
         comboBoxAccount.setItems(FXCollections.observableArrayList(Account.values()));
+        comboBoxAccount.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                comboBoxAccount.requestFocus();
+            }
+        });
         comboBoxTitle.setItems(FXCollections.observableArrayList(Title.values()));
+        comboBoxTitle.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                comboBoxTitle.requestFocus();
+            }
+        });
     }
 
     /**

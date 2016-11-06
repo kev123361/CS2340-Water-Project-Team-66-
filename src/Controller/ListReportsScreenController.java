@@ -1,8 +1,7 @@
 package Controller;
 
 import Fxapp.MainFXApplication;
-import Model.ReportList;
-import Model.User;
+import Model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,7 +9,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import Model.SourceReport;
 
 import java.io.IOException;
 
@@ -30,12 +28,16 @@ public class ListReportsScreenController {
     //A reference to the main application
     private MainFXApplication mainApplication;
 
+
+
+
     //The user currently signed in
     private User _user;
 
     /** References to the widgets in the fxml file */
     @FXML
     private ListView<SourceReport> reportList;
+
     @FXML
     private ListView<String> detailsList;
 
@@ -44,6 +46,7 @@ public class ListReportsScreenController {
         //reportList.setCellValueFactory(cellData -> cellData.getValue().getReportNumProperty());
         reportList.setItems(ReportList.getBackingList());
         reportList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showDetails(newValue));
+
     }
 
     /**
@@ -88,7 +91,20 @@ public class ListReportsScreenController {
      */
     public void addReportPressed() {
         _okClicked = true;
-        showSubmitReportScreen();
+        if (_user.getAccount().equals(Account.USER)) {
+            showSubmitReportScreen();
+        } else {
+            showReportChoiceScreen();
+        }
+    }
+    public void viewQualityReportPressed() {
+        _okClicked = true;
+
+        if (_user.getAccount().equals(Account.MANAGER)) {
+            mainApplication.viewQualityReportListScreen();
+        }
+
+
     }
 
     /**
@@ -96,6 +112,7 @@ public class ListReportsScreenController {
      *
      * @return true if load successful, false otherwise
      */
+
     public boolean showSubmitReportScreen() {
         try {
             // Load the fxml file and create a new stage
@@ -125,6 +142,35 @@ public class ListReportsScreenController {
 
             return true;
 
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean showReportChoiceScreen() {
+        try {
+            // Load the fxml file and create a new stage
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../View/ReportChoiceScreen.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the stage
+            Stage Screen = new Stage();
+            Screen.setTitle("Report Type");
+            Screen.initModality(Modality.WINDOW_MODAL);
+            Screen.initOwner(reportsScreenStage);
+            Scene scene = new Scene(page);
+            Screen.setScene(scene);
+
+            ReportChoiceScreenController controller = loader.getController();
+            controller.setStage(Screen);
+            controller.setMainApplication(mainApplication);
+
+            // Show the dialog and wait until the user closes it
+            Screen.show();
+
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;

@@ -6,6 +6,7 @@ import Model.Title;
 import Model.User;
 import Model.UserList;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -58,7 +59,19 @@ public class RegistrationScreenController {
     @FXML
     private void initialize() {
         comboBoxDrop.setItems(FXCollections.observableArrayList(Account.values()));
+        comboBoxDrop.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                comboBoxDrop.requestFocus();
+            }
+        });
         comboBoxTitle.setItems(FXCollections.observableArrayList(Title.values()));
+        comboBoxTitle.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                comboBoxTitle.requestFocus();
+            }
+        });
     }
 
     /**
