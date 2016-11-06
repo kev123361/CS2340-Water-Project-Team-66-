@@ -3,10 +3,12 @@ package Controller;
 import Fxapp.MainFXApplication;
 import Model.*;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -54,6 +56,12 @@ public class SubmitPurityReportController {
     @FXML
     private void initialize() {
         conditionOfWaterComboBox.setItems(FXCollections.observableArrayList(OverallConditionOfWater.values()));
+        conditionOfWaterComboBox.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                conditionOfWaterComboBox.requestFocus();
+            }
+        });
     }
     /**
      * Sets the submit report screen's stage. Called when initializing the screen

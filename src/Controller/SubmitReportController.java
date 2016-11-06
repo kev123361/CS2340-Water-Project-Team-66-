@@ -3,10 +3,12 @@ package Controller;
 import Fxapp.MainFXApplication;
 import Model.*;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -53,7 +55,19 @@ public class SubmitReportController {
     @FXML
     private void initialize() {
         conditionOfWaterComboBox.setItems(FXCollections.observableArrayList(ConditionOfWater.values()));
+        conditionOfWaterComboBox.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                conditionOfWaterComboBox.requestFocus();
+            }
+        });
         typeOfWaterComboBox.setItems(FXCollections.observableArrayList(TypeOfWater.values()));
+        typeOfWaterComboBox.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                typeOfWaterComboBox.requestFocus();
+            }
+        });
     }
 
     /**
