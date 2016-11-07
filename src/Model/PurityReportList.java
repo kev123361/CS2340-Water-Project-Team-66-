@@ -17,6 +17,13 @@ public class PurityReportList {
         return backingList;
     }
 
+
+    /**
+     * Checks if valid latitude was entered
+     *
+     * @param latitude user input latitude
+     * @return true if valid latitude, false otherwise
+     */
     public static boolean isValidLatitude(String latitude) {
         //return latitude <= 90.0 && latitude >= -90.0;
         try {
@@ -27,6 +34,12 @@ public class PurityReportList {
         }
     }
 
+    /**
+     * Checks if valid longitude was entered
+     *
+     * @param longitude user input longitude
+     * @return true if valid longitude, false otherwise
+     */
     public static boolean isValidLongitude(String longitude) {
         //return longitude <= 180.0 && longitude >= -180.0;
         try {
@@ -37,6 +50,11 @@ public class PurityReportList {
         }
     }
 
+    /**
+     *  Checks to make sure date is in format Mo/Da/Year
+     * @param date
+     * @return
+     */
     public static boolean isValidDate(String date) {
         if (date.length() == 10 && date.charAt(2) == '/' && date.charAt(5) == '/' && isInteger(date.substring(0,2))
                 && isInteger(date.substring(3,5)) && isInteger(date.substring(6))) {

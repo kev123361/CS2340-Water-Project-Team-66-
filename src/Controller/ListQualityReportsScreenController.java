@@ -108,4 +108,9 @@ public class ListQualityReportsScreenController {
 
         //mainApplication.showListReportsScreen();
     }
+
+    @FXML
+    public void handleViewGraphPressed() throws IOException {
+        mainApplication.showGraphSelectScreen();
+    }
 }

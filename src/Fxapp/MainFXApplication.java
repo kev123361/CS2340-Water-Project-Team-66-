@@ -348,6 +348,7 @@ public class MainFXApplication extends Application {
             return false;
         }
     }
+
     public boolean viewQualityReportListScreen() {
         if (!UserList.getCurrentUser().getAccount().equals(Account.MANAGER)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -389,6 +390,79 @@ public class MainFXApplication extends Application {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public boolean showGraphSelectScreen() {
+        try {
+            // Load the fxml file and create new stage for the popup dialog
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../View/GraphSelectScreen.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the stage
+            Stage GraphSelectScreenStage = new Stage();
+            GraphSelectScreenStage.setTitle("Select Graph");
+            GraphSelectScreenStage.initModality(Modality.WINDOW_MODAL);
+            GraphSelectScreenStage.initOwner(mainScreen);
+            Scene scene = new Scene(page);
+            GraphSelectScreenStage.setScene(scene);
+
+            // Set the controller
+            GraphSelectScreenController controller = loader.getController();
+            // Set stage
+            controller.set_dialogStage(GraphSelectScreenStage);
+            // Set reference to main App
+            controller.setMainApplication(this);
+
+            // Show screen
+            GraphSelectScreenStage.show();
+
+            return controller.is_okClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean showHistoryGraphScreen(double targetLat, double targetLong, int targetYear) {
+        try {
+            // Load the fxml file and create new stage for the popup dialog
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../View/HistoryGraphScreen.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the stage
+            Stage HistoryGraphScreenStage = new Stage();
+            HistoryGraphScreenStage.setTitle("History Graph");
+            HistoryGraphScreenStage.initModality(Modality.WINDOW_MODAL);
+            HistoryGraphScreenStage.initOwner(mainScreen);
+            Scene scene = new Scene(page);
+            HistoryGraphScreenStage.setScene(scene);
+
+            // Set the controller
+            HistoryGraphController controller = loader.getController();
+            // Set stage
+            controller.set_dialogStage(HistoryGraphScreenStage);
+            // Set reference to main App
+            controller.setMainApplication(this);
+
+            // Set target year, lat and long
+            controller.setTargetLat(targetLat);
+            controller.setTargetLong(targetLong);
+            controller.setTargetYear(targetYear);
+
+            // Populate the graph
+            controller.populateGraph();
+
+            // Show screen
+            HistoryGraphScreenStage.show();
+
+            return controller.is_okClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
     }
 
     /*public boolean showQualityListReportsScreen() {
@@ -433,7 +507,6 @@ public class MainFXApplication extends Application {
             return false;
         }
     }*/
-
 
     /**
      * Main runner for the app
