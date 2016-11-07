@@ -10,8 +10,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import sun.applet.Main;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.Time;
 
 /**
  * The controller for the submit report screen
@@ -107,9 +111,34 @@ public class SubmitReportController {
     public void handleSubmitPressed() throws IOException {
 
         if (isInputValid()) {
-            ReportList.addReport(new SourceReport(date.getText(), time.getText(), _user, Double.parseDouble(latitudeOfWater.getText()),
+//            ReportList.addReport(new SourceReport(date.getText(), time.getText(), _user, Double.parseDouble(latitudeOfWater.getText()),
+//                    Double.parseDouble(longitudeOfWater.getText()), typeOfWaterComboBox.getSelectionModel().getSelectedItem(),
+//                    conditionOfWaterComboBox.getSelectionModel().getSelectedItem()));
+            try {
+                PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO SOURCE_REPORT (DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, WATER_TYPE, WATER_CONDITION) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                SourceReport newReport = new SourceReport(date.getText(), time.getText(), _user, Double.parseDouble(latitudeOfWater.getText()),
                     Double.parseDouble(longitudeOfWater.getText()), typeOfWaterComboBox.getSelectionModel().getSelectedItem(),
-                    conditionOfWaterComboBox.getSelectionModel().getSelectedItem()));
+                    conditionOfWaterComboBox.getSelectionModel().getSelectedItem());
+                String[] dateArray = newReport.getDate().split("/");
+                int year = Integer.parseInt(dateArray[2]) - 1900;
+                int month = Integer.parseInt(dateArray[0]) - 1;
+                int day = Integer.parseInt(dateArray[1]);
+                Date date = new Date(year, month, day);
+                stmt.setDate(1, date);
+                String[] timeArray = newReport.getTime().split(":");
+                int hour = Integer.parseInt(timeArray[0]);
+                int minute = Integer.parseInt(timeArray[1]);
+                Time time = new Time(hour, minute, 0);
+                stmt.setTime(2, time);
+                stmt.setString(3, UserList.getCurrentUser().getUsername());
+                stmt.setDouble(4, newReport.getLatitude());
+                stmt.setDouble(5, newReport.getLongitude());
+                stmt.setString(6, newReport.getWaterType().toString());
+                stmt.setString(7, newReport.getWaterCondition().toString());
+                stmt.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
             _okClicked = true;
             _dialogStage.close();
         }

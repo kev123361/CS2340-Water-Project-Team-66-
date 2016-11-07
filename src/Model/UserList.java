@@ -1,4 +1,8 @@
 package Model;
+import Fxapp.MainFXApplication;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
@@ -27,18 +31,25 @@ public class UserList {
      * @return true if valid, false otherwise
      */
     public static boolean isValidLogin(String username, String password) {
-        if (backingList.size() == 0) {
-            return false;
-        }
-        for (int i = 0; i < backingList.size(); i++) {
-            if (backingList.get(i).getUsername().equals(username)) {
-                if (backingList.get(i).getPassword().equals(password)) {
-                    currentUser = backingList.get(i);
-                    return true;
-                }
+        try {
+            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT COUNT(*) FROM USER WHERE USERNAME = ?");
+            stmt.setString(1, username);
+            ResultSet count = stmt.executeQuery();
+            count.next();
+            if (count.getInt(1) != 1) {
+                return false;
             }
+            PreparedStatement stmt1 = MainFXApplication.con.prepareStatement("SELECT USERNAME, PASSWORD FROM USER WHERE USERNAME = ?");
+            stmt1.setString(1, username);
+            ResultSet credentials = stmt1.executeQuery();
+            credentials.next();
+            if (!password.equals(credentials.getString(2))) {
+                return false;
+            }
+        } catch(Exception e) {
+            System.out.println(e);
         }
-        return false;
+        return true;
     }
 
     /**
@@ -49,16 +60,26 @@ public class UserList {
         return currentUser;
     }
 
+    public static void setCurrentUser(User user) {
+        currentUser = user;
+    }
+
     /**
      * Checks if unique username has been entered. Cannot create two users with same username
      * @param username the username inputted during registration
      * @return true if unique, false otherwise
      */
     public static Boolean isUniqueUserName(String username) {
-        for (int i = 0; i < backingList.size(); i++) {
-            if (backingList.get(i).getUsername().equals(username)) {
+        try {
+            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT COUNT(*) FROM USER WHERE USERNAME = ?");
+            stmt.setString(1, username);
+            ResultSet count = stmt.executeQuery();
+            count.next();
+            if (count.getInt(1) > 0) {
                 return false;
             }
+        } catch (Exception e) {
+            System.out.println(e);
         }
         return true;
     }
@@ -69,10 +90,16 @@ public class UserList {
      * @return true if unique, false otherwise
      */
     public static Boolean isUniqueID(String ID) {
-        for (int i = 0; i < backingList.size(); i++) {
-            if (backingList.get(i).getId().equals(ID)) {
+        try {
+            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT COUNT(*) FROM USER WHERE ID = ?");
+            stmt.setString(1, ID);
+            ResultSet count = stmt.executeQuery();
+            count.next();
+            if (count.getInt(1) > 0) {
                 return false;
             }
+        } catch (Exception e) {
+            System.out.println(e);
         }
         return true;
     }

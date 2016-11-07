@@ -13,8 +13,10 @@ import javafx.stage.Stage;
 import Model.Account;
 import Model.Title;
 import Model.UserList;
+import sun.applet.Main;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
 
 /**
  * Controller for the profile screen
@@ -120,6 +122,20 @@ public class ProfileScreenController {
             _user.setEmailAddress(email.getText());
             _user.setHomeAddress(home.getText());
             _user.setTitle(comboBoxTitle.getSelectionModel().getSelectedItem());
+            try {
+                PreparedStatement stmt = MainFXApplication.con.prepareStatement("UPDATE USER SET USERNAME = ?, PASSWORD = ?, ID = ?, ACCOUNT = ?, EMAIL = ?, ADDRESS = ?, TITLE = ? WHERE USERNAME = ?");
+                stmt.setString(1, username.getText());
+                stmt.setString(2, password.getText());
+                stmt.setString(3, id.getText());
+                stmt.setString(4, comboBoxAccount.getSelectionModel().getSelectedItem().toString());
+                stmt.setString(5, email.getText());
+                stmt.setString(6, home.getText());
+                stmt.setString(7, comboBoxTitle.getSelectionModel().getSelectedItem().toString());
+                stmt.setString(8, UserList.getCurrentUser().getUsername());
+                stmt.executeUpdate();
+            } catch (Exception e) {
+                System.out.print(e);
+            }
 
             _okClicked = true;
             _dialogStage.close();

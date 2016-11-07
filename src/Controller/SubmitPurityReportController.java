@@ -12,6 +12,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.Time;
 
 /**
  * The controller for the submit report screen
@@ -103,9 +106,35 @@ public class SubmitPurityReportController {
             System.out.println("USER IS NULL");
         }
         if (isInputValid()) {
-            PurityReportList.addPurityReport(new PurityReport(date.getText(), time.getText(),  _user, Double.parseDouble(latitudeOfWater.getText()),
-                    Double.parseDouble(longitudeOfWater.getText()),
-                    conditionOfWaterComboBox.getSelectionModel().getSelectedItem(),Integer.parseInt(contppm.getText()), Integer.parseInt(virusppm.getText())));
+//            PurityReportList.addPurityReport(new PurityReport(date.getText(), time.getText(),  _user, Double.parseDouble(latitudeOfWater.getText()),
+//                    Double.parseDouble(longitudeOfWater.getText()),
+//                    conditionOfWaterComboBox.getSelectionModel().getSelectedItem(),Integer.parseInt(contppm.getText()), Integer.parseInt(virusppm.getText())));
+            try {
+                PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO PURITY_REPORT (DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, OVERALL_CONDITION_OF_WATER, VIRUS_PPM, CONTAMINANT_PPM) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                PurityReport newReport = new PurityReport(date.getText(), time.getText(), _user, Double.parseDouble(latitudeOfWater.getText()),
+                        Double.parseDouble(longitudeOfWater.getText()), conditionOfWaterComboBox.getSelectionModel().getSelectedItem(),
+                        Integer.parseInt(contppm.getText()), Integer.parseInt(virusppm.getText()));
+                String[] dateArray = newReport.getDate().split("/");
+                int year = Integer.parseInt(dateArray[2]) - 1900;
+                int month = Integer.parseInt(dateArray[0]) - 1;
+                int day = Integer.parseInt(dateArray[1]);
+                Date date = new Date(year, month, day);
+                stmt.setDate(1, date);
+                String[] timeArray = newReport.getTime().split(":");
+                int hour = Integer.parseInt(timeArray[0]);
+                int minute = Integer.parseInt(timeArray[1]);
+                Time time = new Time(hour, minute, 0);
+                stmt.setTime(2, time);
+                stmt.setString(3, UserList.getCurrentUser().getUsername());
+                stmt.setDouble(4, newReport.getLatitude());
+                stmt.setDouble(5, newReport.getLongitude());
+                stmt.setString(6, newReport.getOverallWaterCondition().toString());
+                stmt.setInt(7, newReport.getVirusPPM());
+                stmt.setInt(8, newReport.getContaminantPPM());
+                stmt.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
             _okClicked = true;
             _dialogStage.close();
         }
