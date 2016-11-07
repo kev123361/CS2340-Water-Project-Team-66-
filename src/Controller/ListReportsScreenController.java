@@ -46,7 +46,6 @@ public class ListReportsScreenController {
         //reportList.setCellValueFactory(cellData -> cellData.getValue().getReportNumProperty());
         reportList.setItems(ReportList.getBackingList());
         reportList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showDetails(newValue));
-
     }
 
     /**

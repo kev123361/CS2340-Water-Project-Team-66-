@@ -1,8 +1,11 @@
 package Model;
 
+import Fxapp.MainFXApplication;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.sql.PreparedStatement;
 
 /**
  * Represents a water source report
@@ -49,6 +52,11 @@ public class SourceReport {
         _reportingUser.set(reportingUser);
         _reportNum.set(reportNumCounter);
         reportNumCounter++;
+        try {
+            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT REPORT_NUM FROM SOURCE_REPORT WHERE ");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         _latitude.set(latitude);
         _longitude.set(longitude);
         _waterType.set(waterType);

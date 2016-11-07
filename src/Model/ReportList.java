@@ -1,7 +1,14 @@
 package Model;
 
+import Fxapp.MainFXApplication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * The report list holds all of the water source reports created
@@ -31,7 +38,25 @@ public class ReportList {
      * @return the backing list
      */
     public static ObservableList<SourceReport> getBackingList() {
-        return backingList;
+        ObservableList<SourceReport> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, WATER_TYPE, WATER_CONDITION FROM SOURCE_REPORT");
+            ResultSet table = stmt.executeQuery();
+            while (table.next()) {
+                String date = table.getDate(1).toString();
+                String time = table.getTime(2).toString();
+                User user = new User(table.getString(3), "", "", Account.USER, "", "", Title.MR);
+                Double latitude = table.getDouble(4);
+                Double longitude = table.getDouble(5);
+                TypeOfWater waterType = TypeOfWater.valueOf(table.getString(6).toUpperCase());
+                ConditionOfWater waterCondition = ConditionOfWater.valueOf(table.getString(7).toUpperCase());
+                SourceReport newReport = new SourceReport(date, time, user, latitude, longitude, waterType, waterCondition);
+                list.add(newReport);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
     }
 
     /**

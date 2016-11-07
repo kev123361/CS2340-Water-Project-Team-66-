@@ -1,7 +1,11 @@
 package Model;
 
+import Fxapp.MainFXApplication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  * Created by 2shob on 10/26/2016.
@@ -14,7 +18,27 @@ public class PurityReportList {
     }
 
     public static ObservableList<PurityReport> getBackingList() {
-        return backingList;
+        ObservableList<PurityReport> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, OVERALL_CONDITION_OF_WATER, VIRUS_PPM, CONTAMINANT_PPM FROM PURITY_REPORT");
+            ResultSet table = stmt.executeQuery();
+            while (table.next()) {
+                String date = table.getDate(1).toString();
+                String time = table.getTime(2).toString();
+                User user = new User(table.getString(3), "", "", Account.USER, "", "", Title.MR);
+                Double latitude = table.getDouble(4);
+                Double longitude = table.getDouble(5);
+                OverallConditionOfWater condition = OverallConditionOfWater.valueOf(table.getString(6).toUpperCase());
+                int virusPPM = table.getInt(7);
+                int contaminantPPM = table.getInt(8);
+                PurityReport newReport = new PurityReport(date, time, user, latitude, longitude, condition, virusPPM, contaminantPPM);
+                list.add(newReport);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+
     }
 
     public static boolean isValidLatitude(String latitude) {
