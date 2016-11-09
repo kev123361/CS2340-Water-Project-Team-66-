@@ -49,7 +49,17 @@ public class ReportList {
                 Double latitude = table.getDouble(4);
                 Double longitude = table.getDouble(5);
                 TypeOfWater waterType = TypeOfWater.valueOf(table.getString(6).toUpperCase());
-                ConditionOfWater waterCondition = ConditionOfWater.valueOf(table.getString(7).toUpperCase());
+                String condition = table.getString(7);
+                ConditionOfWater waterCondition;
+                if (condition.equals("Waste")) {
+                    waterCondition = ConditionOfWater.valueOf("WASTE");
+                } else if (condition.equals("Treatable-Clear")) {
+                    waterCondition = ConditionOfWater.valueOf("TREATABLECLEAR");
+                } else if (condition.equals("Treatable-Muddy")) {
+                    waterCondition = ConditionOfWater.valueOf("TREATABLEMUDDY");
+                } else {
+                    waterCondition = ConditionOfWater.valueOf("POTABLE");
+                }
                 SourceReport newReport = new SourceReport(date, time, user, latitude, longitude, waterType, waterCondition);
                 list.add(newReport);
             }

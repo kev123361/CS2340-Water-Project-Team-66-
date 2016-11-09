@@ -73,9 +73,9 @@ public class HistoryGraphController {
         int[] monthCounterVirus = new int[12];
         int[] monthCounterContaminant = new int[12];
         for (PurityReport report : reportList) {
-            String date = report.getDate();
-            int year = Integer.parseInt(date.substring(6));
-            int month = Integer.parseInt(date.substring(0, 2));
+            String[] dateArray = report.getDate().split("-");
+            int year = Integer.parseInt(dateArray[0]);
+            int month = Integer.parseInt(dateArray[1]);
 
             double latitude = report.getLatitude();
             double longitude = report.getLongitude();
