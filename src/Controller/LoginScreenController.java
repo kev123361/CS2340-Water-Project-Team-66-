@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.io.SyncFailedException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -67,13 +66,15 @@ public class LoginScreenController {
     public void handleLoginPressed() throws IOException {
         if (isInputValid()) {
             try {
-                PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT * FROM user WHERE USERNAME = ?");
+                PreparedStatement stmt = MainFXApplication.con.prepareStatement(
+                        "SELECT * FROM user WHERE USERNAME = ?");
                 stmt.setString(1, username.getText());
                 ResultSet rslt = stmt.executeQuery();
                 rslt.next();
                 String title = rslt.getString(7);
                 title = title.substring(0, title.indexOf('.')).toUpperCase();
-                User user = new User(rslt.getString(1), rslt.getString(2), rslt.getString(3), Account.valueOf(rslt.getString(4)), rslt.getString(5), rslt.getString(6), Title.valueOf(title));
+                User user = new User(rslt.getString(1), rslt.getString(2), rslt.getString(3),
+                        Account.valueOf(rslt.getString(4)), rslt.getString(5), rslt.getString(6), Title.valueOf(title));
                 UserList.setCurrentUser(user);
             } catch (Exception e) {
                 e.printStackTrace();

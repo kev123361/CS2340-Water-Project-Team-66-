@@ -33,14 +33,16 @@ public class UserList {
      */
     public static boolean isValidLogin(String username, String password) {
         try {
-            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT COUNT(*) FROM user WHERE USERNAME = ?");
+            PreparedStatement stmt = MainFXApplication.
+                    con.prepareStatement("SELECT COUNT(*) FROM user WHERE USERNAME = ?");
             stmt.setString(1, username);
             ResultSet count = stmt.executeQuery();
             count.next();
             if (count.getInt(1) != 1) {
                 return false;
             }
-            PreparedStatement stmt1 = MainFXApplication.con.prepareStatement("SELECT USERNAME, PASSWORD FROM user WHERE USERNAME = ?");
+            PreparedStatement stmt1 = MainFXApplication.
+                    con.prepareStatement("SELECT USERNAME, PASSWORD FROM user WHERE USERNAME = ?");
             stmt1.setString(1, username);
             ResultSet credentials = stmt1.executeQuery();
             credentials.next();
@@ -76,7 +78,8 @@ public class UserList {
      */
     public static Boolean isUniqueUserName(String username) {
         try {
-            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT COUNT(*) FROM user WHERE USERNAME = ?");
+            PreparedStatement stmt = MainFXApplication.
+                    con.prepareStatement("SELECT COUNT(*) FROM user WHERE USERNAME = ?");
             stmt.setString(1, username);
             ResultSet count = stmt.executeQuery();
             count.next();
@@ -118,12 +121,9 @@ public class UserList {
      * @return true if valid, false otherwise
      */
     public static Boolean isValidEmailAddress(String email) {
-        if (email.contains("@") && email.indexOf("@") != 0 && email.indexOf("@") != email.length() - 1
+        return email.contains("@") && email.indexOf("@") != 0 && email.indexOf("@") != email.length() - 1
                 && email.contains(".") && email.indexOf(".") > email.indexOf("@") && email.indexOf(".") != email
-                .length() - 1) {
-            return true;
-        }
-        return false;
+                .length() - 1;
     }
 
     /**

@@ -102,13 +102,11 @@ public class SubmitPurityReportController {
     public void handleSubmitPressed() throws IOException {
 
         if (_user != null && isInputValid()) {
-//            PurityReportList.addPurityReport(new PurityReport(date.getText(), time.getText(),  _user, Double.parseDouble(latitudeOfWater.getText()),
-//                    Double.parseDouble(longitudeOfWater.getText()),
-//                    conditionOfWaterComboBox.getSelectionModel().getSelectedItem(),Integer.parseInt(contppm.getText()), Integer.parseInt(virusppm.getText())));
             try {
                 PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO purity_report (DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, OVERALL_CONDITION_OF_WATER, VIRUS_PPM, CONTAMINANT_PPM) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                PurityReport newReport = new PurityReport(date.getText(), time.getText(), _user, Double.parseDouble(latitudeOfWater.getText()),
-                        Double.parseDouble(longitudeOfWater.getText()), conditionOfWaterComboBox.getSelectionModel().getSelectedItem(),
+                PurityReport newReport = new PurityReport(date.getText(), time.getText(), _user,
+                        Double.parseDouble(latitudeOfWater.getText()), Double.parseDouble(longitudeOfWater.getText()),
+                        conditionOfWaterComboBox.getSelectionModel().getSelectedItem(),
                         Integer.parseInt(contppm.getText()), Integer.parseInt(virusppm.getText()));
                 String[] dateArray = newReport.getDate().split("/");
                 int year = Integer.parseInt(dateArray[2]) - 1900;

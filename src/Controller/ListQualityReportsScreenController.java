@@ -1,18 +1,10 @@
 package Controller;
 
 import Fxapp.MainFXApplication;
-import Model.ReportList;
 import Model.PurityReportList;
-import Model.User;
-import Model.Account;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import Model.SourceReport;
 import Model.PurityReport;
 
 import java.io.IOException;
@@ -47,7 +39,8 @@ public class ListQualityReportsScreenController {
     private void initialize() {
         //reportList.setCellValueFactory(cellData -> cellData.getValue().getReportNumProperty());
         purityReportList.setItems(PurityReportList.getBackingList());
-        purityReportList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showDetails(newValue));
+        purityReportList.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showDetails(newValue));
 
     }
 

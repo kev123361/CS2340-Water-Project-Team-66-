@@ -1,10 +1,8 @@
 package Controller;
 
 import Fxapp.MainFXApplication;
-import Model.PurityReport;
 import Model.ReportList;
 import Model.SourceReport;
-import Model.PurityReportList;
 
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
@@ -170,7 +168,8 @@ public class AvailabilityScreenController implements Initializable, MapComponent
                                 + "Date: " + sr.getDate() + "<br>\nTime: " + sr.getTime() + "<br>\nReporting User: "
                                 + sr.getReportingUser().getUsername() + "<br>\nLatitude: " + sr.getLatitude()
                                 + "<br>\nLongitude: " + sr.getLongitude() + "<br>\nWater Type: "
-                                + sr.getWaterType().toString() + "<br>\nWater Condition: " + sr.getWaterCondition().toString());
+                                + sr.getWaterType().toString() + "<br>\nWater Condition: " +
+                                sr.getWaterCondition().toString());
                         InfoWindow window = new InfoWindow(infoWindowOptions);
                         window.open(map, marker);
                     });

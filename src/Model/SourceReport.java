@@ -1,11 +1,8 @@
 package Model;
 
-import Fxapp.MainFXApplication;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.sql.PreparedStatement;
 
 /**
  * Represents a water source report
@@ -47,8 +44,8 @@ public class SourceReport {
      * @param waterType the type of water
      * @param waterCondition the condition of the water
      */
-    public SourceReport(String date, String time, User reportingUser, double latitude, double longitude, TypeOfWater waterType,
-                        ConditionOfWater waterCondition) {
+    public SourceReport(String date, String time, User reportingUser, double latitude, double longitude,
+                        TypeOfWater waterType, ConditionOfWater waterCondition) {
         _date.set(date);
         _time.set(time);
         _reportingUser.set(reportingUser);
