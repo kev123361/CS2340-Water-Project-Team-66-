@@ -108,13 +108,13 @@ public class RegistrationScreenController {
 
     }
 
-    @FXML
     /**
      * Handler for pressing register
      * Adds user to the list of users provided input is valid
      *
      * @throws IOException if IO errors occur
      */
+    @FXML
     public void handleRegisterPressed() throws IOException {
         if (isInputValid()) {
 

@@ -14,7 +14,7 @@
           <CategoryAxis label="Month" fx:id="xAxis" />
         </xAxis>
         <yAxis>
-          <NumberAxis fx:id="yAxis" label="Parts per Million" side="LEFT" />
+          <NumberAxis fx:id="yAxis" label="Parts per Million" side="LEFT" upperBound="200.0" />
         </yAxis>
       </BarChart>
       <ButtonBar layoutX="359.0" layoutY="429.0" prefHeight="40.0" prefWidth="200.0">

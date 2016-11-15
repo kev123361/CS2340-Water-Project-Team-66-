@@ -83,10 +83,10 @@ public class ListReportsScreenController {
 
     public boolean isOkClicked() { return _okClicked; }
 
-    @FXML
     /**
      * Handler for add report button being pressed
      */
+    @FXML
     public void addReportPressed() {
         _okClicked = true;
         if (_user.getAccount().equals(Account.USER)) {
@@ -175,10 +175,10 @@ public class ListReportsScreenController {
         }
     }
 
-    @FXML
     /**
      * Pops up a map of all the water reports when View Map button pressed
      */
+    @FXML
     public void viewMapPressed() {
         _okClicked = true;
         Stage availabilityScreen = new Stage();
@@ -186,16 +186,16 @@ public class ListReportsScreenController {
         availabilityScreen.initModality(Modality.WINDOW_MODAL);
         availabilityScreen.initOwner(reportsScreenStage);
 
-        AvailabilityScreenController controller = new AvailabilityScreenController(mainApplication, availabilityScreen);
+        //AvailabilityScreenController controller = new AvailabilityScreenController(mainApplication, availabilityScreen);
         availabilityScreen.show();
     }
 
-    @FXML
     /**
      * Handler for the close button being pressed
      *
      * @throws IOException if any IO errors
      */
+    @FXML
     public void closePressed() throws IOException {
         _okClicked = true;
         reportsScreenStage.close();

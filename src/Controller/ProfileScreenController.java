@@ -107,12 +107,12 @@ public class ProfileScreenController {
         _dialogStage = dialogStage;
     }
 
-    @FXML
     /**
      * Handler for pressing edit profile. Updates user profile if valid input passed
      *
      * @throws IOException if IO error occurs
      */
+    @FXML
     public void handleEditPressed() throws IOException {
         if (isInputValid()) {
             _user.setUsername(username.getText());
@@ -144,12 +144,12 @@ public class ProfileScreenController {
         }
     }
 
-    @FXML
     /**
      * Handler for pressing close. Closes the window and does not edit anything
      *
      * @throws IOException if IO error occurs
      */
+    @FXML
     public void handleClosePressed() throws IOException {
         _okClicked = true;
         _dialogStage.close();

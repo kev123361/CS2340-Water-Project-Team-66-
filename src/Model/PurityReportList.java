@@ -76,8 +76,8 @@ public class PurityReportList {
 
     /**
      *  Checks to make sure date is in format Mo/Da/Year
-     * @param date
-     * @return
+     * @param date date being checked
+     * @return true if valid date, false otherwise
      */
     public static boolean isValidDate(String date) {
         if (date.length() == 10 && date.charAt(2) == '/' && date.charAt(5) == '/' && isInteger(date.substring(0,2))

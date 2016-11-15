@@ -65,7 +65,7 @@ public class MainFXApplication extends Application {
     }
 
     /**
-     * get a reference to the main stagjava.lang.ClassNotFoundException: com.mysql.jdbc.Drivere
+     * get a reference to the main stage
      * @return reference to the main stage
      * */
     public Stage getMainScreen() {

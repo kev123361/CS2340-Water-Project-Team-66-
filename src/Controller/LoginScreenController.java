@@ -58,12 +58,12 @@ public class LoginScreenController {
         _dialogStage = dialogStage;
     }
 
-    @FXML
     /**
      * Handler for pressing login button
      *
      * @throws IOException if IO issue occurs
      */
+    @FXML
     public void handleLoginPressed() throws IOException {
         if (isInputValid()) {
             try {
