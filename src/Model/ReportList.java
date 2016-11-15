@@ -6,9 +6,6 @@ import javafx.collections.ObservableList;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 /**
  * The report list holds all of the water source reports created
@@ -60,7 +57,8 @@ public class ReportList {
                 } else {
                     waterCondition = ConditionOfWater.valueOf("POTABLE");
                 }
-                SourceReport newReport = new SourceReport(date, time, user, latitude, longitude, waterType, waterCondition);
+                SourceReport newReport = new SourceReport(date, time, user,
+                        latitude, longitude, waterType, waterCondition);
                 list.add(newReport);
             }
         } catch (Exception e) {
@@ -112,11 +110,8 @@ public class ReportList {
      * @return true if valid, false otherwise
      */
     public static boolean isValidDate(String date) {
-        if (date.length() == 10 && date.charAt(2) == '/' && date.charAt(5) == '/' && isInteger(date.substring(0,2))
-                && isInteger(date.substring(3,5)) && isInteger(date.substring(6))) {
-            return true;
-        }
-        return false;
+        return date.length() == 10 && date.charAt(2) == '/' && date.charAt(5) == '/' && isInteger(date.substring(0, 2))
+                && isInteger(date.substring(3, 5)) && isInteger(date.substring(6));
     }
 
     /**
@@ -126,10 +121,8 @@ public class ReportList {
      * @return true if valid, false otherwise
      */
     public static boolean isValidTime(String time) {
-        if (time.length() == 5 && time.charAt(2) == ':' && isInteger(time.substring(0,2)) && isInteger(time.substring(3))) {
-            return true;
-        }
-        return false;
+        return time.length() == 5 && time.charAt(2) == ':' &&
+                isInteger(time.substring(0, 2)) && isInteger(time.substring(3));
     }
 
     /**

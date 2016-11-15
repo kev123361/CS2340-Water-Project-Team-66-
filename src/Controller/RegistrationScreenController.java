@@ -129,9 +129,6 @@ public class RegistrationScreenController {
                 stmt.setString(5, email.getText());
                 stmt.setString(6, home.getText());
                 stmt.setString(7, comboBoxTitle.getSelectionModel().getSelectedItem().toString());
-//                stmt.execute("INSERT INTO USER " +
-//                        "(USERNAME, PASSWORD, ID, ACCOUNT, EMAIL, ADDRESS, TITLE) " +
-//                        "VALUES (" + "'" + username.getText() + "," + password.getText() + "," + id.getText() + "," + comboBoxDrop.getSelectionModel().getSelectedItem().toString() + "," + email.getText() + "," + home.getText() + "," + comboBoxTitle.getSelectionModel().getSelectedItem().toString() +")");
                 stmt.executeUpdate();
             } catch (Exception e) {
                 e.printStackTrace();

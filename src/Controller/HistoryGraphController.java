@@ -9,7 +9,8 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Series;
+import javafx.scene.chart.XYChart.Data;
 import javafx.stage.Stage;
 
 import java.text.DateFormatSymbols;
@@ -63,9 +64,9 @@ public class HistoryGraphController {
      * Populates the graph with data
      */
     public void populateGraph() {
-        XYChart.Series virusSeries = new XYChart.Series();
+        Series virusSeries = new Series();
         virusSeries.setName("Virus PPM");
-        XYChart.Series contaminantSeries = new XYChart.Series();
+        Series contaminantSeries = new Series();
         contaminantSeries.setName("Contaminant PPM");
 
         int[] monthCounterVirus = new int[12];
@@ -94,10 +95,10 @@ public class HistoryGraphController {
 
         // Create a XYChart.Data object for each month and add it to the respective series
         for (int i = 0; i < monthCounterVirus.length; i++) {
-            virusSeries.getData().add(new XYChart.Data(monthNames.get(i), monthCounterVirus[i]));
+            virusSeries.getData().add(new Data(monthNames.get(i), monthCounterVirus[i]));
         }
         for (int i = 0; i < monthCounterContaminant.length; i++) {
-            contaminantSeries.getData().add(new XYChart.Data(monthNames.get(i), monthCounterContaminant[i]));
+            contaminantSeries.getData().add(new Data(monthNames.get(i), monthCounterContaminant[i]));
         }
 
         qualityGraph.getData().addAll(virusSeries, contaminantSeries);

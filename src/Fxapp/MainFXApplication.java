@@ -17,8 +17,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,7 +47,8 @@ public class MainFXApplication extends Application {
         initRootLayout(primaryStage);
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://cleanwater.cyvxbxancn7h.us-east-1.rds.amazonaws.com:3306/cleanwaterdb", "shobhit", "cshosho11");
+            con = DriverManager.getConnection("jdbc:mysql://cleanwater.cyvxbxancn7h.us-east-1.rds.amazonaws.com:3306/cleanwaterdb",
+                    "shobhit", "cshosho11");
 //            Statement stmt=con.createStatement();
 //            ResultSet rs=stmt.executeQuery("select * from user");
 //            while(rs.next())

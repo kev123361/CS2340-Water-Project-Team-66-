@@ -10,7 +10,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import sun.applet.Main;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -108,14 +107,12 @@ public class SubmitReportController {
     public void handleSubmitPressed() throws IOException {
 
         if (isInputValid()) {
-//            ReportList.addReport(new SourceReport(date.getText(), time.getText(), _user, Double.parseDouble(latitudeOfWater.getText()),
-//                    Double.parseDouble(longitudeOfWater.getText()), typeOfWaterComboBox.getSelectionModel().getSelectedItem(),
-//                    conditionOfWaterComboBox.getSelectionModel().getSelectedItem()));
             try {
                 PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO source_report (DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, WATER_TYPE, WATER_CONDITION) VALUES (?, ?, ?, ?, ?, ?, ?)");
-                SourceReport newReport = new SourceReport(date.getText(), time.getText(), _user, Double.parseDouble(latitudeOfWater.getText()),
-                    Double.parseDouble(longitudeOfWater.getText()), typeOfWaterComboBox.getSelectionModel().getSelectedItem(),
-                    conditionOfWaterComboBox.getSelectionModel().getSelectedItem());
+                SourceReport newReport = new SourceReport(date.getText(), time.getText(), _user,
+                        Double.parseDouble(latitudeOfWater.getText()), Double.parseDouble(longitudeOfWater.getText()),
+                        typeOfWaterComboBox.getSelectionModel().getSelectedItem(),
+                        conditionOfWaterComboBox.getSelectionModel().getSelectedItem());
                 String[] dateArray = newReport.getDate().split("/");
                 int year = Integer.parseInt(dateArray[2]) - 1900;
                 int month = Integer.parseInt(dateArray[0]) - 1;

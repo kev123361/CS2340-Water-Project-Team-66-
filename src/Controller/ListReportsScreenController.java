@@ -41,7 +41,8 @@ public class ListReportsScreenController {
     @FXML
     private void initialize() {
         reportList.setItems(ReportList.getBackingList());
-        reportList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showDetails(newValue));
+        reportList.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showDetails(newValue));
     }
 
     /**
@@ -193,7 +194,6 @@ public class ListReportsScreenController {
         availabilityScreen.initModality(Modality.WINDOW_MODAL);
         availabilityScreen.initOwner(reportsScreenStage);
 
-        //AvailabilityScreenController controller = new AvailabilityScreenController(mainApplication, availabilityScreen);
         availabilityScreen.show();
     }
 

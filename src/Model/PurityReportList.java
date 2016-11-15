@@ -41,7 +41,8 @@ public class PurityReportList {
                 OverallConditionOfWater condition = OverallConditionOfWater.valueOf(table.getString(6).toUpperCase());
                 int virusPPM = table.getInt(7);
                 int contaminantPPM = table.getInt(8);
-                PurityReport newReport = new PurityReport(date, time, user, latitude, longitude, condition, virusPPM, contaminantPPM);
+                PurityReport newReport = new PurityReport(date, time, user, latitude, longitude,
+                        condition, virusPPM, contaminantPPM);
                 list.add(newReport);
             }
         } catch (Exception e) {
@@ -90,11 +91,8 @@ public class PurityReportList {
      * @return true if valid date, false otherwise
      */
     public static boolean isValidDate(String date) {
-        if (date.length() == 10 && date.charAt(2) == '/' && date.charAt(5) == '/' && isInteger(date.substring(0,2))
-                && isInteger(date.substring(3,5)) && isInteger(date.substring(6))) {
-            return true;
-        }
-        return false;
+        return date.length() == 10 && date.charAt(2) == '/' && date.charAt(5) == '/' && isInteger(date.substring(0, 2))
+                && isInteger(date.substring(3, 5)) && isInteger(date.substring(6));
     }
 
     /**

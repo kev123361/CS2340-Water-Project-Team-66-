@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import Model.Account;
 import Model.Title;
 import Model.UserList;
-import sun.applet.Main;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
