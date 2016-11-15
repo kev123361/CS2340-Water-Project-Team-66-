@@ -46,7 +46,7 @@ public class AvailabilityScreenController implements Initializable, MapComponent
     private GoogleMap map;
 
     //Reference to main application
-    private MainFXApplication mainApp;
+    //private final MainFXApplication mainApp;
 
     //A reference to the current stage
     private Stage stage;
@@ -59,7 +59,6 @@ public class AvailabilityScreenController implements Initializable, MapComponent
      * @param stage the stage in which this map is being displayed
      */
     public AvailabilityScreenController(MainFXApplication app, Stage stage) {
-        mainApp = app;
         this.stage = stage;
         setUpMapView(stage);
     }
@@ -159,7 +158,7 @@ public class AvailabilityScreenController implements Initializable, MapComponent
             MarkerOptions markerOptions = new MarkerOptions();
             LatLong loc = new LatLong(sr.getLatitude(), sr.getLongitude());
 
-            markerOptions.position(loc).visible(Boolean.TRUE).title("Source Report " + sr.getReportNum());
+            markerOptions.position(loc).visible(Boolean.TRUE).title("Source Report");
 
             Marker marker = new Marker(markerOptions);
 
@@ -167,7 +166,7 @@ public class AvailabilityScreenController implements Initializable, MapComponent
                     UIEventType.click,
                     (JSObject obj) -> {
                         InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
-                        infoWindowOptions.content("<h2>Report " + sr.getReportNum() + "</h2>"
+                        infoWindowOptions.content("<h2>Report </h2>"
                                 + "Date: " + sr.getDate() + "<br>\nTime: " + sr.getTime() + "<br>\nReporting User: "
                                 + sr.getReportingUser().getUsername() + "<br>\nLatitude: " + sr.getLatitude()
                                 + "<br>\nLongitude: " + sr.getLongitude() + "<br>\nWater Type: "

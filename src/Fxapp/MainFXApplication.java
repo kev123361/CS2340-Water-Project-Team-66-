@@ -56,7 +56,7 @@ public class MainFXApplication extends Application {
 //                System.out.println(rs.getString(1) + rs.getString(2));
 //            con.close();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
@@ -213,7 +213,7 @@ public class MainFXApplication extends Application {
             //controller.setUser(user);
             controller.setUser(UserList.getCurrentUser());
 
-            controller.setMainApplication(this);
+            //controller.setMainApplication(this);
 
             // Show the dialog and wait until the user closes it
             reportScreen.show();
@@ -252,7 +252,7 @@ public class MainFXApplication extends Application {
             //controller.setUser(user);
             controller.setUser(UserList.getCurrentUser());
 
-            controller.setMainApplication(this);
+            //controller.setMainApplication(this);
 
             // Show the dialog and wait until the user closes it
             reportScreen.show();
@@ -419,7 +419,7 @@ public class MainFXApplication extends Application {
             ListQualityReportsScreenController controller = loader.getController();
             controller.setQReportsScreenStage(listQualityReportsScreenStage);
             // Set user into controller
-            controller.setUser(UserList.getCurrentUser());
+            //controller.setUser(UserList.getCurrentUser());
 
             controller.setMainApplication(this);
 

@@ -87,9 +87,10 @@ public class ProfileScreenController {
         //set current user
         _user = user;
 
-        if (_user == null) {
-            System.out.println("User was null");
-        }
+        //To be replaced when logging comes
+        //if (_user == null) {
+            //System.out.println("User was null");
+        //}
 
         //show profile data in gui fields
         username.setText(user.getUsername());
@@ -137,7 +138,7 @@ public class ProfileScreenController {
                 stmt.setString(8, UserList.getCurrentUser().getUsername());
                 stmt.executeUpdate();
             } catch (Exception e) {
-                System.out.print(e);
+                e.printStackTrace();
             }
 
             _okClicked = true;

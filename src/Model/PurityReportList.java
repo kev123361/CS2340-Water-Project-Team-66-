@@ -45,7 +45,7 @@ public class PurityReportList {
                 list.add(newReport);
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return list;
 

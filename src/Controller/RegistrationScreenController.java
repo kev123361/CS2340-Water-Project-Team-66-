@@ -93,18 +93,16 @@ public class RegistrationScreenController {
         //remember the current user
         _user = user;
 
-        if (_user == null) {
-            System.out.println("User was null");
+        if (_user != null) {
+            //make the data show up in the gui fields
+            username.setText("Enter a Username");
+            password.setText("Enter a Password");
+            id.setText("Create an Id");
+            comboBoxDrop.setValue(Account.USER);
+            email.setText("Enter an Email Address");
+            home.setText("Enter a Home Address");
+            comboBoxTitle.setValue(Title.MR); //just using the first one in the enum
         }
-
-        //make the data show up in the gui fields
-        username.setText("Enter a Username");
-        password.setText("Enter a Password");
-        id.setText("Create an Id");
-        comboBoxDrop.setValue(Account.USER);
-        email.setText("Enter an Email Address");
-        home.setText("Enter a Home Address");
-        comboBoxTitle.setValue(Title.MR); //just using the first one in the enum
 
     }
 
@@ -136,8 +134,7 @@ public class RegistrationScreenController {
 //                        "VALUES (" + "'" + username.getText() + "," + password.getText() + "," + id.getText() + "," + comboBoxDrop.getSelectionModel().getSelectedItem().toString() + "," + email.getText() + "," + home.getText() + "," + comboBoxTitle.getSelectionModel().getSelectedItem().toString() +")");
                 stmt.executeUpdate();
             } catch (Exception e) {
-                System.out.println("hello");
-                System.out.println(e.getMessage());
+                e.printStackTrace();
             }
             _okClicked = true;
             _dialogStage.close();

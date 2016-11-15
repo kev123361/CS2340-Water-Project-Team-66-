@@ -40,10 +40,10 @@ public class WelcomeScreenController {
 
     /**
      * Sets the stage for this controller
-     * @param welcomeStage the stage
+     * @param stage the stage
      */
-    public void setWelcomeStage(Stage welcomeStage) {
-        welcomeStage = welcomeStage;
+    public void setWelcomeStage(Stage stage) {
+        this.welcomeStage = stage;
     }
 
     /**
