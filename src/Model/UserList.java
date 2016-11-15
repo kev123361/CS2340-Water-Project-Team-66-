@@ -135,14 +135,13 @@ public class UserList {
      * @param home the home address
      * @return true if valid, false otherwise
      */
-    public static Boolean isValidHomeAddress(String home) {
+    public static boolean isValidHomeAddress(String home) {
         int commaCount = 0;
         int spaceCount = 0;
-        for (int i = 0; i < home.length() - 1; i++) {
-            if (home.charAt(i) == ',') {
-                commaCount++;
-            } else if (commaCount == 2 && home.charAt(i) == ' ') {
+        for (int i = 0; i < home.length() - 2; i++) {
+            if (home.charAt(i) == ',' && home.charAt(i + 1) == ' ') {
                 spaceCount++;
+                commaCount++;
             }
         }
         return commaCount == 2 && spaceCount == 2;
