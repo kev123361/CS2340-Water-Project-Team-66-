@@ -136,7 +136,7 @@ public class ListReportsScreenController {
             controller.setUser(_user);
             controller.setReport();
 
-            controller.setMainApplication(mainApplication);
+            //controller.setMainApplication(mainApplication);
 
             // Show the dialog and wait until the user closes it
             reportScreen.show();
