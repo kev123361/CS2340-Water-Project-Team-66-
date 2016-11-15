@@ -53,12 +53,12 @@ public class UserMainScreenController {
         return _okClicked;
     }
 
-    @FXML
     /**
      * Handler for pressing logout button
      *
      * @throws IOException if IO issues occur
      */
+    @FXML
     public void handleLogoutPressed() throws IOException {
         //Go back to the welcome screen
         _okClicked = true;
@@ -77,12 +77,12 @@ public class UserMainScreenController {
         }
     }
 
-    @FXML
     /**
      * Handler for pressing view profile
      *
      * @throws IOException if IO issues occur
      */
+    @FXML
     public void handleViewProfilePressed() throws IOException {
         _okClicked = true;
         mainApplication.showProfileScreen();

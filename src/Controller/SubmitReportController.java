@@ -101,13 +101,13 @@ public class SubmitReportController {
         time.setText("Of the form: HH:MM (24 hour clock)");
     }
 
-    @FXML
     /**
      * Handler for pressing submit
      * Adds report to report list if valid
      *
      * @throws IOException if IO errors occur
      */
+    @FXML
     public void handleSubmitPressed() throws IOException {
 
         if (isInputValid()) {
@@ -149,10 +149,10 @@ public class SubmitReportController {
         return _okClicked;
     }
 
-    @FXML
     /**
      * Handler for pressing cancel. Closes out of the registration screen
      */
+    @FXML
     public void handleCancelPressed() {
         _okClicked = true;
         _dialogStage.close();

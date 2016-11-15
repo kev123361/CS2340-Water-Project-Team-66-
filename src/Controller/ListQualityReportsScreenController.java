@@ -88,20 +88,11 @@ public class ListQualityReportsScreenController {
     public boolean isOkClicked() { return _okClicked; }
 
 
-    /**
-     * Pops up the submit report screen when add report pressed
-     *
-     * @return true if load successful, false otherwise
-     */
-
-
-
-    @FXML
-    /**
-     * Handler for the close button being pressed
+    /** Handler for the close button being pressed
      *
      * @throws IOException if any IO errors
      */
+    @FXML
     public void closePressed() throws IOException {
         _okClicked = true;
         reportsScreenStage.close();

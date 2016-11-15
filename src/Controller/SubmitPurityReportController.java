@@ -94,13 +94,14 @@ public class SubmitPurityReportController {
         virusppm.setText("Enter the number of viruses per million");
 
     }
-    @FXML
+
     /**
      * Handler for pressing submit
      * Adds report to report list if valid
      *
      * @throws IOException if IO errors occur
      */
+    @FXML
     public void handleSubmitPressed() throws IOException {
         if (_user == null) {
             System.out.println("USER IS NULL");
@@ -144,10 +145,10 @@ public class SubmitPurityReportController {
         return _okClicked;
     }
 
-    @FXML
     /**
      * Handler for pressing cancel. Closes out of the registration screen
      */
+    @FXML
     public void handleCancelPressed() {
 
         _okClicked = true;
