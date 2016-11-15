@@ -115,7 +115,7 @@ public class SubmitReportController {
 //                    Double.parseDouble(longitudeOfWater.getText()), typeOfWaterComboBox.getSelectionModel().getSelectedItem(),
 //                    conditionOfWaterComboBox.getSelectionModel().getSelectedItem()));
             try {
-                PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO SOURCE_REPORT (DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, WATER_TYPE, WATER_CONDITION) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO source_report (DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, WATER_TYPE, WATER_CONDITION) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 SourceReport newReport = new SourceReport(date.getText(), time.getText(), _user, Double.parseDouble(latitudeOfWater.getText()),
                     Double.parseDouble(longitudeOfWater.getText()), typeOfWaterComboBox.getSelectionModel().getSelectedItem(),
                     conditionOfWaterComboBox.getSelectionModel().getSelectedItem());

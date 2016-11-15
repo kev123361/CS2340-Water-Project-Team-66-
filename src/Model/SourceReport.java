@@ -38,11 +38,6 @@ public class SourceReport {
         _reportingUser.set(reportingUser);
         _reportNum.set(reportNumCounter);
         reportNumCounter++;
-//        try {
-//            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT REPORT_NUM FROM SOURCE_REPORT WHERE ");
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
         _latitude.set(latitude);
         _longitude.set(longitude);
         _waterType.set(waterType);

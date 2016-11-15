@@ -111,7 +111,7 @@ public class SubmitPurityReportController {
 //                    Double.parseDouble(longitudeOfWater.getText()),
 //                    conditionOfWaterComboBox.getSelectionModel().getSelectedItem(),Integer.parseInt(contppm.getText()), Integer.parseInt(virusppm.getText())));
             try {
-                PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO PURITY_REPORT (DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, OVERALL_CONDITION_OF_WATER, VIRUS_PPM, CONTAMINANT_PPM) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO purity_report (DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, OVERALL_CONDITION_OF_WATER, VIRUS_PPM, CONTAMINANT_PPM) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
                 PurityReport newReport = new PurityReport(date.getText(), time.getText(), _user, Double.parseDouble(latitudeOfWater.getText()),
                         Double.parseDouble(longitudeOfWater.getText()), conditionOfWaterComboBox.getSelectionModel().getSelectedItem(),
                         Integer.parseInt(contppm.getText()), Integer.parseInt(virusppm.getText()));

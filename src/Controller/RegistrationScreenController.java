@@ -123,7 +123,7 @@ public class RegistrationScreenController {
                     comboBoxDrop.getSelectionModel().getSelectedItem(), email.getText(), home.getText(),
                     comboBoxTitle.getSelectionModel().getSelectedItem()));
             try {
-                PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO USER (USERNAME, PASSWORD, ID, ACCOUNT, EMAIL, ADDRESS, TITLE) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO user (USERNAME, PASSWORD, ID, ACCOUNT, EMAIL, ADDRESS, TITLE) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 stmt.setString(1, username.getText());
                 stmt.setString(2, password.getText());
                 stmt.setString(3, id.getText());
@@ -136,6 +136,7 @@ public class RegistrationScreenController {
 //                        "VALUES (" + "'" + username.getText() + "," + password.getText() + "," + id.getText() + "," + comboBoxDrop.getSelectionModel().getSelectedItem().toString() + "," + email.getText() + "," + home.getText() + "," + comboBoxTitle.getSelectionModel().getSelectedItem().toString() +")");
                 stmt.executeUpdate();
             } catch (Exception e) {
+                System.out.println("hello");
                 System.out.println(e.getMessage());
             }
             _okClicked = true;

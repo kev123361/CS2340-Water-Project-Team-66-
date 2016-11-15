@@ -123,7 +123,7 @@ public class ProfileScreenController {
             _user.setHomeAddress(home.getText());
             _user.setTitle(comboBoxTitle.getSelectionModel().getSelectedItem());
             try {
-                PreparedStatement stmt = MainFXApplication.con.prepareStatement("UPDATE USER SET USERNAME = ?, PASSWORD = ?, ID = ?, ACCOUNT = ?, EMAIL = ?, ADDRESS = ?, TITLE = ? WHERE USERNAME = ?");
+                PreparedStatement stmt = MainFXApplication.con.prepareStatement("UPDATE user SET USERNAME = ?, PASSWORD = ?, ID = ?, ACCOUNT = ?, EMAIL = ?, ADDRESS = ?, TITLE = ? WHERE USERNAME = ?");
                 stmt.setString(1, username.getText());
                 stmt.setString(2, password.getText());
                 stmt.setString(3, id.getText());

@@ -40,7 +40,7 @@ public class ReportList {
     public static ObservableList<SourceReport> getBackingList() {
         ObservableList<SourceReport> list = FXCollections.observableArrayList();
         try {
-            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, WATER_TYPE, WATER_CONDITION FROM SOURCE_REPORT");
+            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, WATER_TYPE, WATER_CONDITION FROM source_report");
             ResultSet table = stmt.executeQuery();
             while (table.next()) {
                 String date = table.getDate(1).toString();

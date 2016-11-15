@@ -67,7 +67,7 @@ public class LoginScreenController {
     public void handleLoginPressed() throws IOException {
         if (isInputValid()) {
             try {
-                PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT * FROM USER WHERE USERNAME = ?");
+                PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT * FROM user WHERE USERNAME = ?");
                 stmt.setString(1, username.getText());
                 ResultSet rslt = stmt.executeQuery();
                 rslt.next();

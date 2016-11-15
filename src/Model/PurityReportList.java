@@ -20,7 +20,7 @@ public class PurityReportList {
     public static ObservableList<PurityReport> getBackingList() {
         ObservableList<PurityReport> list = FXCollections.observableArrayList();
         try {
-            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, OVERALL_CONDITION_OF_WATER, VIRUS_PPM, CONTAMINANT_PPM FROM PURITY_REPORT");
+            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, OVERALL_CONDITION_OF_WATER, VIRUS_PPM, CONTAMINANT_PPM FROM purity_report");
             ResultSet table = stmt.executeQuery();
             while (table.next()) {
                 String date = table.getDate(1).toString();
