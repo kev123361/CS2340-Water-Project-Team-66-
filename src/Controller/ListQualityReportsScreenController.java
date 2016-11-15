@@ -85,6 +85,9 @@ public class ListQualityReportsScreenController {
         detailsList.setItems(report.getDetails());
     }
 
+    /**
+     * @return the state of _okClicked
+     */
     public boolean isOkClicked() { return _okClicked; }
 
 
@@ -100,6 +103,11 @@ public class ListQualityReportsScreenController {
         //mainApplication.showListReportsScreen();
     }
 
+    /**
+     * Handler for the View Graph button being pressed
+     *
+     * @throws IOException if any IO errors
+     */
     @FXML
     public void handleViewGraphPressed() throws IOException {
         mainApplication.showGraphSelectScreen();

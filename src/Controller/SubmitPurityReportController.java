@@ -76,8 +76,9 @@ public class SubmitPurityReportController {
     }
 
     /**
-     * Sets the user for this screen.
+     * Sets the user for this screen
      *
+     * @param user the user to be set
      */
     public void setUser(User user) { _user = user; }
 
@@ -141,6 +142,10 @@ public class SubmitPurityReportController {
         }
 
     }
+
+    /**
+     * @return the state of _okClicked
+     */
     public boolean isOkClicked() {
         return _okClicked;
     }

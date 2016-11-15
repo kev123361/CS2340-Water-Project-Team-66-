@@ -60,6 +60,9 @@ public class MainFXApplication extends Application {
         }
     }
 
+    /**
+     * @return the root layout
+     */
     public Parent getRootLayout() {
         return rootLayout;
     }
@@ -184,6 +187,11 @@ public class MainFXApplication extends Application {
         }
     }
 
+    /**
+     * Loads the Submit Report Screen
+     *
+     * @return whether or not the screen successfully loaded
+     */
     public boolean showSubmitReportScreen() {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
@@ -217,6 +225,12 @@ public class MainFXApplication extends Application {
             return false;
         }
     }
+
+    /**
+     * Loads the Submit Purity Report Screen
+     *
+     * @return whether or not the screen successfully loaded
+     */
     public boolean showSubmitPurityReportScreen() {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
@@ -323,6 +337,11 @@ public class MainFXApplication extends Application {
         }
     }
 
+    /**
+     * Loads the List Reports Screen
+     *
+     * @return whether or not the screen successfully loaded
+     */
     public boolean showListReportsScreen() {
         if (UserList.getCurrentUser().getAccount().equals(Account.ADMIN)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -366,6 +385,11 @@ public class MainFXApplication extends Application {
         }
     }
 
+    /**
+     * Loads the View Purity Report Screen
+     *
+     * @return whether or not the screen successfully loaded
+     */
     public boolean viewQualityReportListScreen() {
         if (!UserList.getCurrentUser().getAccount().equals(Account.MANAGER)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -409,6 +433,11 @@ public class MainFXApplication extends Application {
         }
     }
 
+    /**
+     * Loads the Graph Select Screen
+     *
+     * @return whether or not the screen successfully loaded
+     */
     public boolean showGraphSelectScreen() {
         try {
             // Load the fxml file and create new stage for the popup dialog
@@ -441,6 +470,14 @@ public class MainFXApplication extends Application {
         }
     }
 
+    /**
+     * Loads the History Graph Screen
+     *
+     * @param targetLat the inputted latitude by the user
+     * @param targetLong the inputted longitude by the user
+     * @param targetYear the inputted year by the user
+     * @return whether or not the screen successfully loaded
+     */
     public boolean showHistoryGraphScreen(double targetLat, double targetLong, int targetYear) {
         try {
             // Load the fxml file and create new stage for the popup dialog

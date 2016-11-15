@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
  * A water source report can be entered by users, workers, and managers
  *
  * @author Kyle Pelton
- * @version 1.1
+ * @version 1.2
  */
 public class SourceReport {
 
@@ -26,11 +26,27 @@ public class SourceReport {
     private final ObjectProperty<TypeOfWater> _waterType = new SimpleObjectProperty<>();
     private final ObjectProperty<ConditionOfWater> _waterCondition = new SimpleObjectProperty<>();
 
+    /**
+     * Empty constructor of a Source Report
+     * This implements constructor chaining
+     */
     public SourceReport() {
         this(null, null, null, 0.0, 0.0, null, null);
     }
 
 
+    /**
+     * Creates a Source Report
+     * Should only be called when these values are valid, so no checking needed
+     *
+     * @param date the date the Source Report was added
+     * @param time the time the Source Report was added
+     * @param reportingUser the user reporting the Source Report
+     * @param latitude the latitude at which the Source Report was reported
+     * @param longitude the longitude at which the Source Report was reported
+     * @param waterType the type of water
+     * @param waterCondition the condition of the water
+     */
     public SourceReport(String date, String time, User reportingUser, double latitude, double longitude, TypeOfWater waterType,
                         ConditionOfWater waterCondition) {
         _date.set(date);
@@ -44,61 +60,135 @@ public class SourceReport {
         _waterCondition.set(waterCondition);
     }
 
-    /* ****************************************
-       All the property getters and setters
+    /**
+     * @return the date of the Source Report
      */
     public String getDate() { return _date.get(); }
+
+    /**
+     * Set the date for the Source Report
+     * @param newDate the date to set in the Source Report
+     */
     public void setDate(String newDate) { _date.set(newDate); }
+
+    /**
+     * @return the StringProperty representation of the date
+     */
     public StringProperty getDateProperty() { return _date; }
 
+    /**
+     * @return the time for the Source Report
+     */
     public String getTime() { return _time.get(); }
+
+    /**
+     * Set the time for the Source Report
+     * @param newTime the time to set in the Source Report
+     */
     public void setTime(String newTime) { _time.set(newTime); }
+
+    /**
+     * @return the StringProperty representation of the time
+     */
     public StringProperty getTimeProperty() { return _time; }
 
+    /**
+     * @return the reporting user of the Source Report
+     */
     public User getReportingUser() { return _reportingUser.get(); }
+
+    /**
+     * Set the reporting user for the Source Report
+     * @param newUser the new report user to add to the Source Report
+     */
     public void setReportingUser(User newUser) { _reportingUser.set(newUser); }
+
+    /**
+     * @return the ObjectProperty representation of the reporting user
+     */
     public ObjectProperty<User> getReportingUserProperty() { return _reportingUser; }
 
+    /**
+     * @return the number of the Source Report
+     */
     public int getReportNum() { return _reportNum.get(); }
-    public void setReportNum(int newReportNum) { _reportNum.set(newReportNum); }
+
+    /**
+     * @return the IntegerProperty representation of the number of the report
+     */
     public IntegerProperty getReportNumProperty() { return _reportNum; }
 
-    /*public String getLatitude() { return _latitude.get(); }
-    public void setLatitude(String newLat) { _latitude.set(newLat); }
-    public StringProperty getLatitudeProperty() { return _latitude; }
-
-    public String getLongitude() { return _longitude.get(); }
-    public void setLongitude(String newLong) { _longitude.set(newLong); }
-    public StringProperty getLongitudeProperty() { return _longitude; }*/
-
+    /**
+     * @return the latitude of the Source Report
+     */
     public double getLatitude() { return _latitude.get(); }
+
+    /**
+     * Set the latitude to a new latitude
+     * @param newLat the latitude to set in the Source Report
+     */
     public void setLatitude(double newLat) { _latitude.set(newLat); }
+
+    /**
+     * @return the DoubleProperty representation of the latitude
+     */
     public DoubleProperty getLatitudeProperty() { return _latitude; }
 
+    /**
+     * @return the longitude of the Source Report
+     */
     public double getLongitude() { return _longitude.get(); }
+
+    /**
+     * Set the longitude to a new longitude
+     * @param newLong the longitude to set in the Source Report
+     */
     public void setLongitude(double newLong) { _longitude.set(newLong); }
+
+    /**
+     * @return the DoubleProperty representation of the longitude
+     */
     public DoubleProperty getLongitudeProperty() { return _longitude; }
 
+    /**
+     * @return the type of water for the Source Report
+     */
     public TypeOfWater getWaterType() { return _waterType.get(); }
+
+    /**
+     * Set the type of water for the Source Report
+     * @param newWT the new type of water to set for the Source Report
+     */
     public void setWaterType(TypeOfWater newWT) { _waterType.set(newWT); }
+
+    /**
+     * @return the ObjectProperty representation of the water type
+     */
     public ObjectProperty<TypeOfWater> getWaterTypeProperty() { return _waterType; }
 
+    /**
+     * @return the condition of water for the Source Report
+     */
     public ConditionOfWater getWaterCondition() { return _waterCondition.get(); }
+
+    /**
+     * Set the condition of water for the Source Report
+     * @param newWC the new condition of water for the Source Report
+     */
     public void setWaterCondition(ConditionOfWater newWC) { _waterCondition.set(newWC); }
+
+    /**
+     * @return the ObjectProperty representation of the condition of water
+     */
     public ObjectProperty<ConditionOfWater> getWaterConditionProperty() { return _waterCondition; }
 
-    //public ObservableList<String> getDetails() {
-    //   ObservableList<String> details = FXCollections.observableArrayList();
-    //   details.add("Date: " + getDate());
-    //   details.add("Time: " + getTime());
-    //   details.add("Reporting User: " + getReportingUser().toString());
-    //   details.add("Latitude: " + getLatitude().toString());
-    //   details.add("Longitude: " + getLongitude().toString());
-    //   details.add("Water Type: " + getWaterType().toString());
-    //   details.add("Water Condition: " + getWaterCondition().toString());
-    //   return details;
-    //}
 
+    /**
+     * Creates an observable list of strings with all the properties of a Source Report
+     * Used in outputting each Source Report to the screen
+     *
+     * @return an observable list of strings with all the properties of this Source Report
+     */
     public ObservableList<String> getDetails() {
         ObservableList<String> details = FXCollections.observableArrayList();
         details.add("Date: " + getDate());
@@ -111,6 +201,7 @@ public class SourceReport {
         return details;
     }
 
+    @Override
     public String toString() {
         return "Source Report: " + _reportNum.getValue();
     }

@@ -28,9 +28,6 @@ public class ListReportsScreenController {
     //A reference to the main application
     private MainFXApplication mainApplication;
 
-
-
-
     //The user currently signed in
     private User _user;
 
@@ -81,6 +78,9 @@ public class ListReportsScreenController {
         detailsList.setItems(report.getDetails());
     }
 
+    /**
+     * @return the state of _okClicked
+     */
     public boolean isOkClicked() { return _okClicked; }
 
     /**
@@ -95,6 +95,10 @@ public class ListReportsScreenController {
             showReportChoiceScreen();
         }
     }
+
+    /**
+     * Handler for view quality report being pressed
+     */
     public void viewQualityReportPressed() {
         _okClicked = true;
 
@@ -110,7 +114,6 @@ public class ListReportsScreenController {
      *
      * @return true if load successful, false otherwise
      */
-
     public boolean showSubmitReportScreen() {
         try {
             // Load the fxml file and create a new stage
@@ -146,6 +149,10 @@ public class ListReportsScreenController {
         }
     }
 
+    /**
+     * Pops up the Report Choice screen when applicable
+     * @return whether or not the screen successfully loaded
+     */
     public boolean showReportChoiceScreen() {
         try {
             // Load the fxml file and create a new stage

@@ -8,15 +8,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- * Created by 2shob on 10/26/2016.
+ * Backing list of Purity Reports
+ *
+ * @author Shobhit Srivastrava
+ * @version 1.0
  */
 public class PurityReportList {
     private final static ObservableList<PurityReport> backingList = FXCollections.observableArrayList();
 
+    /**
+     * Adds a Purity Report to the backing list
+     * @param report the report to add
+     */
     public static void addPurityReport(PurityReport report) {
         backingList.add(report);
     }
 
+    /**
+     * @return the backing list for the Purity Reports
+     */
     public static ObservableList<PurityReport> getBackingList() {
         ObservableList<PurityReport> list = FXCollections.observableArrayList();
         try {
@@ -87,6 +97,11 @@ public class PurityReportList {
         return false;
     }
 
+    /**
+     * Checks if a string is an integer
+     * @param input the string inputted
+     * @return whether the string is an integer
+     */
     public static boolean isInteger(String input) {
         String digits = "0123456789";
         for (int i = 0; i < input.length(); i++) {
@@ -103,6 +118,11 @@ public class PurityReportList {
         return true;
     }
 
+    /**
+     * Checks whether a string is a double
+     * @param input the string inputted
+     * @return whether the string is a double or not
+     */
     public static boolean isDouble(String input) {
         String digits = "0123456789.";
         for (int i = 0; i < input.length(); i++) {

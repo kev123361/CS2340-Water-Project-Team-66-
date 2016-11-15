@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * A controller for the main screen of the application
+ * A controller for the Main Screen of the application
  *
  * @author Kishan Chudasama
  * @author Kyle Pelton
@@ -47,8 +47,14 @@ public class UserMainScreenController {
         mainScreenStage = newStage;
     }
 
+    /**
+     * @return the main screen stage
+     */
     public Stage getMainScreenStage() { return mainScreenStage; }
 
+    /**
+     * @return the state of _okClicked
+     */
     public boolean isOkClicked() {
         return _okClicked;
     }
@@ -68,6 +74,9 @@ public class UserMainScreenController {
         mainScreenStage.close();
     }
 
+    /**
+     * Handler for when Submit Report is pressed
+     */
     @FXML
     public void submitReportPressed() {
         if (!UserList.getCurrentUser().getAccount().equals(Account.ADMIN)) {

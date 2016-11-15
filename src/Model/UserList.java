@@ -60,6 +60,10 @@ public class UserList {
         return currentUser;
     }
 
+    /**
+     * Set the current user
+     * @param user the current user to be set
+     */
     public static void setCurrentUser(User user) {
         currentUser = user;
     }

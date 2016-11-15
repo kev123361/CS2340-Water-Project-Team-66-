@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 
 /**
- * Controller for the profile screen
+ * Controller for the Profile Screen
  *
  * @author Kevin Tang
  * @author Kyle Pelton
@@ -57,6 +57,9 @@ public class ProfileScreenController {
         mainApplication = mainApp;
     }
 
+    /**
+     * Calls made before the screen comes up
+     */
     @FXML
     public void initialize() {
         comboBoxAccount.setItems(FXCollections.observableArrayList(Account.values()));
@@ -157,6 +160,9 @@ public class ProfileScreenController {
         mainApplication.showMainScreen();
     }
 
+    /**
+     * @return the state of _okClicked
+     */
     public boolean isOkClicked() {return _okClicked;}
 
     /**

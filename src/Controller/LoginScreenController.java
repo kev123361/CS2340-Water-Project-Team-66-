@@ -87,6 +87,9 @@ public class LoginScreenController {
         }
     }
 
+    /**
+     * @return the state of _okClicked
+     */
     public boolean isOkClicked() {
         return _okClicked;
     }

@@ -20,7 +20,7 @@ import java.sql.*;
 import java.io.IOException;
 
 /**
- * The controller for the welcome screen
+ * The controller for the Registration Screen
  *
  * @author Shivani Bandaru
  * @version 1.0
@@ -150,6 +150,9 @@ public class RegistrationScreenController {
 
     }
 
+    /**
+     * @return the state of _okClicked
+     */
     public boolean isOkClicked() {
         return _okClicked;
     }

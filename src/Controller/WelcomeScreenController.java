@@ -46,6 +46,9 @@ public class WelcomeScreenController {
         welcomeStage = welcomeStage;
     }
 
+    /**
+     * @return the state of _okClicked
+     */
     public boolean isOkClicked() {
         return isOkClicked;
     }
