@@ -1,6 +1,5 @@
 package Controller;
 
-//import Controller.WelcomeScreenController;
 import Fxapp.MainFXApplication;
 import Model.Account;
 import Model.UserList;
@@ -54,55 +53,6 @@ public class UserMainScreenController {
         return _okClicked;
     }
 
-    /*public void showMainScreen() {
-        try {
-            _dialogStage = new Stage();
-            //Stage newStage = new Stage();
-            Parent root;
-
-            //create a new scene with root and set the stage
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../View/UserMainScreen.fxml"));
-            root = loader.load();
-            Scene scene = new Scene(root);
-            _dialogStage.setTitle("Water Report Main Screen");
-            _dialogStage.setScene(scene);
-            _dialogStage.show();
-            //newStage.setTitle("Water Report Main Screen");
-            //newStage.setScene(scene);
-            //newStage.show();
-            //setDialogStage(newStage);
-        } catch (IOException e) {
-            //Log the error that occurred during loading
-            Logger LOGGER = Logger.getLogger("MainFXApplication");
-            LOGGER.log(Level.SEVERE, "Couldn't find the fxml file for the main screen");
-            e.printStackTrace();
-        }
-    }*/
-
-    /*public static void showMainScreen() {
-        try {
-            Stage stage = new Stage();
-            //_dialogStage = new Stage();
-
-
-            Parent root;
-            //create a new scene with root and set the stage
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../View/UserMainScreen.fxml"));
-            root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setTitle("Water Report Main Screen");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            // Log the error that occurred during loading
-            Logger LOGGER = Logger.getLogger("MainFXApplication");
-            LOGGER.log(Level.SEVERE, "Couldn't find the fxml file for the welcome screen");
-            e.printStackTrace();
-        }
-    }*/
-
     @FXML
     /**
      * Handler for pressing logout button
@@ -126,8 +76,6 @@ public class UserMainScreenController {
             mainScreenStage.close();
         }
     }
-
-
 
     @FXML
     /**

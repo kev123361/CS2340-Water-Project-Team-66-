@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,8 +49,12 @@ public class MainFXApplication extends Application {
         initRootLayout(primaryStage);
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/4400", "root", "mshosho11");
-            System.out.println("hello");
+            con = DriverManager.getConnection("jdbc:mysql://cleanwater.cyvxbxancn7h.us-east-1.rds.amazonaws.com:3306/cleanwaterdb", "shobhit", "cshosho11");
+//            Statement stmt=con.createStatement();
+//            ResultSet rs=stmt.executeQuery("select * from user");
+//            while(rs.next())
+//                System.out.println(rs.getString(1) + rs.getString(2));
+//            con.close();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -475,49 +481,6 @@ public class MainFXApplication extends Application {
         }
 
     }
-
-    /*public boolean showQualityListReportsScreen() {
-        if (!UserList.getCurrentUser().getAccount().equals(Account.MANAGER)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(mainScreen);
-            alert.setTitle("Can't Access the List of Reports");
-            alert.setHeaderText("Since you are signed in as an admin, you cannot access the list of reports");
-            //alert.setContentText(errorMessage);
-            alert.showAndWait();
-            return false;
-        }
-
-        try {
-            // Load the fxml file and create new stage for the popup dialog
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../View/ListQualityReportsScreen.fxml"));
-            AnchorPane page = loader.load();
-
-            // Create the profile screen stage
-            Stage listReportsScreenStage = new Stage();
-            listReportsScreenStage.setTitle("List of Purity Reports");
-            listReportsScreenStage.initModality(Modality.WINDOW_MODAL);
-            listReportsScreenStage.initOwner(mainScreen);
-            Scene scene = new Scene(page);
-            listReportsScreenStage.setScene(scene);
-
-            // Set the controller
-            ListQualityReportsScreenController controller = loader.getController();
-            controller.setReportsScreenStage(listReportsScreenStage);
-            // Set user into controller
-            controller.setUser(UserList.getCurrentUser());
-
-            controller.setMainApplication(this);
-
-            // Show the profile screen
-            listReportsScreenStage.show();
-
-            return controller.isOkClicked();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }*/
 
     /**
      * Main runner for the app

@@ -43,7 +43,6 @@ public class ListReportsScreenController {
 
     @FXML
     private void initialize() {
-        //reportList.setCellValueFactory(cellData -> cellData.getValue().getReportNumProperty());
         reportList.setItems(ReportList.getBackingList());
         reportList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showDetails(newValue));
     }
@@ -189,61 +188,7 @@ public class ListReportsScreenController {
 
         AvailabilityScreenController controller = new AvailabilityScreenController(mainApplication, availabilityScreen);
         availabilityScreen.show();
-        //showAvailabilityScreen();
     }
-
-    /*public boolean showAvailabilityScreen() {
-        //try {
-            // Load the fxml file and create a new stage
-            /*FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../View/SubmitReportScreen.fxml"));
-            AnchorPane page = loader.load();
-
-            // Create the report screen stage
-            Stage reportScreen = new Stage();
-            reportScreen.setTitle("Submit Report");
-            reportScreen.initModality(Modality.WINDOW_MODAL);
-            //reportScreen.initOwner(mainScreen);
-            reportScreen.initOwner(reportsScreenStage);
-            Scene scene = new Scene(page);
-            reportScreen.setScene(scene);
-
-            // Set the user into the controller.
-            SubmitReportController controller = loader.getController();
-            controller.setDialogStage(reportScreen);
-            controller.setUser(_user);
-            controller.setReport();
-
-            controller.setMainApplication(mainApplication);
-
-            // Show the dialog and wait until the user closes it
-            reportScreen.show();*/
-
-        /*System.out.println("Got to 1");
-            Stage availabilityScreen = new Stage();
-            availabilityScreen.setTitle("Map of Water Reports");
-            availabilityScreen.initModality(Modality.WINDOW_MODAL);
-            availabilityScreen.initOwner(reportsScreenStage);
-
-            AvailabilityScreenController controller = new AvailabilityScreenController(mainApplication, availabilityScreen);
-            availabilityScreen.show();
-        System.out.println("Got to 2");
-
-            /*Stage reportScreen = new Stage();
-            reportScreen.setTitle("Submit Report");
-            reportScreen.initModality(Modality.WINDOW_MODAL);
-            //reportScreen.initOwner(mainScreen);
-            reportScreen.initOwner(reportsScreenStage);
-            Scene scene = new Scene(page);
-            reportScreen.setScene(scene);*/
-
-    //return true;
-
-    //} catch (IOException e) {
-    //    e.printStackTrace();
-    //    return false;
-    //}
-    /*}*/
 
     @FXML
     /**

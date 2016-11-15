@@ -23,8 +23,6 @@ public class SourceReport {
     private final ObjectProperty<User> _reportingUser = new SimpleObjectProperty<>();
     private final DoubleProperty _latitude = new SimpleDoubleProperty();
     private final DoubleProperty _longitude = new SimpleDoubleProperty();
-    //private final StringProperty _latitude = new SimpleStringProperty();
-    //private final StringProperty _longitude = new SimpleStringProperty();
     private final ObjectProperty<TypeOfWater> _waterType = new SimpleObjectProperty<>();
     private final ObjectProperty<ConditionOfWater> _waterCondition = new SimpleObjectProperty<>();
 
@@ -32,18 +30,6 @@ public class SourceReport {
         this(null, null, null, 0.0, 0.0, null, null);
     }
 
-    /*public SourceReport(String date, String time, User reportingUser, String latitude, String longitude, TypeOfWater waterType,
-                        ConditionOfWater waterCondition) {
-        _date.set(date);
-        _time.set(time);
-        _reportingUser.set(reportingUser);
-        _reportNum.set(reportNumCounter);
-        reportNumCounter++;
-        _latitude.set(latitude);
-        _longitude.set(longitude);
-        _waterType.set(waterType);
-        _waterCondition.set(waterCondition);
-    }*/
 
     public SourceReport(String date, String time, User reportingUser, double latitude, double longitude, TypeOfWater waterType,
                         ConditionOfWater waterCondition) {
@@ -52,11 +38,11 @@ public class SourceReport {
         _reportingUser.set(reportingUser);
         _reportNum.set(reportNumCounter);
         reportNumCounter++;
-        try {
-            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT REPORT_NUM FROM SOURCE_REPORT WHERE ");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+//        try {
+//            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT REPORT_NUM FROM SOURCE_REPORT WHERE ");
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
         _latitude.set(latitude);
         _longitude.set(longitude);
         _waterType.set(waterType);

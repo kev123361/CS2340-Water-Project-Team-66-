@@ -71,7 +71,7 @@ public class UserList {
      */
     public static Boolean isUniqueUserName(String username) {
         try {
-            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT COUNT(*) FROM USER WHERE USERNAME = ?");
+            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT COUNT(*) FROM user WHERE USERNAME = ?");
             stmt.setString(1, username);
             ResultSet count = stmt.executeQuery();
             count.next();
@@ -91,7 +91,7 @@ public class UserList {
      */
     public static Boolean isUniqueID(String ID) {
         try {
-            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT COUNT(*) FROM USER WHERE ID = ?");
+            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT COUNT(*) FROM user WHERE ID = ?");
             stmt.setString(1, ID);
             ResultSet count = stmt.executeQuery();
             count.next();
