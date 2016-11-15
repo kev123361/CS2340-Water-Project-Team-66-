@@ -45,16 +45,12 @@ public class SubmitReportController {
     private User _user;
 
     //Reference of the main FX class
-    private MainFXApplication mainApplication;
+    //private MainFXApplication mainApplication;
 
-    /**
-     * Sets the main application for this controller
-     *
-     * @param mainApp this controller's main application
-     */
-    public void setMainApplication(MainFXApplication mainApp) {
-        mainApplication = mainApp;
-    }
+
+    //public void setMainApplication(MainFXApplication mainApp) {
+        //mainApplication = mainApp;
+    //}
 
     @FXML
     private void initialize() {
@@ -138,7 +134,7 @@ public class SubmitReportController {
                 stmt.setString(7, newReport.getWaterCondition().toString());
                 stmt.executeUpdate();
             } catch (Exception e) {
-                System.out.println(e);
+                e.printStackTrace();
             }
             _okClicked = true;
             _dialogStage.close();

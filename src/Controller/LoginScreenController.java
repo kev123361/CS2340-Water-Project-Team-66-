@@ -76,7 +76,7 @@ public class LoginScreenController {
                 User user = new User(rslt.getString(1), rslt.getString(2), rslt.getString(3), Account.valueOf(rslt.getString(4)), rslt.getString(5), rslt.getString(6), Title.valueOf(title));
                 UserList.setCurrentUser(user);
             } catch (Exception e) {
-                System.out.print(e);
+                e.printStackTrace();
             }
             //Signal success and close the window
             _okClicked = true;

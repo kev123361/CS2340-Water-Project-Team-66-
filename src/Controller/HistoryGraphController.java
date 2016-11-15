@@ -33,8 +33,6 @@ public class HistoryGraphController {
     private NumberAxis yAxis;
     private ObservableList<String> monthNames = FXCollections.observableArrayList();
 
-    private final int NEARBY = 1;
-
 
     //List of all purity reports
     private List<PurityReport> reportList = PurityReportList.getBackingList();
@@ -84,6 +82,7 @@ public class HistoryGraphController {
             int contaminantPPM = report.getContaminantPPM();
 
             // Checks to see if report is in the target year and in the nearby area of target lat and long
+            int NEARBY = 1;
             if (year == targetYear &&
                 Math.abs(targetLat - latitude) < NEARBY &&
                 Math.abs(targetLong - longitude) < NEARBY) {

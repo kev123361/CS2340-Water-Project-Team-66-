@@ -52,8 +52,8 @@ public class SourceReport {
         _date.set(date);
         _time.set(time);
         _reportingUser.set(reportingUser);
-        _reportNum.set(reportNumCounter);
-        reportNumCounter++;
+        //_reportNum.set(reportNumCounter);
+        //reportNumCounter++;
         _latitude.set(latitude);
         _longitude.set(longitude);
         _waterType.set(waterType);

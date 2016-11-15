@@ -4,6 +4,7 @@ import Fxapp.MainFXApplication;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * UserList class holds all the users in the current instance of the application
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class UserList {
-    private static ArrayList<User> backingList = new ArrayList<User>();
+    private static List<User> backingList = new ArrayList<User>();
     private static User currentUser;
 
     /**
@@ -47,7 +48,7 @@ public class UserList {
                 return false;
             }
         } catch(Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return true;
     }
@@ -83,7 +84,7 @@ public class UserList {
                 return false;
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return true;
     }
@@ -103,7 +104,7 @@ public class UserList {
                 return false;
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return true;
     }

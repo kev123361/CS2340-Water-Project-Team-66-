@@ -34,7 +34,7 @@ public class ListQualityReportsScreenController {
     private MainFXApplication mainApplication;
 
     //The user currently signed in
-    private User _user;
+    //private User _user;
 
     /** References to the widgets in the fxml file */
     @FXML
@@ -74,7 +74,7 @@ public class ListQualityReportsScreenController {
      *
      * @param user currently signed in
      */
-    public void setUser(User user) { _user = user; }
+    //public void setUser(User user) { _user = user; }
 
     /**
      * Display the details of the selected report

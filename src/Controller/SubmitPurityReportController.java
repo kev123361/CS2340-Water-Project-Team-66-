@@ -45,16 +45,12 @@ public class SubmitPurityReportController {
     private User _user;
 
     //Reference of the main FX class
-    private MainFXApplication mainApplication;
+    //private MainFXApplication mainApplication;
 
-    /**
-     * Sets the main application for this controller
-     *
-     * @param mainApp this controller's main application
-     */
-    public void setMainApplication(MainFXApplication mainApp) {
-        mainApplication = mainApp;
-    }
+
+    //public void setMainApplication(MainFXApplication mainApp) {
+        //mainApplication = mainApp;
+    //}
 
     @FXML
     private void initialize() {
@@ -104,10 +100,8 @@ public class SubmitPurityReportController {
      */
     @FXML
     public void handleSubmitPressed() throws IOException {
-        if (_user == null) {
-            System.out.println("USER IS NULL");
-        }
-        if (isInputValid()) {
+
+        if (_user != null && isInputValid()) {
 //            PurityReportList.addPurityReport(new PurityReport(date.getText(), time.getText(),  _user, Double.parseDouble(latitudeOfWater.getText()),
 //                    Double.parseDouble(longitudeOfWater.getText()),
 //                    conditionOfWaterComboBox.getSelectionModel().getSelectedItem(),Integer.parseInt(contppm.getText()), Integer.parseInt(virusppm.getText())));
@@ -135,7 +129,7 @@ public class SubmitPurityReportController {
                 stmt.setInt(8, newReport.getContaminantPPM());
                 stmt.executeUpdate();
             } catch (Exception e) {
-                System.out.println(e);
+                e.printStackTrace();
             }
             _okClicked = true;
             _dialogStage.close();
