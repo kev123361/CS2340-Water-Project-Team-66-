@@ -14,6 +14,10 @@ import org.junit.Test;
 public class ShobhitSrivastavaTests {
 
     private final MainFXApplication app = new MainFXApplication();
+
+    /**
+     * Test with a username that does exist and one that doesn't
+     */
     @Test
     public void testIsValidUsername() {
         app.launchConnection();
