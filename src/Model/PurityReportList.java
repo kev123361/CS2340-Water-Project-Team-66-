@@ -60,7 +60,7 @@ public class PurityReportList {
      * @param latitude user input latitude
      * @return true if valid latitude, false otherwise
      */
-    public static boolean isValidLatitude(String latitude) {
+    /*public static boolean isValidLatitude(String latitude) {
         final double LATBOUNDARY = 90.0;
         try {
             double latDouble = Double.parseDouble(latitude);
@@ -68,7 +68,7 @@ public class PurityReportList {
         } catch (NumberFormatException e) {
             return false;
         }
-    }
+    }*/
 
     /**
      * Checks if valid longitude was entered
@@ -76,7 +76,7 @@ public class PurityReportList {
      * @param longitude user input longitude
      * @return true if valid longitude, false otherwise
      */
-    public static boolean isValidLongitude(String longitude) {
+    /*public static boolean isValidLongitude(String longitude) {
         final double LONGBOUNDARY = 180.0;
         try {
             double longDouble = Double.parseDouble(longitude);
@@ -84,24 +84,24 @@ public class PurityReportList {
         } catch (NumberFormatException e) {
             return false;
         }
-    }
+    }*/
 
     /**
      *  Checks to make sure date is in format Mo/Da/Year
      * @param date date being checked
      * @return true if valid date, false otherwise
      */
-    public static boolean isValidDate(String date) {
+    /*public static boolean isValidDate(String date) {
         return (date.length() == 10) && (date.charAt(2) == '/') && (date.charAt(5) == '/')
                 && isInteger(date.substring(0, 2)) && isInteger(date.substring(3, 5)) && isInteger(date.substring(6));
-    }
+    }*/
 
     /**
      * Checks if a string is an integer
      * @param input the string inputted
      * @return whether the string is an integer
      */
-    private static boolean isInteger(CharSequence input) {
+    /*private static boolean isInteger(CharSequence input) {
         String digits = "0123456789";
         for (int i = 0; i < input.length(); i++) {
             boolean inDigits = false;
@@ -115,14 +115,14 @@ public class PurityReportList {
             }
         }
         return true;
-    }
+    }*/
 
     /**
      * Checks whether a string is a double
      * @param input the string inputted
      * @return whether the string is a double or not
      */
-    public static boolean isDouble(CharSequence input) {
+    /*public static boolean isDouble(CharSequence input) {
         String digits = "0123456789.";
         for (int i = 0; i < input.length(); i++) {
             boolean inDigits = false;
@@ -136,7 +136,7 @@ public class PurityReportList {
             }
         }
         return true;
-    }
+    }*/
 
 
 

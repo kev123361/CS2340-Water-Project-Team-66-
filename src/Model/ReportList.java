@@ -164,7 +164,7 @@ public class ReportList {
      * @param input the substring to check
      * @return true if an double, false otherwise
      */
-    public static boolean isDouble(CharSequence input) {
+    /*public static boolean isDouble(CharSequence input) {
         String digits = "0123456789.";
         for (int i = 0; i < input.length(); i++) {
             boolean inDigits = false;
@@ -178,7 +178,7 @@ public class ReportList {
             }
         }
         return true;
-    }
+    }*/
 
 
 }

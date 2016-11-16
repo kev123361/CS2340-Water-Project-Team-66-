@@ -125,10 +125,9 @@ public class MainFXApplication extends Application {
     /**
      * Display the app's login screen
      *
-     * @param user  the user trying to log in
      * @return whether or not displaying the login screen was successful
      */
-    public boolean showLoginScreen(User user) {
+    public boolean showLoginScreen() {
         try {
 
             // Load the fxml file and create a new stage for the popup dialog.

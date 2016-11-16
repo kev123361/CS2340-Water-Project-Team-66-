@@ -24,7 +24,7 @@ public class SourceReport {
     private final StringProperty _date = new SimpleStringProperty();
     private final StringProperty _time = new SimpleStringProperty();
     private final IntegerProperty _reportNum = new SimpleIntegerProperty();
-    private static final int reportNumCounter = 0;
+    //private static final int reportNumCounter = 0;
     private final ObjectProperty<User> _reportingUser = new SimpleObjectProperty<>();
     private final DoubleProperty _latitude = new SimpleDoubleProperty();
     private final DoubleProperty _longitude = new SimpleDoubleProperty();

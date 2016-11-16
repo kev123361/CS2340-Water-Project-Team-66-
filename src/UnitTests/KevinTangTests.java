@@ -11,6 +11,9 @@ import org.junit.Test;
  */
 public class KevinTangTests {
 
+    /**
+     * Kevin's Junit test
+     */
     @Test
     public void testValidAddresses() {
         String noCommas = "1015 Lancaster Walk Atlanta GA";

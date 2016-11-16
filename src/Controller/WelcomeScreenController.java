@@ -3,7 +3,7 @@ package Controller;
 import Fxapp.MainFXApplication;
 import Model.User;
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
+//import javafx.stage.Stage;
 
 /**
  * The controller for the welcome screen
@@ -59,8 +59,8 @@ public class WelcomeScreenController {
      * Handles button for login
      */
     public void loginPressed() {
-        User user = new User();
-        mainApplication.showLoginScreen(user);
+        //User user = new User();
+        mainApplication.showLoginScreen();
 
     }
 

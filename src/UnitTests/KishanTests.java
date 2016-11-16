@@ -11,6 +11,9 @@ import org.junit.Test;
  */
 public class KishanTests {
 
+    /**
+     * Kishan's JUnit Test
+     */
     @Test
     public void testGetConditionOfWater() {
         String waste = "Waste";

@@ -2,8 +2,6 @@ package UnitTests;
 
 import Fxapp.MainFXApplication;
 import Model.UserList;
-import com.sun.javaws.Main;
-import javafx.stage.Stage;
 import org.junit.Assert;
 import org.junit.Test;
 

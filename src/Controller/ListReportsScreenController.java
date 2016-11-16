@@ -197,6 +197,8 @@ public class ListReportsScreenController {
         availabilityScreen.initModality(Modality.WINDOW_MODAL);
         availabilityScreen.initOwner(reportsScreenStage);
 
+        AvailabilityScreenController controller = new AvailabilityScreenController(mainApplication,
+                availabilityScreen);
         availabilityScreen.show();
     }
 

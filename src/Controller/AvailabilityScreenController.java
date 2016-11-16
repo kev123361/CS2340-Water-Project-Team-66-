@@ -50,7 +50,7 @@ public class AvailabilityScreenController implements Initializable, MapComponent
     private GoogleMap map;
 
     //Reference to main application
-    //private final MainFXApplication mainApp;
+    private final MainFXApplication mainApp;
 
     //A reference to the current stage
     private final Stage stage;
@@ -65,6 +65,7 @@ public class AvailabilityScreenController implements Initializable, MapComponent
      */
     public AvailabilityScreenController(MainFXApplication app, Stage stage) {
         this.stage = stage;
+        this.mainApp = app;
         setUpMapView(stage);
     }
 

@@ -26,9 +26,9 @@ public class ReportChoiceScreenController {
     /**
      * @return the state of _okClicked
      */
-    public boolean is_okClicked() {
+    /*public boolean is_okClicked() {
         return this._okClicked;
-    }
+    }*/
 
 
     /**
