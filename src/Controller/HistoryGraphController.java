@@ -46,7 +46,7 @@ public class HistoryGraphController {
     private boolean _okClicked;
     private Stage _dialogStage;
 
-    private final static int NUMMONTHS = 12;
+    private static final int NUMMONTHS = 12;
 
 // --Commented out by Inspection START (2016/11/15 20:17):
 //    //Reference to the main application

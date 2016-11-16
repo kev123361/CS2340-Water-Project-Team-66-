@@ -66,13 +66,13 @@ public class ReportList {
      * @return ConditionOfWater enum that matches string
      */
     public static ConditionOfWater getConditionOfWater(String condition) {
-        if (condition.equals("Waste")) {
+        if ("Waste".equals(condition)) {
             return ConditionOfWater.WASTE;
-        } else if (condition.equals("Treatable-Clear")) {
+        } else if ("Treatable-Clear".equals(condition)) {
             return ConditionOfWater.TREATABLECLEAR;
-        } else if (condition.equals("Treatable-Muddy")) {
+        } else if ("Treatable-Muddy".equals(condition)) {
             return ConditionOfWater.TREATABLEMUDDY;
-        } else if (condition.equals("Potable")) {
+        } else if ("Potable".equals(condition)) {
             return ConditionOfWater.POTABLE;
         }
         return null;

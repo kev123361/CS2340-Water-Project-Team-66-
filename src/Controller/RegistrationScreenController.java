@@ -42,7 +42,6 @@ public class RegistrationScreenController {
     private ComboBox<Title> comboBoxTitle;
 
     private boolean _okClicked = false;
-    private User _user;
 
     //Reference of the main FX class
     private MainFXApplication mainApplication;
@@ -80,7 +79,7 @@ public class RegistrationScreenController {
      */
     public void setUser(User user) {
         //remember the current user
-        _user = user;
+        User _user = user;
 
         if (_user != null) {
             //make the data show up in the gui fields

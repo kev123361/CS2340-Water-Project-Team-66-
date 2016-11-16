@@ -13,7 +13,7 @@ import org.junit.Test;
  */
 public class ShobhitSrivastavaTests {
 
-    private MainFXApplication app = new MainFXApplication();
+    private final MainFXApplication app = new MainFXApplication();
     @Test
     public void testIsValidUsername() {
         app.launchConnection();

@@ -1,6 +1,7 @@
 package Model;
 
 import javafx.beans.property.*;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -13,7 +14,7 @@ import javafx.collections.ObservableList;
 public class PurityReport {
     private final StringProperty _date = new SimpleStringProperty();
     private final StringProperty _time = new SimpleStringProperty();
-    private final IntegerProperty _reportNum = new SimpleIntegerProperty();
+    private final ObservableValue _reportNum = new SimpleIntegerProperty();
     //private static int reportNumCounter = 0;
     private final ObjectProperty<User> _reportingUser = new SimpleObjectProperty<>();
     private final DoubleProperty _latitude = new SimpleDoubleProperty();

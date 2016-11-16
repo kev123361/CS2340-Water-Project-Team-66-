@@ -18,9 +18,6 @@ public class WelcomeScreenController {
     //Reference of the main FX class
     private MainFXApplication mainApplication;
 
-    private Stage welcomeStage;
-
-    private final boolean isOkClicked = false;
     // @FXML
     //private Button expressLogin;
 
@@ -38,13 +35,14 @@ public class WelcomeScreenController {
      * @param stage the stage
      */
     public void setWelcomeStage(Stage stage) {
-        this.welcomeStage = stage;
+        Stage welcomeStage = stage;
     }
 
     /**
      * @return the state of _okClicked
      */
     public boolean isOkClicked() {
+        boolean isOkClicked = false;
         return isOkClicked;
     }
 
