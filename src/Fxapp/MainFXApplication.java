@@ -53,11 +53,6 @@ public class MainFXApplication extends Application {
             con = DriverManager
                     .getConnection("jdbc:mysql://cleanwater.cyvxbxancn7h.us-east-1.rds.amazonaws.com:3306/cleanwaterdb",
                     "shobhit", "cshosho11");
-//            Statement stmt=con.createStatement();
-//            ResultSet rs=stmt.executeQuery("select * from user");
-//            while(rs.next())
-//                System.out.println(rs.getString(1) + rs.getString(2));
-//            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -535,4 +530,17 @@ public class MainFXApplication extends Application {
 
     }
 
+    /**
+     * Instance method that launches connection to database. Used in unit tests
+     */
+    public void launchConnection() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager
+                    .getConnection("jdbc:mysql://cleanwater.cyvxbxancn7h.us-east-1.rds.amazonaws.com:3306/cleanwaterdb",
+                            "shobhit", "cshosho11");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
