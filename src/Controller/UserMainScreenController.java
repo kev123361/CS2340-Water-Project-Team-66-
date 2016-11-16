@@ -2,6 +2,7 @@ package Controller;
 
 import Fxapp.MainFXApplication;
 import Model.Account;
+import Model.User;
 import Model.UserList;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
@@ -24,6 +25,9 @@ public class UserMainScreenController {
 
     //Reference of the main FX class
     private MainFXApplication mainApplication;
+
+    //Reference to currently logged in user
+    private User _user;
 
     @FXML
     private void initialize() {
@@ -59,6 +63,10 @@ public class UserMainScreenController {
         return _okClicked;
     }
 
+    public void setUser(User user) {
+        _user = user;
+    }
+
     /**
      * Handler for pressing logout button
      *
@@ -79,7 +87,7 @@ public class UserMainScreenController {
      */
     @FXML
     public void submitReportPressed() {
-        if (!UserList.getCurrentUser().getAccount().equals(Account.ADMIN)) {
+        if (!_user.getAccount().equals(Account.ADMIN)) {
             _okClicked = true;
             mainApplication.showListReportsScreen();
             mainScreenStage.close();

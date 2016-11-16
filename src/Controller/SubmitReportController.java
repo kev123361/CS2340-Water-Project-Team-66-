@@ -115,7 +115,7 @@ public class SubmitReportController {
                 int minute = Integer.parseInt(timeArray[1]);
                 Time time = new Time(hour, minute, 0);
                 stmt.setTime(2, time);
-                stmt.setString(3, UserList.getCurrentUser().getUsername());
+                stmt.setString(3, _user.getUsername());
                 stmt.setDouble(4, newReport.getLatitude());
                 stmt.setDouble(5, newReport.getLongitude());
                 stmt.setString(6, newReport.getWaterType().toString());

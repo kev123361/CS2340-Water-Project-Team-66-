@@ -93,7 +93,7 @@ public class SourceReport {
     /**
      * @return the reporting user of the Source Report
      */
-    public User getReportingUser() { return _reportingUser.get(); }
+    public String getReportingUser() { return _reportingUser.get().getUsername(); }
 
     /**
      * Set the reporting user for the Source Report

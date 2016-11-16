@@ -124,7 +124,7 @@ public class ProfileScreenController {
                 stmt.setString(5, email.getText());
                 stmt.setString(6, home.getText());
                 stmt.setString(7, comboBoxTitle.getSelectionModel().getSelectedItem().toString());
-                stmt.setString(8, UserList.getCurrentUser().getUsername());
+                stmt.setString(8, _user.getUsername());
                 stmt.executeUpdate();
             } catch (Exception e) {
                 e.printStackTrace();
