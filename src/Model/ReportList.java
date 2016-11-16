@@ -17,7 +17,7 @@ import java.sql.ResultSet;
 public class ReportList {
 
     //Backing structure holding all the reports
-    private final static ObservableList<SourceReport> backingList = FXCollections.observableArrayList();
+    private static final ObservableList<SourceReport> backingList = FXCollections.observableArrayList();
 
 
     /**
@@ -48,11 +48,11 @@ public class ReportList {
                 TypeOfWater waterType = TypeOfWater.valueOf(table.getString(6).toUpperCase());
                 String condition = table.getString(7);
                 ConditionOfWater waterCondition;
-                if (condition.equals("Waste")) {
+                if ("Waste".equals(condition)) {
                     waterCondition = ConditionOfWater.valueOf("WASTE");
-                } else if (condition.equals("Treatable-Clear")) {
+                } else if ("Treatable-Clear".equals(condition)) {
                     waterCondition = ConditionOfWater.valueOf("TREATABLECLEAR");
-                } else if (condition.equals("Treatable-Muddy")) {
+                } else if ("Treatable-Muddy".equals(condition)) {
                     waterCondition = ConditionOfWater.valueOf("TREATABLEMUDDY");
                 } else {
                     waterCondition = ConditionOfWater.valueOf("POTABLE");
@@ -78,7 +78,7 @@ public class ReportList {
         //return latitude <= 90.0 && latitude >= -90.0;
         try {
             double latDouble = Double.parseDouble(latitude);
-            return latDouble <= 90.0 && latDouble >= -90.0;
+            return (latDouble <= 90.0) && (latDouble >= -90.0);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -94,7 +94,7 @@ public class ReportList {
         //return longitude <= 180.0 && longitude >= -180.0;
         try {
             double longDouble = Double.parseDouble(longitude);
-            return longDouble <= 180.0 && longDouble >= -180.0;
+            return (longDouble <= 180.0) && (longDouble >= -180.0);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -110,7 +110,7 @@ public class ReportList {
      * @return true if valid, false otherwise
      */
     public static boolean isValidDate(String date) {
-        return date.length() == 10 && date.charAt(2) == '/' && date.charAt(5) == '/' && isInteger(date.substring(0, 2))
+        return (date.length() == 10) && (date.charAt(2) == '/') && (date.charAt(5) == '/') && isInteger(date.substring(0, 2))
                 && isInteger(date.substring(3, 5)) && isInteger(date.substring(6));
     }
 
@@ -121,7 +121,7 @@ public class ReportList {
      * @return true if valid, false otherwise
      */
     public static boolean isValidTime(String time) {
-        return time.length() == 5 && time.charAt(2) == ':' &&
+        return (time.length() == 5) && (time.charAt(2) == ':') &&
                 isInteger(time.substring(0, 2)) && isInteger(time.substring(3));
     }
 
@@ -131,7 +131,7 @@ public class ReportList {
      * @param input the substring to check
      * @return true if an integer, false otherwise
      */
-    public static boolean isInteger(String input) {
+    public static boolean isInteger(CharSequence input) {
         String digits = "0123456789";
         for (int i = 0; i < input.length(); i++) {
             boolean inDigits = false;
@@ -153,7 +153,7 @@ public class ReportList {
      * @param input the substring to check
      * @return true if an double, false otherwise
      */
-    public static boolean isDouble(String input) {
+    public static boolean isDouble(CharSequence input) {
         String digits = "0123456789.";
         for (int i = 0; i < input.length(); i++) {
             boolean inDigits = false;

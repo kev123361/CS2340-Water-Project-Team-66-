@@ -20,7 +20,7 @@ public class WelcomeScreenController {
 
     private Stage welcomeStage;
 
-    private boolean isOkClicked = false;
+    private final boolean isOkClicked = false;
     // @FXML
     //private Button expressLogin;
 

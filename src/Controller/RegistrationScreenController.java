@@ -15,9 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.sql.*;
-
 import java.io.IOException;
+import java.sql.PreparedStatement;
 
 /**
  * The controller for the Registration Screen
@@ -60,19 +59,9 @@ public class RegistrationScreenController {
     @FXML
     private void initialize() {
         comboBoxDrop.setItems(FXCollections.observableArrayList(Account.values()));
-        comboBoxDrop.setOnMousePressed(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                comboBoxDrop.requestFocus();
-            }
-        });
+        comboBoxDrop.setOnMousePressed(event -> comboBoxDrop.requestFocus());
         comboBoxTitle.setItems(FXCollections.observableArrayList(Title.values()));
-        comboBoxTitle.setOnMousePressed(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                comboBoxTitle.requestFocus();
-            }
-        });
+        comboBoxTitle.setOnMousePressed(event -> comboBoxTitle.requestFocus());
     }
 
     /**
@@ -165,8 +154,8 @@ public class RegistrationScreenController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (!username.getText().equals("") && !password.getText().equals("") && !id.getText().equals("")
-                && !email.getText().equals("") && !home.getText().equals("")
+        if (!"".equals(username.getText()) && !"".equals(password.getText()) && !"".equals(id.getText())
+                && !"".equals(email.getText()) && !"".equals(home.getText())
                 && UserList.isUniqueUserName(username.getText()) && UserList.isUniqueID(id.getText())
                 && UserList.isValidEmailAddress(email.getText()) && UserList.isValidHomeAddress(home.getText())) {
             return true;

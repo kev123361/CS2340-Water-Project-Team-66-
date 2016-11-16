@@ -4,7 +4,7 @@ import Fxapp.MainFXApplication;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 /**
  * UserList class holds all the users in the current instance of the application
@@ -13,7 +13,7 @@ import java.util.List;
  * @version 1.0
  */
 public class UserList {
-    private static List<User> backingList = new ArrayList<User>();
+    private static final Collection<User> backingList = new ArrayList<>();
     private static User currentUser;
 
     /**
@@ -121,9 +121,9 @@ public class UserList {
      * @return true if valid, false otherwise
      */
     public static Boolean isValidEmailAddress(String email) {
-        return email.contains("@") && email.indexOf("@") != 0 && email.indexOf("@") != email.length() - 1
-                && email.contains(".") && email.indexOf(".") > email.indexOf("@") && email.indexOf(".") != email
-                .length() - 1;
+        return email.contains("@") && (email.indexOf("@") != 0) && (email.indexOf("@") != (email.length() - 1))
+                && email.contains(".") && (email.indexOf(".") > email.indexOf("@")) && (email.indexOf(".") != (email
+                .length() - 1));
     }
 
     /**
@@ -135,16 +135,16 @@ public class UserList {
      * @param home the home address
      * @return true if valid, false otherwise
      */
-    public static boolean isValidHomeAddress(String home) {
+    public static boolean isValidHomeAddress(CharSequence home) {
         int commaCount = 0;
         int spaceCount = 0;
-        for (int i = 0; i < home.length() - 2; i++) {
-            if (home.charAt(i) == ',' && home.charAt(i + 1) == ' ') {
+        for (int i = 0; i < (home.length() - 2); i++) {
+            if ((home.charAt(i) == ',') && (home.charAt(i + 1) == ' ')) {
                 spaceCount++;
                 commaCount++;
             }
         }
-        return commaCount == 2 && spaceCount == 2;
+        return (commaCount == 2) && (spaceCount == 2);
     }
 
 }

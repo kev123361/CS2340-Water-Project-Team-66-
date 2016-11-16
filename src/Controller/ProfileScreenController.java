@@ -62,19 +62,9 @@ public class ProfileScreenController {
     @FXML
     public void initialize() {
         comboBoxAccount.setItems(FXCollections.observableArrayList(Account.values()));
-        comboBoxAccount.setOnMousePressed(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                comboBoxAccount.requestFocus();
-            }
-        });
+        comboBoxAccount.setOnMousePressed(event -> comboBoxAccount.requestFocus());
         comboBoxTitle.setItems(FXCollections.observableArrayList(Title.values()));
-        comboBoxTitle.setOnMousePressed(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                comboBoxTitle.requestFocus();
-            }
-        });
+        comboBoxTitle.setOnMousePressed(event -> comboBoxTitle.requestFocus());
     }
 
     /**
@@ -172,8 +162,8 @@ public class ProfileScreenController {
     public boolean isInputValid() {
         String errorMessage = "";
 
-        if (!username.getText().equals("") && !password.getText().equals("") && !id.getText().equals("")
-                && !email.getText().equals("") && !home.getText().equals("")
+        if (!"".equals(username.getText()) && !"".equals(password.getText()) && !"".equals(id.getText())
+                && !"".equals(email.getText()) && !"".equals(home.getText())
                 && UserList.isValidEmailAddress(email.getText()) && UserList.isValidHomeAddress(home.getText())) {
             return true;
         }

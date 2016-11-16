@@ -29,7 +29,7 @@ public class LoginScreenController {
     @FXML
     private PasswordField password;
     private boolean _okClicked = false;
-    private User _user;
+    //private User _user;
 
     //Reference of the main FX class
     private MainFXApplication mainApplication;
@@ -110,7 +110,7 @@ public class LoginScreenController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (!username.getText().equals("") && !password.getText().equals("")
+        if (!"".equals(username.getText()) && !"".equals(password.getText())
                 && UserList.isValidLogin(username.getText(), password.getText())) {
             return true;
         }
@@ -119,7 +119,7 @@ public class LoginScreenController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(_dialogStage);
             alert.setTitle("Invalid Fields");
-            if (username.getText().equals("") || password.getText().equals("")){
+            if ("".equals(username.getText()) || "".equals(password.getText())){
                 alert.setHeaderText("One or more fields were left blank.");
             } else {
                 alert.setHeaderText("The username-password combination provided does not exist.");
