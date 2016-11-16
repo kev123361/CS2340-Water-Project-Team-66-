@@ -3,11 +3,9 @@ package Controller;
 import Fxapp.MainFXApplication;
 import Model.Account;
 import Model.User;
-import Model.UserList;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 
 /**
  * A controller for the Main Screen of the application
@@ -59,6 +57,10 @@ public class UserMainScreenController {
         return _okClicked;
     }
 
+    /**
+     * Sets the user for this screen
+     * @param user the user to be set
+     */
     public void setUser(User user) {
         _user = user;
     }

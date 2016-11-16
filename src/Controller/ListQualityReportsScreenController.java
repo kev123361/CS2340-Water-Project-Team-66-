@@ -7,8 +7,6 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import Model.PurityReport;
 
-import java.io.IOException;
-
 /**
  * Controller for the ListQualityReportsScreen
  *

@@ -6,16 +6,13 @@ import Model.Title;
 import Model.User;
 import Model.UserList;
 import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.PreparedStatement;
 
 /**
@@ -79,9 +76,9 @@ public class RegistrationScreenController {
      */
     public void setUser(User user) {
         //remember the current user
-        User _user = user;
+        //User _user = user;
 
-        if (_user != null) {
+        if (user != null) {
             //make the data show up in the gui fields
             username.setText("Enter a Username");
             password.setText("Enter a Password");

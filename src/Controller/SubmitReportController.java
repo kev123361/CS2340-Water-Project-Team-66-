@@ -2,20 +2,22 @@ package Controller;
 
 import Fxapp.MainFXApplication;
 
-import Model.*;
 import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Time;
+
+import Model.ConditionOfWater;
+import Model.ReportList;
+import Model.SourceReport;
+import Model.TypeOfWater;
+import Model.User;
 
 /**
  * The controller for the Submit Report Screen

@@ -1,6 +1,5 @@
 package Controller;
 
-import Fxapp.MainFXApplication;
 import Model.PurityReport;
 import Model.PurityReportList;
 import javafx.collections.FXCollections;

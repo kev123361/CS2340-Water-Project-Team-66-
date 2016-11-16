@@ -10,13 +10,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListQualityReportsScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.ListQualityReportsScreenController">
+    <!--suppress JavaFxDefaultTag -->
     <children>
-        <SplitPane dividerPositions="0.3896321070234114" layoutX="108.0" layoutY="14.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <SplitPane dividerPositions="0.3896321070234114" layoutX="108.0" layoutY="14.0" prefHeight="160.0"
+                   prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <!--suppress JavaFxDefaultTag -->
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <!--suppress JavaFxDefaultTag -->
                     <children>
-                        <VBox layoutX="14.0" layoutY="84.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox layoutX="14.0" layoutY="84.0" prefHeight="200.0" prefWidth="100.0"
+                              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                              AnchorPane.topAnchor="0.0">
+                            <!--suppress JavaFxDefaultTag -->
                             <children>
                                 <Label prefHeight="21.0" prefWidth="232.0" text="Water Purity Reports">
                                     <VBox.margin>
@@ -32,8 +42,12 @@
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <!--suppress JavaFxDefaultTag -->
                     <children>
-                        <VBox layoutX="131.0" layoutY="131.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox layoutX="131.0" layoutY="131.0" prefHeight="200.0" prefWidth="100.0"
+                              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                              AnchorPane.topAnchor="0.0">
+                            <!--suppress JavaFxDefaultTag -->
                             <children>
                                 <ListView fx:id="detailsList" prefHeight="318.0" prefWidth="361.0">
                                     <VBox.margin>

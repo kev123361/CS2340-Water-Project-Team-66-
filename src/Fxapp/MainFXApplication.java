@@ -1,10 +1,19 @@
 package Fxapp;
 
-import Controller.*;
+import Controller.GraphSelectScreenController;
+import Controller.HistoryGraphController;
+import Controller.ListQualityReportsScreenController;
+import Controller.ListReportsScreenController;
+import Controller.LoginScreenController;
+import Controller.ProfileScreenController;
+import Controller.RegistrationScreenController;
+import Controller.SubmitPurityReportController;
+import Controller.SubmitReportController;
+import Controller.UserMainScreenController;
+import Controller.WelcomeScreenController;
 
 import Model.Account;
 import Model.User;
-import Model.UserList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -73,6 +82,10 @@ public class MainFXApplication extends Application {
         return mainScreen;
     }
 
+    /**
+     * Sets the user for the MainFXApp
+     * @param user the user to be set
+     */
     public void setUser(User user) {
         this.user = user;
     }

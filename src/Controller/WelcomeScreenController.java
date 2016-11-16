@@ -34,17 +34,17 @@ public class WelcomeScreenController {
      * Sets the stage for this controller
      * @param stage the stage
      */
-    public void setWelcomeStage(Stage stage) {
+    /*public void setWelcomeStage(Stage stage) {
         Stage welcomeStage = stage;
-    }
+    }*/
 
     /**
      * @return the state of _okClicked
      */
-    public boolean isOkClicked() {
+    /*public boolean isOkClicked() {
         boolean isOkClicked = false;
         return isOkClicked;
-    }
+    }*/
 
     /**
      * Handles button for registering

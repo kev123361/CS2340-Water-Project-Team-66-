@@ -20,15 +20,18 @@ import org.junit.Test;
  */
 public class KylePeltonTests {
 
+    /**
+     * Tests situations in which the input string may be null or empty. These should return false.
+     */
     @Test
     public void testNullAndEmptyString() {
-        String nullEmail = null;
-        String emptyEmail = "";
-
-        Assert.assertFalse(UserList.isValidEmailAddress(nullEmail));
-        Assert.assertFalse(UserList.isValidEmailAddress(emptyEmail));
+        Assert.assertFalse(UserList.isValidEmailAddress(null));
+        Assert.assertFalse(UserList.isValidEmailAddress(""));
     }
 
+    /**
+     * Tests various situations in which the "@" is used incorrectly. These should return false.
+     */
     @Test
     public void testInvalidAtSigns() {
         String noAtSignWithoutDot = "blahblahcom";
@@ -44,6 +47,9 @@ public class KylePeltonTests {
         Assert.assertFalse(UserList.isValidEmailAddress(atLastIndex));
     }
 
+    /**
+     * Tests various situations in which the "." is used incorrectly. These should return false.
+     */
     @Test
     public void testInvalidDots() {
         String noDotWithoutAtSign = "blahblah";
@@ -79,6 +85,9 @@ public class KylePeltonTests {
         Assert.assertTrue(UserList.isValidEmailAddress(hasSomethingElseAsWell));
     }
 
+    /**
+     * Tests a number of valid email addresses. All of these should return true.
+     */
     @Test
     public void testValidEmails() {
         String validEmailA = "a@a.a";

@@ -12,7 +12,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="315.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegistrationScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="315.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.RegistrationScreenController">
+    <!--suppress JavaFxDefaultTag -->
     <children>
         <GridPane prefHeight="214.0" prefWidth="600.0">
             <columnConstraints>
@@ -29,6 +32,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" />
             </rowConstraints>
+            <!--suppress JavaFxDefaultTag -->
             <children>
                 <Label text="Username">
                     <GridPane.margin>
