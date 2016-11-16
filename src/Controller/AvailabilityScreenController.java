@@ -132,7 +132,9 @@ public class AvailabilityScreenController implements Initializable, MapComponent
         MapOptions options = new MapOptions();
 
         //Set center location for the map as center of Atlanta
-        LatLong center = new LatLong(33.7490, -84.3880);
+        final double ATLANTA_LAT = 33.7490;
+        final double ATLANTA_LONG = -84.3880;
+        LatLong center = new LatLong(ATLANTA_LAT, ATLANTA_LONG);
 
         options.center(center)
                 .zoom(9)

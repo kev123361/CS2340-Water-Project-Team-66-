@@ -46,6 +46,8 @@ public class HistoryGraphController {
     private boolean _okClicked;
     private Stage _dialogStage;
 
+    private final static int NUMMONTHS = 12;
+
 // --Commented out by Inspection START (2016/11/15 20:17):
 //    //Reference to the main application
 //    MainFXApplication mainApplication;
@@ -71,8 +73,8 @@ public class HistoryGraphController {
         Series contaminantSeries = new Series();
         contaminantSeries.setName("Contaminant PPM");
 
-        int[] monthCounterVirus = new int[12];
-        int[] monthCounterContaminant = new int[12];
+        int[] monthCounterVirus = new int[NUMMONTHS];
+        int[] monthCounterContaminant = new int[NUMMONTHS];
         for (PurityReport report : reportList) {
             String[] dateArray = report.getDate().split("-");
             int year = Integer.parseInt(dateArray[0]);

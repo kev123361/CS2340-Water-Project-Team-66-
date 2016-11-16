@@ -118,7 +118,7 @@ public class ListReportsScreenController {
      *
      * @return true if load successful, false otherwise
      */
-    public boolean showSubmitReportScreen() {
+    private boolean showSubmitReportScreen() {
         try {
             // Load the fxml file and create a new stage
             FXMLLoader loader = new FXMLLoader();
@@ -157,7 +157,7 @@ public class ListReportsScreenController {
      * Pops up the Report Choice screen when applicable
      * @return whether or not the screen successfully loaded
      */
-    public boolean showReportChoiceScreen() {
+    private boolean showReportChoiceScreen() {
         try {
             // Load the fxml file and create a new stage
             FXMLLoader loader = new FXMLLoader();
@@ -202,11 +202,9 @@ public class ListReportsScreenController {
 
     /**
      * Handler for the close button being pressed
-     *
-     * @throws IOException if any IO errors
      */
     @FXML
-    public void closePressed() throws IOException {
+    public void closePressed() {
         _okClicked = true;
         reportsScreenStage.close();
 

@@ -102,11 +102,9 @@ public class ProfileScreenController {
 
     /**
      * Handler for pressing edit profile. Updates user profile if valid input passed
-     *
-     * @throws IOException if IO error occurs
      */
     @FXML
-    public void handleEditPressed() throws IOException {
+    public void handleEditPressed() {
         if (isInputValid()) {
             _user.setUsername(username.getText());
             _user.setPassword(password.getText());
@@ -116,7 +114,9 @@ public class ProfileScreenController {
             _user.setHomeAddress(home.getText());
             _user.setTitle(comboBoxTitle.getSelectionModel().getSelectedItem());
             try {
-                PreparedStatement stmt = MainFXApplication.con.prepareStatement("UPDATE user SET USERNAME = ?, PASSWORD = ?, ID = ?, ACCOUNT = ?, EMAIL = ?, ADDRESS = ?, TITLE = ? WHERE USERNAME = ?");
+                PreparedStatement stmt = MainFXApplication.con
+                        .prepareStatement("UPDATE user SET USERNAME = ?, PASSWORD = ?, ID = ?, ACCOUNT = ?," +
+                                " EMAIL = ?, ADDRESS = ?, TITLE = ? WHERE USERNAME = ?");
                 stmt.setString(1, username.getText());
                 stmt.setString(2, password.getText());
                 stmt.setString(3, id.getText());
@@ -139,11 +139,9 @@ public class ProfileScreenController {
 
     /**
      * Handler for pressing close. Closes the window and does not edit anything
-     *
-     * @throws IOException if IO error occurs
      */
     @FXML
-    public void handleClosePressed() throws IOException {
+    public void handleClosePressed() {
         _okClicked = true;
         _dialogStage.close();
 
@@ -159,7 +157,7 @@ public class ProfileScreenController {
      * Checks if input entered is valid. Updates user profile if so.
      * @return true if valid, false otherwise
      */
-    public boolean isInputValid() {
+    private boolean isInputValid() {
         String errorMessage = "";
 
         if (!"".equals(username.getText()) && !"".equals(password.getText()) && !"".equals(id.getText())

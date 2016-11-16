@@ -121,9 +121,9 @@ public class UserList {
      * @return true if valid, false otherwise
      */
     public static Boolean isValidEmailAddress(String email) {
-        return email.contains("@") && (email.indexOf("@") != 0) && (email.indexOf("@") != (email.length() - 1))
-                && email.contains(".") && (email.indexOf(".") > email.indexOf("@")) && (email.indexOf(".") != (email
-                .length() - 1));
+        return (email != null) && email.contains("@") && (email.indexOf("@") != 0) &&
+                (email.indexOf("@") != (email.length() - 1)) && email.contains(".") &&
+                ((email.indexOf(".") - 1) > email.indexOf("@")) && (email.indexOf(".") != (email.length() - 1));
     }
 
     /**

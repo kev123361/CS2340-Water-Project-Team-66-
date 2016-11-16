@@ -91,21 +91,22 @@ public class SubmitReportController {
     /**
      * Handler for pressing submit
      * Adds report to report list if valid
-     *
-     * @throws IOException if IO errors occur
      */
     @FXML
-    public void handleSubmitPressed() throws IOException {
+    public void handleSubmitPressed() {
 
         if (isInputValid()) {
             try {
-                PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO source_report (DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, WATER_TYPE, WATER_CONDITION) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                PreparedStatement stmt = MainFXApplication.con
+                        .prepareStatement("INSERT INTO source_report (DATE, TIME, REPORTING_USER, LATITUDE," +
+                                " LONGITUDE, WATER_TYPE, WATER_CONDITION) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 SourceReport newReport = new SourceReport(date.getText(), time.getText(), _user,
                         Double.parseDouble(latitudeOfWater.getText()), Double.parseDouble(longitudeOfWater.getText()),
                         typeOfWaterComboBox.getSelectionModel().getSelectedItem(),
                         conditionOfWaterComboBox.getSelectionModel().getSelectedItem());
                 String[] dateArray = newReport.getDate().split("/");
-                int year = Integer.parseInt(dateArray[2]) - 1900;
+                final int yearOffset = 1900;
+                int year = Integer.parseInt(dateArray[2]) - yearOffset;
                 int month = Integer.parseInt(dateArray[0]) - 1;
                 int day = Integer.parseInt(dateArray[1]);
                 Date date = new Date(year, month, day);

@@ -24,11 +24,6 @@ public class WelcomeScreenController {
     // @FXML
     //private Button expressLogin;
 
-    @FXML
-    private void initialize() {
-
-    }
-
     /**
      * Sets the main application for this controller
      *

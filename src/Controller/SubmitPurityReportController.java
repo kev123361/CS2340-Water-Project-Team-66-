@@ -91,21 +91,23 @@ public class SubmitPurityReportController {
     /**
      * Handler for pressing submit
      * Adds report to report list if valid
-     *
-     * @throws IOException if IO errors occur
      */
     @FXML
-    public void handleSubmitPressed() throws IOException {
+    public void handleSubmitPressed() {
 
         if ((_user != null) && isInputValid()) {
             try {
-                PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO purity_report (DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, OVERALL_CONDITION_OF_WATER, VIRUS_PPM, CONTAMINANT_PPM) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                PreparedStatement stmt = MainFXApplication.con
+                        .prepareStatement("INSERT INTO purity_report (DATE, TIME, REPORTING_USER, LATITUDE," +
+                                " LONGITUDE, OVERALL_CONDITION_OF_WATER, VIRUS_PPM, CONTAMINANT_PPM)" +
+                                " VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
                 PurityReport newReport = new PurityReport(date.getText(), time.getText(), _user,
                         Double.parseDouble(latitudeOfWater.getText()), Double.parseDouble(longitudeOfWater.getText()),
                         conditionOfWaterComboBox.getSelectionModel().getSelectedItem(),
                         Integer.parseInt(contppm.getText()), Integer.parseInt(virusppm.getText()));
                 String[] dateArray = newReport.getDate().split("/");
-                int year = Integer.parseInt(dateArray[2]) - 1900;
+                final int yearOffset = 1900;
+                int year = Integer.parseInt(dateArray[2]) - yearOffset;
                 int month = Integer.parseInt(dateArray[0]) - 1;
                 int day = Integer.parseInt(dateArray[1]);
                 Date date = new Date(year, month, day);

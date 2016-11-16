@@ -30,9 +30,6 @@ public class ReportChoiceScreenController {
         return this._okClicked;
     }
 
-    @FXML
-    private void initialize() {
-    }
 
     /**
      * Set a reference to the main application

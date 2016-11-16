@@ -29,10 +29,6 @@ public class UserMainScreenController {
     //Reference to currently logged in user
     private User _user;
 
-    @FXML
-    private void initialize() {
-    }
-
     /**
      * Sets the main application for this controller
      *
@@ -69,11 +65,9 @@ public class UserMainScreenController {
 
     /**
      * Handler for pressing logout button
-     *
-     * @throws IOException if IO issues occur
      */
     @FXML
-    public void handleLogoutPressed() throws IOException {
+    public void handleLogoutPressed() {
         //Go back to the welcome screen
         _okClicked = true;
         mainApplication.initRootLayout(new Stage());
@@ -96,11 +90,9 @@ public class UserMainScreenController {
 
     /**
      * Handler for pressing view profile
-     *
-     * @throws IOException if IO issues occur
      */
     @FXML
-    public void handleViewProfilePressed() throws IOException {
+    public void handleViewProfilePressed() {
         _okClicked = true;
         mainApplication.showProfileScreen();
 

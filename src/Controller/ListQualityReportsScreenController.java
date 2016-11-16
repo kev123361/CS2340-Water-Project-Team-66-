@@ -80,12 +80,11 @@ public class ListQualityReportsScreenController {
     public boolean isOkClicked() { return _okClicked; }
 
 
-    /** Handler for the close button being pressed
-     *
-     * @throws IOException if any IO errors
+    /**
+     *  Handler for the close button being pressed
      */
     @FXML
-    public void closePressed() throws IOException {
+    public void closePressed() {
         _okClicked = true;
         reportsScreenStage.close();
 
@@ -94,11 +93,9 @@ public class ListQualityReportsScreenController {
 
     /**
      * Handler for the View Graph button being pressed
-     *
-     * @throws IOException if any IO errors
      */
     @FXML
-    public void handleViewGraphPressed() throws IOException {
+    public void handleViewGraphPressed() {
         mainApplication.showGraphSelectScreen();
     }
 }

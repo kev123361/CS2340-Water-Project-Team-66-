@@ -30,7 +30,8 @@ public class PurityReportList {
     public static ObservableList<PurityReport> getBackingList() {
         ObservableList<PurityReport> list = FXCollections.observableArrayList();
         try {
-            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, OVERALL_CONDITION_OF_WATER, VIRUS_PPM, CONTAMINANT_PPM FROM purity_report");
+            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT DATE, TIME, REPORTING_USER," +
+                    " LATITUDE, LONGITUDE, OVERALL_CONDITION_OF_WATER, VIRUS_PPM, CONTAMINANT_PPM FROM purity_report");
             ResultSet table = stmt.executeQuery();
             while (table.next()) {
                 String date = table.getDate(1).toString();
@@ -60,10 +61,10 @@ public class PurityReportList {
      * @return true if valid latitude, false otherwise
      */
     public static boolean isValidLatitude(String latitude) {
-        //return latitude <= 90.0 && latitude >= -90.0;
+        final double LATBOUNDARY = 90.0;
         try {
             double latDouble = Double.parseDouble(latitude);
-            return (latDouble <= 90.0) && (latDouble >= -90.0);
+            return (latDouble <= LATBOUNDARY) && (latDouble >= -LATBOUNDARY);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -76,10 +77,10 @@ public class PurityReportList {
      * @return true if valid longitude, false otherwise
      */
     public static boolean isValidLongitude(String longitude) {
-        //return longitude <= 180.0 && longitude >= -180.0;
+        final double LONGBOUNDARY = 180.0;
         try {
             double longDouble = Double.parseDouble(longitude);
-            return (longDouble <= 180.0) && (longDouble >= -180.0);
+            return (longDouble <= LONGBOUNDARY) && (longDouble >= -LONGBOUNDARY);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -91,8 +92,8 @@ public class PurityReportList {
      * @return true if valid date, false otherwise
      */
     public static boolean isValidDate(String date) {
-        return (date.length() == 10) && (date.charAt(2) == '/') && (date.charAt(5) == '/') && isInteger(date.substring(0, 2))
-                && isInteger(date.substring(3, 5)) && isInteger(date.substring(6));
+        return (date.length() == 10) && (date.charAt(2) == '/') && (date.charAt(5) == '/')
+                && isInteger(date.substring(0, 2)) && isInteger(date.substring(3, 5)) && isInteger(date.substring(6));
     }
 
     /**
@@ -100,7 +101,7 @@ public class PurityReportList {
      * @param input the string inputted
      * @return whether the string is an integer
      */
-    public static boolean isInteger(CharSequence input) {
+    private static boolean isInteger(CharSequence input) {
         String digits = "0123456789";
         for (int i = 0; i < input.length(); i++) {
             boolean inDigits = false;

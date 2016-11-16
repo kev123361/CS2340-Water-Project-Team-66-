@@ -50,7 +50,8 @@ public class MainFXApplication extends Application {
         initRootLayout(primaryStage);
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://cleanwater.cyvxbxancn7h.us-east-1.rds.amazonaws.com:3306/cleanwaterdb",
+            con = DriverManager
+                    .getConnection("jdbc:mysql://cleanwater.cyvxbxancn7h.us-east-1.rds.amazonaws.com:3306/cleanwaterdb",
                     "shobhit", "cshosho11");
 //            Statement stmt=con.createStatement();
 //            ResultSet rs=stmt.executeQuery("select * from user");

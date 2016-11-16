@@ -65,73 +65,61 @@ public class PurityReport {
     public String getDate() { return _date.get(); }
 
     /**
-     * Set the date of the report
-     * @param newDate the date to set in the report
-     */
-    public void setDate(String newDate) { _date.set(newDate); }
-
-    /**
      * @return the time of the report
      */
     public String getTime() { return _time.get(); }
 
     /**
-     * Set the time of the report
-     * @param newTime the time to set in the report
-     */
-    public void setTime(String newTime) { _time.set(newTime); }
-
-    /**
      * @return the user who created the report
      */
-    public User getReportingUser() { return _reportingUser.get(); }
+    private User getReportingUser() { return _reportingUser.get(); }
 
-    /**
-     * Set the user who created the report
-     * @param newUser the user to set in the report
-     */
-    public void setReportingUser(User newUser) { _reportingUser.set(newUser); }
+// --Commented out by Inspection START (11/15/2016 11:52 PM):
+//    /**
+//     * Set the user who created the report
+//     * @param newUser the user to set in the report
+//     */
+//    public void setReportingUser(User newUser) { _reportingUser.set(newUser); }
+// --Commented out by Inspection STOP (11/15/2016 11:52 PM)
 
-    /**
-     * @return the number of the report, which should be unique
-     */
-    public int getReportNum() { return _reportNum.get(); }
+// --Commented out by Inspection START (11/15/2016 11:52 PM):
+//    /**
+//     * @return the number of the report, which should be unique
+//     */
+//    public int getReportNum() { return _reportNum.get(); }
+// --Commented out by Inspection STOP (11/15/2016 11:52 PM)
 
     /**
      * @return the latitude of the report
      */
     public double getLatitude() { return _latitude.get(); }
 
-    /**
-     * Set the latitude of the report
-     * @param newLat the latitude to set in the report
-     */
-    public void setLatitude(double newLat) { _latitude.set(newLat); }
+// --Commented out by Inspection START (11/15/2016 11:51 PM):
+//    /**
+//     * Set the latitude of the report
+//     * @param newLat the latitude to set in the report
+//     */
+//    public void setLatitude(double newLat) { _latitude.set(newLat); }
+// --Commented out by Inspection STOP (11/15/2016 11:51 PM)
 
     /**
      * @return the longitude of the report
      */
     public double getLongitude() { return _longitude.get(); }
 
-    /**
-     * Set the longitude of the report
-     * @param newLong the longitude to set in the report
-     */
-    public void setLongitude(double newLong) { _longitude.set(newLong); }
+// --Commented out by Inspection START (11/15/2016 11:51 PM):
+//    /**
+//     * Set the longitude of the report
+//     * @param newLong the longitude to set in the report
+//     */
+//    public void setLongitude(double newLong) { _longitude.set(newLong); }
+// --Commented out by Inspection STOP (11/15/2016 11:51 PM)
 
     /**
      * @return the overall condition of the water
      */
     public OverallConditionOfWater getOverallWaterCondition() {
         return _overallWaterCondition.get();
-    }
-
-    /**
-     * Set the overall condition of the water
-     * @param overallWaterCondition the condition to set in the report
-     */
-    public void setOverallWaterCondition(OverallConditionOfWater overallWaterCondition) {
-        _overallWaterCondition.set(overallWaterCondition);
     }
 
     /**
@@ -142,27 +130,21 @@ public class PurityReport {
     }
 
     /**
-     * Set the virus parts per million of the report
-     * @param ppm the virus ppm to set in the report
-     */
-    public void setVirusPPM(int ppm) {
-        _virusPPM.set(ppm);
-    }
-
-    /**
      * @return the contaminant parts per million of the report
      */
     public int getContaminantPPM() {
         return _contaminantPPM.get();
     }
 
-    /**
-     * Set the contaminant parts per million of the report
-     * @param ppm the contaminant ppm to set in the report
-     */
-    public void setContaminantPPM(int ppm) {
-        _contaminantPPM.set(ppm);
-    }
+// --Commented out by Inspection START (11/15/2016 11:52 PM):
+//    /**
+//     * Set the contaminant parts per million of the report
+//     * @param ppm the contaminant ppm to set in the report
+//     */
+//    public void setContaminantPPM(int ppm) {
+//        _contaminantPPM.set(ppm);
+//    }
+// --Commented out by Inspection STOP (11/15/2016 11:52 PM)
 
     /**
      * Creates an observable list of strings with all the properties of a Purity Report

@@ -43,11 +43,6 @@ public class LoginScreenController {
         mainApplication = mainApp;
     }
 
-    @FXML
-    private void initialize() {
-
-    }
-
     /**
      * Sets the login screen's stage. Called when initializing the screen
      *
@@ -59,11 +54,9 @@ public class LoginScreenController {
 
     /**
      * Handler for pressing login button
-     *
-     * @throws IOException if IO issue occurs
      */
     @FXML
-    public void handleLoginPressed() throws IOException {
+    public void handleLoginPressed() {
         if (isInputValid()) {
             try {
                 PreparedStatement stmt = MainFXApplication.con.prepareStatement(

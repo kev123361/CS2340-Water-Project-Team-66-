@@ -37,7 +37,8 @@ public class ReportList {
     public static ObservableList<SourceReport> getBackingList() {
         ObservableList<SourceReport> list = FXCollections.observableArrayList();
         try {
-            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, WATER_TYPE, WATER_CONDITION FROM source_report");
+            PreparedStatement stmt = MainFXApplication.con.prepareStatement("SELECT DATE, TIME, REPORTING_USER," +
+                    " LATITUDE, LONGITUDE, WATER_TYPE, WATER_CONDITION FROM source_report");
             ResultSet table = stmt.executeQuery();
             while (table.next()) {
                 String date = table.getDate(1).toString();
@@ -75,10 +76,10 @@ public class ReportList {
      */
 
     public static boolean isValidLatitude(String latitude) {
-        //return latitude <= 90.0 && latitude >= -90.0;
+        final double BOUNDARYLAT = 90.0;
         try {
             double latDouble = Double.parseDouble(latitude);
-            return (latDouble <= 90.0) && (latDouble >= -90.0);
+            return (latDouble <= BOUNDARYLAT) && (latDouble >= -BOUNDARYLAT);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -91,10 +92,10 @@ public class ReportList {
      * @return true if valid, false otherwise
      */
     public static boolean isValidLongitude(String longitude) {
-        //return longitude <= 180.0 && longitude >= -180.0;
+        final double BOUNDARYLONG = 180.0;
         try {
             double longDouble = Double.parseDouble(longitude);
-            return (longDouble <= 180.0) && (longDouble >= -180.0);
+            return (longDouble <= BOUNDARYLONG) && (longDouble >= -BOUNDARYLONG);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -110,8 +111,8 @@ public class ReportList {
      * @return true if valid, false otherwise
      */
     public static boolean isValidDate(String date) {
-        return (date.length() == 10) && (date.charAt(2) == '/') && (date.charAt(5) == '/') && isInteger(date.substring(0, 2))
-                && isInteger(date.substring(3, 5)) && isInteger(date.substring(6));
+        return (date.length() == 10) && (date.charAt(2) == '/') && (date.charAt(5) == '/')
+                && isInteger(date.substring(0, 2)) && isInteger(date.substring(3, 5)) && isInteger(date.substring(6));
     }
 
     /**
@@ -131,7 +132,7 @@ public class ReportList {
      * @param input the substring to check
      * @return true if an integer, false otherwise
      */
-    public static boolean isInteger(CharSequence input) {
+    private static boolean isInteger(CharSequence input) {
         String digits = "0123456789";
         for (int i = 0; i < input.length(); i++) {
             boolean inDigits = false;

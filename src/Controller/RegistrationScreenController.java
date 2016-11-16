@@ -98,11 +98,9 @@ public class RegistrationScreenController {
     /**
      * Handler for pressing register
      * Adds user to the list of users provided input is valid
-     *
-     * @throws IOException if IO errors occur
      */
     @FXML
-    public void handleRegisterPressed() throws IOException {
+    public void handleRegisterPressed() {
         if (isInputValid()) {
 
             //signal success and close this dialog window.
@@ -113,7 +111,9 @@ public class RegistrationScreenController {
             UserList.addUser(newUser);
             mainApplication.setUser(newUser);
             try {
-                PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO user (USERNAME, PASSWORD, ID, ACCOUNT, EMAIL, ADDRESS, TITLE) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                PreparedStatement stmt = MainFXApplication.con
+                        .prepareStatement("INSERT INTO user (USERNAME, PASSWORD, ID, ACCOUNT, EMAIL, ADDRESS, TITLE)" +
+                                " VALUES (?, ?, ?, ?, ?, ?, ?)");
                 stmt.setString(1, username.getText());
                 stmt.setString(2, password.getText());
                 stmt.setString(3, id.getText());

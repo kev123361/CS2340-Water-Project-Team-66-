@@ -191,7 +191,7 @@ public class SourceReport {
         ObservableList<String> details = FXCollections.observableArrayList();
         details.add("Date: " + getDate());
         details.add("Time: " + getTime());
-        details.add("Reporting User: " + getReportingUser().toString());
+        details.add("Reporting User: " + getReportingUser());
         details.add("Latitude: " + getLatitude());
         details.add("Longitude: " + getLongitude());
         details.add("Water Type: " + getWaterType().toString());
