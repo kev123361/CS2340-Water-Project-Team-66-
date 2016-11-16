@@ -47,16 +47,7 @@ public class ReportList {
                 Double longitude = table.getDouble(5);
                 TypeOfWater waterType = TypeOfWater.valueOf(table.getString(6).toUpperCase());
                 String condition = table.getString(7);
-                ConditionOfWater waterCondition;
-                if ("Waste".equals(condition)) {
-                    waterCondition = ConditionOfWater.valueOf("WASTE");
-                } else if ("Treatable-Clear".equals(condition)) {
-                    waterCondition = ConditionOfWater.valueOf("TREATABLECLEAR");
-                } else if ("Treatable-Muddy".equals(condition)) {
-                    waterCondition = ConditionOfWater.valueOf("TREATABLEMUDDY");
-                } else {
-                    waterCondition = ConditionOfWater.valueOf("POTABLE");
-                }
+                ConditionOfWater waterCondition = getConditionOfWater(condition);
                 SourceReport newReport = new SourceReport(date, time, user,
                         latitude, longitude, waterType, waterCondition);
                 list.add(newReport);
@@ -65,6 +56,25 @@ public class ReportList {
             e.printStackTrace();
         }
         return list;
+    }
+
+    /**
+     * Takes in a string and returns corresponding enum value
+     *
+     * @param condition string for condition of water
+     * @return ConditionOfWater enum that matches string
+     */
+    public static ConditionOfWater getConditionOfWater(String condition) {
+        if (condition.equals("Waste")) {
+            return ConditionOfWater.WASTE;
+        } else if (condition.equals("Treatable-Clear")) {
+            return ConditionOfWater.TREATABLECLEAR;
+        } else if (condition.equals("Treatable-Muddy")) {
+            return ConditionOfWater.TREATABLEMUDDY;
+        } else if (condition.equals("Potable")) {
+            return ConditionOfWater.POTABLE;
+        }
+        return null;
     }
 
     /**
