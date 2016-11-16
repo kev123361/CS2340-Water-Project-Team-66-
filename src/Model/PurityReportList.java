@@ -14,15 +14,15 @@ import java.sql.ResultSet;
  * @version 1.0
  */
 public class PurityReportList {
-    private static final ObservableList<PurityReport> backingList = FXCollections.observableArrayList();
+    //private static final ObservableList<PurityReport> backingList = FXCollections.observableArrayList();
 
     /**
      * Adds a Purity Report to the backing list
      * @param report the report to add
      */
-    public static void addPurityReport(PurityReport report) {
-        backingList.add(report);
-    }
+//    public static void addPurityReport(PurityReport report) {
+//        backingList.add(report);
+//    }
 
     /**
      * @return the backing list for the Purity Reports

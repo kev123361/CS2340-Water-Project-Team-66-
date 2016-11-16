@@ -41,16 +41,13 @@ import java.util.ResourceBundle;
  * @author Kishan Chudasama
  * @version 1.0
  */
-public class AvailabilityScreenController implements Initializable, MapComponentInitializedListener {
+class AvailabilityScreenController implements Initializable, MapComponentInitializedListener {
 
     //A GUI view in the GMapsFX library
     private GoogleMapView mapView;
 
     //The JavaScript interface for the Google Map
     private GoogleMap map;
-
-    //Reference to main application
-    private final MainFXApplication mainApp;
 
     //A reference to the current stage
     private final Stage stage;
@@ -65,7 +62,7 @@ public class AvailabilityScreenController implements Initializable, MapComponent
      */
     public AvailabilityScreenController(MainFXApplication app, Stage stage) {
         this.stage = stage;
-        this.mainApp = app;
+        MainFXApplication mainApp = app;
         setUpMapView(stage);
     }
 

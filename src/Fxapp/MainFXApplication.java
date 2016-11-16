@@ -127,7 +127,7 @@ public class MainFXApplication extends Application {
      *
      * @return whether or not displaying the login screen was successful
      */
-    public boolean showLoginScreen() {
+    public void showLoginScreen() {
         try {
 
             // Load the fxml file and create a new stage for the popup dialog.
@@ -153,11 +153,9 @@ public class MainFXApplication extends Application {
             // Show the dialog and wait until the user closes it
             dialogStage.show();
 
-            return controller.isOkClicked();
 
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
         }
     }
 
@@ -167,7 +165,7 @@ public class MainFXApplication extends Application {
      * @param user the user you are trying to register
      * @return true if success, false otherwise
      */
-    public boolean showRegistrationScreen(User user) {
+    public void showRegistrationScreen(User user) {
         try {
 
             // Load the fxml file and create a new stage for the popup dialog.
@@ -193,11 +191,11 @@ public class MainFXApplication extends Application {
             // Show the dialog and wait until the user closes it
             dialogStage.show();
 
-            return controller.isOkClicked();
+            //return controller.isOkClicked();
 
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            //return false;
         }
     }
 
@@ -206,7 +204,7 @@ public class MainFXApplication extends Application {
      *
      * @return whether or not the screen successfully loaded
      */
-    public boolean showSubmitReportScreen() {
+    public void showSubmitReportScreen() {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
@@ -232,11 +230,11 @@ public class MainFXApplication extends Application {
             // Show the dialog and wait until the user closes it
             reportScreen.show();
 
-            return controller.isOkClicked();
+            //return controller.isOkClicked();
 
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            //return false;
         }
     }
 
@@ -245,7 +243,7 @@ public class MainFXApplication extends Application {
      *
      * @return whether or not the screen successfully loaded
      */
-    public boolean showSubmitPurityReportScreen() {
+    public void showSubmitPurityReportScreen() {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
@@ -270,11 +268,11 @@ public class MainFXApplication extends Application {
             // Show the dialog and wait until the user closes it
             reportScreen.show();
 
-            return controller.isOkClicked();
+            //return controller.isOkClicked();
 
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            //return false;
         }
     }
 
@@ -283,7 +281,7 @@ public class MainFXApplication extends Application {
      *
      * @return whether or not displaying the login screen was successful
      */
-    public boolean showMainScreen() {
+    public void showMainScreen() {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
@@ -306,10 +304,10 @@ public class MainFXApplication extends Application {
             // Show the main screen stage
             mainScreenStage.show();
 
-            return controller.isOkClicked();
+            //return controller.isOkClicked();
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            //return false;
         }
     }
 
@@ -318,7 +316,7 @@ public class MainFXApplication extends Application {
      *
      * @return whether or not displaying the screen was successful
      */
-    public boolean showProfileScreen() {
+    public void showProfileScreen() {
         try {
             // Load the fxml file and create new stage for the popup dialog
             FXMLLoader loader = new FXMLLoader();
@@ -344,10 +342,10 @@ public class MainFXApplication extends Application {
             // Show the profile screen
             profileScreenStage.show();
 
-            return controller.isOkClicked();
+            //return controller.isOkClicked();
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            //return false;
         }
     }
 
@@ -356,7 +354,7 @@ public class MainFXApplication extends Application {
      *
      * @return whether or not the screen successfully loaded
      */
-    public boolean showListReportsScreen() {
+    public void showListReportsScreen() {
         if (user.getAccount().equals(Account.ADMIN)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(mainScreen);
@@ -364,7 +362,7 @@ public class MainFXApplication extends Application {
             alert.setHeaderText("Since you are signed in as an admin, you cannot access the list of reports");
             //alert.setContentText(errorMessage);
             alert.showAndWait();
-            return false;
+            //return false;
         }
 
         try {
@@ -392,10 +390,10 @@ public class MainFXApplication extends Application {
             // Show the profile screen
             listReportsScreenStage.show();
 
-            return controller.isOkClicked();
+            //return controller.isOkClicked();
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            //return false;
         }
     }
 
@@ -404,7 +402,7 @@ public class MainFXApplication extends Application {
      *
      * @return whether or not the screen successfully loaded
      */
-    public boolean viewQualityReportListScreen() {
+    public void viewQualityReportListScreen() {
         if (!user.getAccount().equals(Account.MANAGER)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(mainScreen);
@@ -412,7 +410,7 @@ public class MainFXApplication extends Application {
             alert.setHeaderText("Since you are not signed in as an manager, you cannot access the list of reports");
             //alert.setContentText(errorMessage);
             alert.showAndWait();
-            return false;
+            //return false;
         }
 
         try {
@@ -440,10 +438,10 @@ public class MainFXApplication extends Application {
             // Show the profile screen
             listQualityReportsScreenStage.show();
 
-            return controller.isOkClicked();
+            //return controller.isOkClicked();
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            //return false;
         }
     }
 
@@ -452,7 +450,7 @@ public class MainFXApplication extends Application {
      *
      * @return whether or not the screen successfully loaded
      */
-    public boolean showGraphSelectScreen() {
+    public void showGraphSelectScreen() {
         try {
             // Load the fxml file and create new stage for the popup dialog
             FXMLLoader loader = new FXMLLoader();
@@ -477,10 +475,10 @@ public class MainFXApplication extends Application {
             // Show screen
             GraphSelectScreenStage.show();
 
-            return controller.is_okClicked();
+            //return controller.is_okClicked();
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            //return false;
         }
     }
 
@@ -492,7 +490,7 @@ public class MainFXApplication extends Application {
      * @param targetYear the inputted year by the user
      * @return whether or not the screen successfully loaded
      */
-    public boolean showHistoryGraphScreen(double targetLat, double targetLong, int targetYear) {
+    public void showHistoryGraphScreen(double targetLat, double targetLong, int targetYear) {
         try {
             // Load the fxml file and create new stage for the popup dialog
             FXMLLoader loader = new FXMLLoader();
@@ -525,10 +523,10 @@ public class MainFXApplication extends Application {
             // Show screen
             HistoryGraphScreenStage.show();
 
-            return controller.is_okClicked();
+            //return controller.is_okClicked();
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            //return false;
         }
 
     }

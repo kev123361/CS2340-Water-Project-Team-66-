@@ -118,7 +118,7 @@ public class ListReportsScreenController {
      *
      * @return true if load successful, false otherwise
      */
-    private boolean showSubmitReportScreen() {
+    private void showSubmitReportScreen() {
         try {
             // Load the fxml file and create a new stage
             FXMLLoader loader = new FXMLLoader();
@@ -145,11 +145,11 @@ public class ListReportsScreenController {
             // Show the dialog and wait until the user closes it
             reportScreen.show();
 
-            return true;
+            //return true;
 
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            //return false;
         }
     }
 
@@ -157,7 +157,7 @@ public class ListReportsScreenController {
      * Pops up the Report Choice screen when applicable
      * @return whether or not the screen successfully loaded
      */
-    private boolean showReportChoiceScreen() {
+    private void showReportChoiceScreen() {
         try {
             // Load the fxml file and create a new stage
             FXMLLoader loader = new FXMLLoader();
@@ -179,10 +179,10 @@ public class ListReportsScreenController {
             // Show the dialog and wait until the user closes it
             Screen.show();
 
-            return true;
+            //return true;
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            //return false;
         }
     }
 
