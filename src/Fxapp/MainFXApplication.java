@@ -39,6 +39,9 @@ public class MainFXApplication extends Application {
     //The layout for the app's main window
     private Parent rootLayout;
 
+    //Reference to the current user
+    private User user;
+
     //A logger for exceptions
     private static final Logger LOGGER = Logger.getLogger("MainFXApplication");
 
@@ -72,6 +75,10 @@ public class MainFXApplication extends Application {
      * */
     public Stage getMainScreen() {
         return mainScreen;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 
@@ -210,7 +217,7 @@ public class MainFXApplication extends Application {
             SubmitReportController controller = loader.getController();
             controller.setDialogStage(reportScreen);
             //controller.setUser(user);
-            controller.setUser(UserList.getCurrentUser());
+            controller.setUser(user);
 
             //controller.setMainApplication(this);
 
@@ -248,8 +255,7 @@ public class MainFXApplication extends Application {
             // Set the person into the controller.
             SubmitPurityReportController controller = loader.getController();
             controller.setDialogStage(reportScreen);
-            //controller.setUser(user);
-            controller.setUser(UserList.getCurrentUser());
+            controller.setUser(user);
 
             //controller.setMainApplication(this);
 
@@ -287,6 +293,7 @@ public class MainFXApplication extends Application {
             controller.setMainScreenStage(mainScreenStage);
 
             controller.setMainApplication(this);
+            controller.setUser(user);
 
             // Show the main screen stage
             mainScreenStage.show();
@@ -322,7 +329,7 @@ public class MainFXApplication extends Application {
             ProfileScreenController controller = loader.getController();
             controller.setDialogStage(profileScreenStage);
             // Set user into controller
-            controller.setUser(UserList.getCurrentUser());
+            controller.setUser(user);
 
             controller.setMainApplication(this);
 
@@ -342,7 +349,7 @@ public class MainFXApplication extends Application {
      * @return whether or not the screen successfully loaded
      */
     public boolean showListReportsScreen() {
-        if (UserList.getCurrentUser().getAccount().equals(Account.ADMIN)) {
+        if (user.getAccount().equals(Account.ADMIN)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(mainScreen);
             alert.setTitle("Can't Access the List of Reports");
@@ -370,7 +377,7 @@ public class MainFXApplication extends Application {
             ListReportsScreenController controller = loader.getController();
             controller.setReportsScreenStage(listReportsScreenStage);
             // Set user into controller
-            controller.setUser(UserList.getCurrentUser());
+            controller.setUser(user);
 
             controller.setMainApplication(this);
 
@@ -390,7 +397,7 @@ public class MainFXApplication extends Application {
      * @return whether or not the screen successfully loaded
      */
     public boolean viewQualityReportListScreen() {
-        if (!UserList.getCurrentUser().getAccount().equals(Account.MANAGER)) {
+        if (!user.getAccount().equals(Account.MANAGER)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(mainScreen);
             alert.setTitle("Can't Access the List of Reports");

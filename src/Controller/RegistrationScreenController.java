@@ -106,9 +106,12 @@ public class RegistrationScreenController {
         if (isInputValid()) {
 
             //signal success and close this dialog window.
-            UserList.addUser(new User(username.getText(), password.getText(), id.getText(),
+            User newUser = new User(username.getText(), password.getText(), id.getText(),
                     comboBoxDrop.getSelectionModel().getSelectedItem(), email.getText(), home.getText(),
-                    comboBoxTitle.getSelectionModel().getSelectedItem()));
+                    comboBoxTitle.getSelectionModel().getSelectedItem());
+
+            UserList.addUser(newUser);
+            mainApplication.setUser(newUser);
             try {
                 PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO user (USERNAME, PASSWORD, ID, ACCOUNT, EMAIL, ADDRESS, TITLE) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 stmt.setString(1, username.getText());
@@ -119,6 +122,7 @@ public class RegistrationScreenController {
                 stmt.setString(6, home.getText());
                 stmt.setString(7, comboBoxTitle.getSelectionModel().getSelectedItem().toString());
                 stmt.executeUpdate();
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

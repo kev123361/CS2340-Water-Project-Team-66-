@@ -164,7 +164,7 @@ public class AvailabilityScreenController implements Initializable, MapComponent
                         InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
                         infoWindowOptions.content("<h2>Report </h2>"
                                 + "Date: " + sr.getDate() + "<br>\nTime: " + sr.getTime() + "<br>\nReporting User: "
-                                + sr.getReportingUser().getUsername() + "<br>\nLatitude: " + sr.getLatitude()
+                                + sr.getReportingUser() + "<br>\nLatitude: " + sr.getLatitude()
                                 + "<br>\nLongitude: " + sr.getLongitude() + "<br>\nWater Type: "
                                 + sr.getWaterType().toString() + "<br>\nWater Condition: " +
                                 sr.getWaterCondition().toString());
