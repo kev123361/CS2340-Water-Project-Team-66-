@@ -9,7 +9,7 @@ package Model;
 public enum ConditionOfWater {
     WASTE("Waste"), TREATABLECLEAR("Treatable-Clear"), TREATABLEMUDDY("Treatable-Muddy"), POTABLE("Potable");
 
-    private String code;
+    private final String code;
 
     ConditionOfWater(String code) {
         this.code = code;

@@ -13,7 +13,7 @@ public enum Title {
     MRS("Mrs."),
     DR("Dr.");
 
-    private String code;
+    private final String code;
 
     Title (String code) {
         this.code = code;

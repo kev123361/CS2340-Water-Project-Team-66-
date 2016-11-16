@@ -1,6 +1,7 @@
 package Controller;
 
 import Fxapp.MainFXApplication;
+
 import Model.*;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
@@ -55,12 +56,7 @@ public class SubmitPurityReportController {
     @FXML
     private void initialize() {
         conditionOfWaterComboBox.setItems(FXCollections.observableArrayList(OverallConditionOfWater.values()));
-        conditionOfWaterComboBox.setOnMousePressed(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                conditionOfWaterComboBox.requestFocus();
-            }
-        });
+        conditionOfWaterComboBox.setOnMousePressed(event -> conditionOfWaterComboBox.requestFocus());
     }
     /**
      * Sets the submit report screen's stage. Called when initializing the screen
@@ -101,7 +97,7 @@ public class SubmitPurityReportController {
     @FXML
     public void handleSubmitPressed() throws IOException {
 
-        if (_user != null && isInputValid()) {
+        if ((_user != null) && isInputValid()) {
             try {
                 PreparedStatement stmt = MainFXApplication.con.prepareStatement("INSERT INTO purity_report (DATE, TIME, REPORTING_USER, LATITUDE, LONGITUDE, OVERALL_CONDITION_OF_WATER, VIRUS_PPM, CONTAMINANT_PPM) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
                 PurityReport newReport = new PurityReport(date.getText(), time.getText(), _user,

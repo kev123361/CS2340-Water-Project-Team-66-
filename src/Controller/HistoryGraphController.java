@@ -32,11 +32,11 @@ public class HistoryGraphController {
     private CategoryAxis xAxis;
     @FXML
     private NumberAxis yAxis;
-    private ObservableList<String> monthNames = FXCollections.observableArrayList();
+    private final ObservableList<String> monthNames = FXCollections.observableArrayList();
 
 
     //List of all purity reports
-    private List<PurityReport> reportList = PurityReportList.getBackingList();
+    private final List<PurityReport> reportList = PurityReportList.getBackingList();
 
     // Targeted year, lat and long to show nearby quality reports
     private double targetLat;
@@ -46,8 +46,10 @@ public class HistoryGraphController {
     private boolean _okClicked;
     private Stage _dialogStage;
 
-    //Reference to the main application
-    MainFXApplication mainApplication;
+// --Commented out by Inspection START (2016/11/15 20:17):
+//    //Reference to the main application
+//    MainFXApplication mainApplication;
+// --Commented out by Inspection STOP (2016/11/15 20:17)
 
     @FXML
     private void initialize() {
@@ -84,9 +86,9 @@ public class HistoryGraphController {
 
             // Checks to see if report is in the target year and in the nearby area of target lat and long
             int NEARBY = 1;
-            if (year == targetYear &&
-                Math.abs(targetLat - latitude) < NEARBY &&
-                Math.abs(targetLong - longitude) < NEARBY) {
+            if ((year == targetYear) &&
+                    (Math.abs(targetLat - latitude) < NEARBY) &&
+                    (Math.abs(targetLong - longitude) < NEARBY)) {
                 // If the reported virus or contaminant PPM is higher, replaces currently held value
                 monthCounterVirus[month - 1] = Math.max(monthCounterVirus[month -1], virusPPM);
                 monthCounterContaminant[month - 1] = Math.max(monthCounterContaminant[month -1], contaminantPPM);
@@ -113,14 +115,10 @@ public class HistoryGraphController {
         _dialogStage = stage;
     }
 
-    /**
-     * Sets reference to the main application
-     *
-     * @param mainApp the main app
-     */
-    public void setMainApplication(MainFXApplication mainApp) {
-        mainApplication = mainApp;
-    }
+
+    //public void setMainApplication(MainFXApplication mainApp) {
+        //mainApplication = mainApp;
+    //}
 
     /**
      * @return _okClicked

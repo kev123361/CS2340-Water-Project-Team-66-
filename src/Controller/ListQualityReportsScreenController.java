@@ -3,7 +3,7 @@ package Controller;
 import Fxapp.MainFXApplication;
 import Model.PurityReportList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import Model.PurityReport;
 
@@ -62,11 +62,7 @@ public class ListQualityReportsScreenController {
         reportsScreenStage = newStage;
     }
 
-    /**
-     * Set the user currently signed in
-     *
-     * @param user currently signed in
-     */
+
     //public void setUser(User user) { _user = user; }
 
     /**

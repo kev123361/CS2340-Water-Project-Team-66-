@@ -7,6 +7,7 @@ import Model.SourceReport;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
+
 import com.lynden.gmapsfx.javascript.object.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -47,7 +48,8 @@ public class AvailabilityScreenController implements Initializable, MapComponent
     //private final MainFXApplication mainApp;
 
     //A reference to the current stage
-    private Stage stage;
+    private final Stage stage;
+
 
     /**
      * Constructs the Availability Screen Controller
@@ -60,6 +62,7 @@ public class AvailabilityScreenController implements Initializable, MapComponent
         this.stage = stage;
         setUpMapView(stage);
     }
+
 
     /**
      * Construct the Google Map and set up different parts of the layout
@@ -114,12 +117,7 @@ public class AvailabilityScreenController implements Initializable, MapComponent
     private void addCloseOptions(Menu menuClose) {
 
         MenuItem closeMap = new MenuItem("Close Map");
-        closeMap.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                stage.close();
-            }
-        });
+        closeMap.setOnAction(event -> stage.close());
 
         menuClose.getItems().addAll(closeMap);
 

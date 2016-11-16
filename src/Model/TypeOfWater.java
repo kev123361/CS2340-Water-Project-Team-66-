@@ -9,7 +9,7 @@ package Model;
 public enum TypeOfWater {
     BOTTLED("Bottled"), WELL("Well"), STREAM("Stream"), LAKE("Lake"), SPRING("Spring"),OTHER("Other");
 
-    private String code;
+    private final String code;
 
     TypeOfWater(String code) {
         this.code = code;

@@ -6,7 +6,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
- * Created by DudeLong on 2016/11/05.
+ * This is the screen that lets users input data about the graph to be shown
+ *
+ * Created by Kevin on 2016/11/05.
  */
 public class GraphSelectScreenController {
 

@@ -22,13 +22,15 @@ public class PurityReport {
     private final IntegerProperty _virusPPM = new SimpleIntegerProperty();
     private final IntegerProperty _contaminantPPM = new SimpleIntegerProperty();
 
-    /**
-     * Empty Constructor
-     * Should not normally call!
-     */
-    public PurityReport() {
-        this(null, null, null, 0.0, 0.0, null, 0, 0);
-    }
+// --Commented out by Inspection START (2016/11/15 20:28):
+//    /**
+//     * Empty Constructor
+//     * Should not normally call!
+//     */
+//    public PurityReport() {
+//        this(null, null, null, 0.0, 0.0, null, 0, 0);
+//    }
+// --Commented out by Inspection STOP (2016/11/15 20:28)
 
     /**
      * Constructs a Purity Report

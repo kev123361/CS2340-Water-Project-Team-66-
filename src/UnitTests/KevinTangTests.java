@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
+ * JUnit tests by Kevin Tang
+ *
  * Created by Kevin Tang on 2016/11/15.
  */
 public class KevinTangTests {

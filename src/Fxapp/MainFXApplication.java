@@ -497,7 +497,7 @@ public class MainFXApplication extends Application {
             // Set stage
             controller.set_dialogStage(HistoryGraphScreenStage);
             // Set reference to main App
-            controller.setMainApplication(this);
+            //controller.setMainApplication(this);
 
             // Set target year, lat and long
             controller.setTargetLat(targetLat);
